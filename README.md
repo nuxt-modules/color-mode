@@ -1,4 +1,4 @@
-# @nuxtjs/color-scheme
+# @nuxtjs/color-mode
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -6,32 +6,90 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-> 🌑 Dark mode for NuxtJS with auto detection
+> 🌑 Dark and 🌕 Light modes made easy with NuxtJS
 
 [📖 **Release Notes**](./CHANGELOG.md)
 
 ## NOT WORKING, module in progress 🏗
 
+## Features
+
+- Detect the system [color-scheme](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme)
+- Add `.${color}-mode` class to `<html>` for easy CSS theming
+- Works with any NuxtJS target (`static` or `server`) or rendering (`universal` and `spa`)
+
 ## Setup
 
-1. Add `@nuxtjs/color-scheme` dependency to your project
+1. Add `@nuxtjs/color-mode` dependency to your project
 
 ```bash
-yarn add @nuxtjs/color-scheme # or npm install @nuxtjs/color-scheme
+yarn add --dev @nuxtjs/color-mode
+# OR npm install --save-dev @nuxtjs/color-mode
 ```
 
-2. Add `@nuxtjs/color-scheme` to the `modules` section of `nuxt.config.js`
+2. Add `@nuxtjs/color-mode` to the `buildModules` section of your `nuxt.config.js`
 
 
 ```js
 {
-  // If you are using Nuxt < 2.9.0, use `modules` property instead.
   buildModules: [
     // Simple usage
-    '@nuxtjs/color-scheme'
+    '@nuxtjs/color-mode'
   ]
 }
 ```
+
+ℹ️ If you are using `nuxt < 2.9.0`, use `modules` property instead.
+
+
+## Usage
+
+It injects:
+- `$colorMode`: actual color-mode selected (can be `'system'`), update it directly to change the user prefered color mode
+- `$colorModeValue`: read-only value, useful to know what color mode has been detected when `$colorMode === 'system'`
+
+```vue
+<template>
+  <div>
+    <h1>Color mode: {{ $colorModeValue }}</h1>
+    <select v-model="$colorMode">
+      <option value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="sepia">Sepia</option>
+    </select>
+  </div>
+</template>
+
+<style>
+/* TODO */
+</style>
+```
+
+## Configuration
+
+You can configure the module by providing the `colorMode` property in your `nuxt.config.js`:
+
+```js
+colorMode: {
+  default: 'system',
+  fallback: 'light',
+  cookie: {
+    key: 'nuxt-color-mode',
+    options: {
+      path: '/'
+    }
+  }
+}
+```
+
+Notes:
+- `'system'` is a special value, it will automatically detect the color mode based on the system preferences (see [prefers-color-scheme spec](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme)). The value injected will be either `'light'` or `'dark'`. If `no-preference` is detected or the browser does not handle color-scheme, it will set the `fallback` value.
+- `cookie` are the options where to store the chosen color mode (to make it work universally), the `cookie.options` are available on the [cookie serialize options](https://www.npmjs.com/package/cookie#options-1) documentation.
+
+## Caveats
+
+With `nuxt generate` and using `$colorMode` (or `$colorModeValue`) in your Vue template, you may expect a flash. This is due to the fact that we cannot know the user preferences pre-rendering the page, so it will be directly the `fallback` value (or `default` if !== `'system'`).
 
 ## Development
 
