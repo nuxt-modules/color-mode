@@ -10,10 +10,10 @@
       </li>
     </ul>
     <p>
-      <client-only placeholder="..." placeholder-tag="span">
+      <templte :is="$colorMode.unknown ? 'client-only': 'span'" placeholder="..." placeholder-tag="span">
         Color mode: <b>{{ $colorMode.preference }}</b>
         <span v-if="$colorMode.preference === 'system'">(<i>{{ $colorMode.value }}</i> mode detected)</span>
-      </client-only>
+      </templte>
     </p>
   </div>
 </template>
@@ -39,7 +39,7 @@ export default {
   methods: {
     getClasses (color) {
       // Does not set classes on ssr preference is system (because we know them on client-side)
-      if (process.server && this.$colorMode.preference === 'system') {
+      if (this.$colorMode.unknown) {
         return {}
       }
       return {

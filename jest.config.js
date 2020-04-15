@@ -2,8 +2,7 @@ module.exports = {
   testEnvironment: 'node',
   collectCoverage: true,
   collectCoverageFrom: [
-    'lib/**/*.js',
-    '!lib/templates/**/*.js'
+    'lib/**/*.js'
   ],
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/lib/$1',
