@@ -8,13 +8,13 @@
 
 > 🌑 Dark and 🌕 Light mode with auto detection made easy with NuxtJS
 
-[📖 **Release Notes**](./CHANGELOG.md)
-
-## Demo
-
 [![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://nuxt-color-mode.surge.sh)
 
-[See live demo](https://nuxt-color-mode.surge.sh)
+<p align="center">
+  <a href="https://nuxt-color-mode.surge.sh">Live demo</a>
+</p>
+
+[📖 Release Notes](./CHANGELOG.md)
 
 ## Features
 
