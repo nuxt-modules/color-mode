@@ -130,6 +130,10 @@ You have to guard any rendering path which depends on `$colorMode` with `$colorM
 </template>
 ```
 
+Props:
+- `placeholder`: `String`
+- `tag`: `String`,  default: `'span'`
+
 ## TailwindCSS Dark Mode
 
 You can easily integrate this module with [tailwindcss-dark-mode](https://github.com/ChanceArthur/tailwindcss-dark-mode) by just setting `darkSelector: '.dark-mode'`, see [changing the selector documentation](https://github.com/ChanceArthur/tailwindcss-dark-mode#changing-the-selector).
