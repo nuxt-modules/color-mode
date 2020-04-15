@@ -10,10 +10,10 @@
       </li>
     </ul>
     <p>
-      <templte :is="$colorMode.unknown ? 'client-only': 'span'" placeholder="..." placeholder-tag="span">
+      <color-scheme placeholder="..." tag="span">
         Color mode: <b>{{ $colorMode.preference }}</b>
         <span v-if="$colorMode.preference === 'system'">(<i>{{ $colorMode.value }}</i> mode detected)</span>
-      </templte>
+      </color-scheme>
     </p>
   </div>
 </template>

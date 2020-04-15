@@ -99,6 +99,7 @@ colorMode: {
   fallback: 'light', // fallback value if not system preference found
   hid: 'nuxt-color-mode-script',
   globalName: '__NUXT_COLOR_MODE__',
+  componentName: 'ColorScheme',
   cookie: {
     key: 'nuxt-color-mode',
     options: {
@@ -114,7 +115,20 @@ Notes:
 
 ## Caveats
 
-With `nuxt generate` and using `$colorMode` in your Vue template, you may expect a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page, it will directly set the `fallback` value (or `default` value if no set to `'system'`).
+Using SSR if default value is `system` and also With `nuxt generate` and using `$colorMode` in your Vue template, you may expect a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page, it will directly set the `fallback` value (or `default` value if no set to `'system'`).
+
+You have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render placeholder or use `<ColorScheme>` component.
+
+***Example:**
+
+```vue
+<template>
+  <color-scheme placeholder="..." tag="span">
+    Color mode: <b>{{ $colorMode.preference }}</b>
+    <span v-if="$colorMode.preference === 'system'">(<i>{{ $colorMode.value }}</i> mode detected)</span>
+  </color-scheme>
+</template>
+```
 
 ## TailwindCSS Dark Mode
 
