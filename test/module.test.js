@@ -1,18 +1,23 @@
 import { join } from 'path'
-import { loadNuxtConfig } from 'nuxt-edge'
 import { setup, get } from '@nuxtjs/module-test-utils'
-
-jest.setTimeout(60000)
+import colorModeModule from '..'
 
 describe('module', () => {
   let nuxt
 
   beforeAll(async () => {
-    const config = await loadNuxtConfig({
-      rootDir: join(__dirname, '..', 'example')
-    })
+    const rootDir = join(__dirname, '..', 'example')
+
+    const config = {
+      rootDir,
+      modules: [
+        '@nuxtjs/svg',
+        colorModeModule
+      ]
+    }
+
     nuxt = (await setup(config)).nuxt
-  })
+  }, 60000)
 
   afterAll(async () => {
     await nuxt.close()
