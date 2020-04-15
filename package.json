@@ -23,8 +23,7 @@
   },
   "dependencies": {
     "defu": "^1.0.0",
-    "lodash.template": "^4.5.0",
-    "terser": "^4.6.11"
+    "lodash.template": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "latest",
@@ -40,9 +39,9 @@
     "husky": "latest",
     "jest": "latest",
     "nuxt-edge": "latest",
-    "rollup": "^2.6.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-terser": "^5.3.0",
+    "rollup": "latest",
+    "rollup-plugin-babel": "latest",
+    "rollup-plugin-terser": "latest",
     "standard-version": "latest"
   },
   "publishConfig": {
