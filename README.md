@@ -96,6 +96,8 @@ You can configure the module by providing the `colorMode` property in your `nuxt
 colorMode: {
   preference: 'system', // default value of $colorMode.preference
   fallback: 'light', // fallback value if not system preference found
+  hid: 'nuxt-color-mode-script',
+  globalName: '__NUXT_COLOR_MODE__',
   cookie: {
     key: 'nuxt-color-mode',
     options: {
