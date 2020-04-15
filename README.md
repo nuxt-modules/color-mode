@@ -118,7 +118,7 @@ If you are doing SSR (`nuxt start` or `nuxt generate`) and if `$colorMode.prefer
 
 You have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render a placeholder or directory use our `<ColorScheme>` component.
 
-***Example:**
+**Example:**
 
 ```vue
 <template>
