@@ -115,18 +115,18 @@ Notes:
 
 ## Caveats
 
-Using SSR if default value is `system` and also With `nuxt generate` and using `$colorMode` in your Vue template, you may expect a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page, it will directly set the `fallback` value (or `default` value if no set to `'system'`).
+If you are doing SSR (`nuxt start` or `nuxt generate`) and if `$colorMode.preference` is set to `'system'`, using `$colorMode` in your Vue template will lead to a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page since they are detected on client-side.
 
-You have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render placeholder or use `<ColorScheme>` component.
+You have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render a placeholder or directory use our `<ColorScheme>` component.
 
 ***Example:**
 
 ```vue
 <template>
-  <color-scheme placeholder="..." tag="span">
+  <ColorScheme placeholder="..." tag="span">
     Color mode: <b>{{ $colorMode.preference }}</b>
     <span v-if="$colorMode.preference === 'system'">(<i>{{ $colorMode.value }}</i> mode detected)</span>
-  </color-scheme>
+  </ColorScheme>
 </template>
 ```
 
