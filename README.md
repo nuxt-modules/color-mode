@@ -48,7 +48,7 @@ yarn add --dev @nuxtjs/color-mode
 
 ℹ️ If you are using `nuxt < 2.9.0`, use `modules` property instead.
 
-3. Start theming your CSS with `.dark-mode` and `.ligh-mode` classes
+3. Start theming your CSS with `.dark-mode` and `.light-mode` classes
 
 ## Usage
 
