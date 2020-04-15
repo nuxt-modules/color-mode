@@ -15,14 +15,15 @@
   "main": "lib/module.js",
   "scripts": {
     "dev": "nuxt example",
+    "build": "rollup -c",
     "lint": "eslint --ext .js,.vue .",
+    "prepublish": "yarn build",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && jest"
   },
   "dependencies": {
     "defu": "^1.0.0",
-    "lodash.template": "^4.5.0",
-    "terser": "^4.6.11"
+    "lodash.template": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "latest",
@@ -38,6 +39,9 @@
     "husky": "latest",
     "jest": "latest",
     "nuxt-edge": "latest",
+    "rollup": "latest",
+    "rollup-plugin-babel": "latest",
+    "rollup-plugin-terser": "latest",
     "standard-version": "latest"
   },
   "publishConfig": {

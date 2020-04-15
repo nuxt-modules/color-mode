@@ -54,8 +54,9 @@ yarn add --dev @nuxtjs/color-mode
 ## Usage
 
 It injects `$colorMode` helper with:
-- `preference`: actual color-mode selected (can be `'system'`), update it to change the user prefered color mode
-- `value`: useful to know what color mode has been detected when `$colorMode === 'system'`, you should not update it
+- `preference`: Actual color-mode selected (can be `'system'`), update it to change the user prefered color mode
+- `value`: Useful to know what color mode has been detected when `$colorMode === 'system'`, you should not update it
+- `unknown`: Useful to know if during SSR or Generate, we need to render a placeholder
 
 ```vue
 <template>
@@ -96,6 +97,9 @@ You can configure the module by providing the `colorMode` property in your `nuxt
 colorMode: {
   preference: 'system', // default value of $colorMode.preference
   fallback: 'light', // fallback value if not system preference found
+  hid: 'nuxt-color-mode-script',
+  globalName: '__NUXT_COLOR_MODE__',
+  componentName: 'ColorScheme',
   cookie: {
     key: 'nuxt-color-mode',
     options: {
@@ -111,7 +115,20 @@ Notes:
 
 ## Caveats
 
-With `nuxt generate` and using `$colorMode` in your Vue template, you may expect a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page, it will directly set the `fallback` value (or `default` value if no set to `'system'`).
+If you are doing SSR (`nuxt start` or `nuxt generate`) and if `$colorMode.preference` is set to `'system'`, using `$colorMode` in your Vue template will lead to a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page since they are detected on client-side.
+
+You have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render a placeholder or directory use our `<ColorScheme>` component.
+
+***Example:**
+
+```vue
+<template>
+  <ColorScheme placeholder="..." tag="span">
+    Color mode: <b>{{ $colorMode.preference }}</b>
+    <span v-if="$colorMode.preference === 'system'">(<i>{{ $colorMode.value }}</i> mode detected)</span>
+  </ColorScheme>
+</template>
+```
 
 ## TailwindCSS Dark Mode
 

@@ -4,5 +4,4 @@ dist
 .nuxt
 coverage
 
-# Plugin
-lib/templates/*
+*.min.js
