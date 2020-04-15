@@ -5,4 +5,4 @@ dist
 coverage
 
 # Plugin
-lib/plugin.js
+lib/templates/*

@@ -1,10 +1,13 @@
-const { resolve } = require('path')
+import { resolve } from 'path'
+import colorModeModule from '..'
 
-module.exports = {
+export default {
   rootDir: resolve(__dirname, '..'),
   buildDir: resolve(__dirname, '.nuxt'),
   srcDir: __dirname,
+  css: ['@/assets/main.css'],
   modules: [
-    { handler: require('../') }
+    '@nuxtjs/svg',
+    colorModeModule
   ]
 }

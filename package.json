@@ -19,7 +19,11 @@
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && jest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "defu": "^1.0.0",
+    "lodash.template": "^4.5.0",
+    "terser": "^4.6.11"
+  },
   "devDependencies": {
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
@@ -27,6 +31,7 @@
     "@commitlint/config-conventional": "latest",
     "@nuxtjs/eslint-config": "latest",
     "@nuxtjs/module-test-utils": "latest",
+    "@nuxtjs/svg": "^0.1.11",
     "babel-eslint": "latest",
     "babel-jest": "latest",
     "eslint": "latest",
