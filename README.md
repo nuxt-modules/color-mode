@@ -86,7 +86,7 @@ body {
 </style>
 ```
 
-You can see a more advanced example in the [example/ directory](./example).
+You can see a more advanced example in the [example/ directory](./example) or [play online on CodeSandBox](https://codesandbox.io/s/github/nuxt-community/color-mode-module/tree/master/?fontsize=14&hidenavigation=1&theme=dark&file=/example/pages/index.vue).
 
 ## Configuration
 
