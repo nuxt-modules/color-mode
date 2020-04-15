@@ -116,7 +116,7 @@ Notes:
 
 If you are doing SSR (`nuxt start` or `nuxt generate`) and if `$colorMode.preference` is set to `'system'`, using `$colorMode` in your Vue template will lead to a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page since they are detected on client-side.
 
-To avoid the flash, you have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render a placeholder or directory use our `<ColorScheme>` component.
+To avoid the flash, you have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render a placeholder or use our `<ColorScheme>` component.
 
 **Example:**
 
