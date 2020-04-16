@@ -143,11 +143,18 @@ module.exports = {
   theme: {
     darkSelector: '.dark-mode'
   },
+  variants: {
+    backgroundColor: ["dark", "dark-hover", "dark-group-hover", "dark-even", "dark-odd"],
+    borderColor: ["dark", "dark-focus", "dark-focus-within"],
+    textColor: ["dark", "dark-hover", "dark-active"]
+  },
   plugins: [
     require('tailwindcss-dark-mode')()
   ]
 }
 ```
+
+Checkout a [live example on CodeSandBox](https://codesandbox.io/s/nuxt-dark-tailwindcss-17g2j?file=/pages/index.vue)
 
 ## Contributing
 
