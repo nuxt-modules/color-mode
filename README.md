@@ -137,6 +137,18 @@ Props:
 
 You can easily integrate this module with [tailwindcss-dark-mode](https://github.com/ChanceArthur/tailwindcss-dark-mode) by just setting `darkSelector: '.dark-mode'`, see [changing the selector documentation](https://github.com/ChanceArthur/tailwindcss-dark-mode#changing-the-selector).
 
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    darkSelector: '.dark-mode'
+  },
+  plugins: [
+    require('tailwindcss-dark-mode')()
+  ]
+}
+```
+
 ## Contributing
 
 You can contribute to this module online with CodeSandBox:
