@@ -18,7 +18,6 @@
     "build": "rollup -c",
     "lint": "eslint --ext .js,.vue .",
     "prepublish": "yarn build",
-    "postinstall": "yarn build",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && jest"
   },
