@@ -7,10 +7,10 @@
 
 > 🌑 Dark and 🌕 Light mode with auto detection made easy with NuxtJS
 
-[![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://nuxt-color-mode.surge.sh)
+[![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://nuxt-color-mode.nuxtjs.app)
 
 <p align="center">
-  <a href="https://nuxt-color-mode.surge.sh">Live demo</a>
+  <a href="https://nuxt-color-mode.nuxtjs.app">Live demo</a>
 </p>
 
 [📖 Release Notes](./CHANGELOG.md)
@@ -154,7 +154,7 @@ module.exports = {
 }
 ```
 
-Checkout a [live example on CodeSandBox](https://codesandbox.io/s/nuxt-dark-tailwindcss-17g2j?file=/pages/index.vue)
+Checkout a [live example on CodeSandBox](https://codesandbox.io/s/nuxt-dark-tailwindcss-17g2j?file=/pages/index.vue) as well as [@nuxtjs/tailwindcss](https://github.com/nuxt-community/tailwindcss-module) module.
 
 ## Contributing
 
