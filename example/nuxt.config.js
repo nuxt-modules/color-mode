@@ -4,7 +4,7 @@ export default {
   css: [
     '@/assets/main.css'
   ],
-  modules: [
+  buildModules: [
     '@nuxtjs/svg',
     colorModeModule
   ]
