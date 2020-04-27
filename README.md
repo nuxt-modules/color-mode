@@ -53,7 +53,7 @@ yarn add --dev @nuxtjs/color-mode
 ## Usage
 
 It injects `$colorMode` helper with:
-- `preference`: Actual color-mode selected (can be `'system'`), update it to change the user prefered color mode
+- `preference`: Actual color-mode selected (can be `'system'`), update it to change the user preferred color mode
 - `value`: Useful to know what color mode has been detected when `$colorMode === 'system'`, you should not update it
 - `unknown`: Useful to know if during SSR or Generate, we need to render a placeholder
 
