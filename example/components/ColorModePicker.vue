@@ -43,7 +43,7 @@ export default {
         return {}
       }
       return {
-        prefered: color === this.$colorMode.preference,
+        preferred: color === this.$colorMode.preference,
         selected: color === this.$colorMode.value
       }
     }
@@ -80,7 +80,7 @@ p {
 .feather:hover {
   top: -3px;
 }
-.feather.prefered {
+.feather.preferred {
   border-color: var(--color-primary);
   top: -3px;
 }
