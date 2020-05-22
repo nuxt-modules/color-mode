@@ -22,7 +22,7 @@
     "test": "yarn lint && jest"
   },
   "dependencies": {
-    "defu": "^2.0.2",
+    "defu": "^2.0.4",
     "lodash.template": "^4.5.0"
   },
   "devDependencies": {
