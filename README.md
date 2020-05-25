@@ -7,7 +7,7 @@
 
 > 🌑 Dark and 🌕 Light mode with auto detection made easy with NuxtJS
 
-[![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://nuxt-color-mode.nuxtjs.app)
+[![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://color-mode.nuxtjs.app/)
 
 <p align="center">
   <a href="https://color-mode.nuxtjs.app">Live demo</a>
