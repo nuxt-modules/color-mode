@@ -102,7 +102,8 @@ colorMode: {
   cookie: {
     key: 'nuxt-color-mode',
     options: {
-      path: nuxt.options.router.base // https://nuxtjs.org/api/configuration-router#base
+      path: nuxt.options.router.base, // https://nuxtjs.org/api/configuration-router#base
+      sameSite: 'lax' // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
     }
   }
 }
@@ -110,7 +111,7 @@ colorMode: {
 
 Notes:
 - `'system'` is a special value, it will automatically detect the color mode based on the system preferences (see [prefers-color-mode spec](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)). The value injected will be either `'light'` or `'dark'`. If `no-preference` is detected or the browser does not handle color-mode, it will set the `fallback` value.
-- `cookie` are the options where to store the chosen color mode (to make it work universally), the `cookie.options` are available on the [cookie serialize options](https://www.npmjs.com/package/cookie#options-1) documentation.
+- `cookie` are the options where to store the chosen color mode (to make it work universally), the `cookie.options` are available on the [cookie serialize options](https://www.npmjs.com/package/cookie#options-1) documentation. Each option will recursively overwrite the default property (by using [defu](https://github.com/nuxt-contrib/defu)).
 
 ## Caveats
 
