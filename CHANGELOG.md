@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/nuxt-community/color-mode-module/compare/v1.0.0...v1.0.1) (2020-07-27)
+
+
+### Bug Fixes
+
+* add `SameSite=Lax` to cookie ([#18](https://github.com/nuxt-community/color-mode-module/issues/18)) ([f236c93](https://github.com/nuxt-community/color-mode-module/commit/f236c93ae6092c8d273c9241901a47e01e058845))
+* broken link ([#17](https://github.com/nuxt-community/color-mode-module/issues/17)) ([a4f0e02](https://github.com/nuxt-community/color-mode-module/commit/a4f0e021e31a1fedaef249f38cfd1e88a9e0ea19))
+* correct spelling for preferred ([#10](https://github.com/nuxt-community/color-mode-module/issues/10)) ([cd565c5](https://github.com/nuxt-community/color-mode-module/commit/cd565c5f7425cde41b5255631ad088e2a1f4eff2))
+* fix correct spelling for preferred ([#9](https://github.com/nuxt-community/color-mode-module/issues/9)) ([8f65b8d](https://github.com/nuxt-community/color-mode-module/commit/8f65b8d21955fc13c5c3428edb6b3f6fea2e3795))
+
 ### [1.0.0](https://github.com/nuxt-community/color-mode-module/compare/v0.0.2...v1.0.0) (2020-04-15)
 
 ### Features
