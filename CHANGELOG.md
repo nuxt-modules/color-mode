@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/nuxt-community/color-mode-module/compare/v1.0.1...v1.0.2) (2020-07-28)
+
+
+### Bug Fixes
+
+* wait hydration to update $colorMode ([7a873ab](https://github.com/nuxt-community/color-mode-module/commit/7a873ab1f6f862b608923e904ae153b8f89864fc))
+
 ### [1.0.1](https://github.com/nuxt-community/color-mode-module/compare/v1.0.0...v1.0.1) (2020-07-27)
 
 
