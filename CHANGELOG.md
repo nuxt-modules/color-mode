@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/nuxt-community/color-mode-module/compare/v1.0.2...v1.0.3) (2020-08-04)
+
+
+### Bug Fixes
+
+* handle spa fallback (regression) ([b92d64b](https://github.com/nuxt-community/color-mode-module/commit/b92d64b29a15bb901abe406aa8dda5709b5caacc)), closes [#21](https://github.com/nuxt-community/color-mode-module/issues/21)
+
 ### [1.0.2](https://github.com/nuxt-community/color-mode-module/compare/v1.0.1...v1.0.2) (2020-07-28)
 
 
