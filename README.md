@@ -23,7 +23,7 @@
 - Sync between tabs 🔄
 - Supports IE9+ 👴
 
-ℹ️ This module is using a cookie to support server-side rendering, if your visitors are located in Europe, make sure to follow the [EU cookie directive](https://en.wikipedia.org/wiki/HTTP_cookie#EU_cookie_directive)
+ℹ️ &nbsp;This module is using a cookie to support server-side rendering, if your visitors are located in Europe, make sure to follow the [EU cookie directive](https://en.wikipedia.org/wiki/HTTP_cookie#EU_cookie_directive)
 
 ## Setup
 
@@ -100,6 +100,8 @@ colorMode: {
   hid: 'nuxt-color-mode-script',
   globalName: '__NUXT_COLOR_MODE__',
   componentName: 'ColorScheme',
+  classPrefix: '',
+  classSufix: '-mode',
   cookie: {
     key: 'nuxt-color-mode',
     options: {
@@ -136,6 +138,34 @@ Props:
 - `tag`: `String`,  default: `'span'`
 
 ## TailwindCSS Dark Mode
+
+### Tailwind v1.8+
+
+Tailwind v1.8 introduced [dark mode support](https://github.com/tailwindlabs/tailwindcss/pull/2279), in order to work with @nuxtjs/color-mode, you need to set `dark: 'class'` in your `tailwind.config.js`:
+
+```js
+// tailwind.config.js
+module.exports = {
+  experimental: {
+    darkModeVariant: true
+  },
+  dark: 'class'
+}
+```
+
+Then in your `nuxt.config.js`, set the `classSuffix` option to an empty string:
+
+```js
+// nuxt.config.js
+export default {
+  // ...
+  colorMode: {
+    classSuffix: ''
+  }
+}
+```
+
+### Tailwindcss Dark Mode Plugin
 
 You can easily integrate this module with [tailwindcss-dark-mode](https://github.com/ChanceArthur/tailwindcss-dark-mode) by just setting `darkSelector: '.dark-mode'`, see [changing the selector documentation](https://github.com/ChanceArthur/tailwindcss-dark-mode#changing-the-selector).
 

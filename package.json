@@ -39,7 +39,7 @@
     "eslint": "^7.9.0",
     "husky": "latest",
     "jest": "^26.4.2",
-    "nuxt-edge": "^2.14.1-26608350.3204f301",
+    "nuxt": "^2.14.5",
     "rollup": "^2.26.11",
     "rollup-plugin-babel": "latest",
     "rollup-plugin-terser": "^6.1.0",
