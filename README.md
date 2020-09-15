@@ -36,7 +36,6 @@ yarn add --dev @nuxtjs/color-mode
 
 2. Add `@nuxtjs/color-mode` to the `buildModules` section of your `nuxt.config.js`
 
-
 ```js
 {
   buildModules: [
@@ -46,7 +45,9 @@ yarn add --dev @nuxtjs/color-mode
 }
 ```
 
-ℹ️ If you are using `nuxt < 2.9.0`, use `modules` property instead.
+ℹ️ &nbsp;Use the `modules` property instead of `buildModules` if:
+- you are using `ssr: false` and `nuxt start`, see [#25](https://github.com/nuxt-community/color-mode-module/issues/25#issuecomment-692567237)
+- you are using `nuxt < 2.9.0`
 
 3. Start theming your CSS with `.dark-mode` and `.light-mode` classes
 
