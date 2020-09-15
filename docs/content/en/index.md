@@ -1,5 +1,5 @@
 ---
-title: ''
+title: 'Documentation'
 description: '🌑 Dark and 🌕 Light mode with auto detection made easy with NuxtJS'
 category: 'Home'
 csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/tree/master/?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fexample%2Fpages%2Findex.vue&theme=dark&view=preview
