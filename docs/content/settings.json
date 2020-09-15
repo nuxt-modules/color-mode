@@ -7,5 +7,6 @@
   },
   "github": "nuxt-community/color-mode-module",
   "twitter": "@nuxt_js",
-  "layout": "single"
+  "layout": "single",
+  "defaultBranch": "master"
 }
