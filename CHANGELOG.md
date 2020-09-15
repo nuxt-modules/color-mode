@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/nuxt-community/color-mode-module/compare/v1.0.3...v1.1.0) (2020-09-15)
+
+
+### Features
+
+* add classPrefix and classSuffix ([0f2141c](https://github.com/nuxt-community/color-mode-module/commit/0f2141c182cfef81321d8cd3bed39d173ec281b3))
+* add types declaration ([#27](https://github.com/nuxt-community/color-mode-module/issues/27)) ([078d38f](https://github.com/nuxt-community/color-mode-module/commit/078d38f6347a297f388ef65aedfa503892bf73b0)), closes [#15](https://github.com/nuxt-community/color-mode-module/issues/15)
+
 ### [1.0.3](https://github.com/nuxt-community/color-mode-module/compare/v1.0.2...v1.0.3) (2020-08-04)
 
 
