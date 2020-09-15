@@ -1,0 +1,11 @@
+{
+  "title": "Nuxt Color Mode",
+  "url": "https://color-mode.nuxtjs.org",
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
+  },
+  "github": "nuxt-community/color-mode-module",
+  "twitter": "@nuxt_js",
+  "layout": "single"
+}
