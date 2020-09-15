@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/nuxt-community/color-mode-module/compare/v1.1.0...v1.1.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* **types:** add new options and include in package ([00bb7e8](https://github.com/nuxt-community/color-mode-module/commit/00bb7e85a114e5f50941b5445395b7b09d9a5a68))
+
 ## [1.1.0](https://github.com/nuxt-community/color-mode-module/compare/v1.0.3...v1.1.0) (2020-09-15)
 
 
