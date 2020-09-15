@@ -10,7 +10,8 @@
     }
   ],
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "main": "lib/module.js",
   "scripts": {

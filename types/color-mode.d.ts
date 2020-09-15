@@ -36,6 +36,14 @@ export interface ColorModeOptions {
    * Default: `ColorScheme`
    */
   componentName: string,
+  /**
+   * Default: ''
+   */
+  classPrefix: string,
+  /**
+   * Default: '-mode'
+   */
+  classSuffix: string,
   cookie: ColorModeCookieOptions
 }
 
