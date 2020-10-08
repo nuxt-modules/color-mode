@@ -125,7 +125,7 @@ colorMode: {
   globalName: '__NUXT_COLOR_MODE__',
   componentName: 'ColorScheme',
   classPrefix: '',
-  classSufix: '-mode',
+  classSuffix: '-mode',
   cookie: {
     key: 'nuxt-color-mode',
     options: {
