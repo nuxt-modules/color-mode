@@ -17,12 +17,6 @@ csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/t
 - Sync between tabs 🔄
 - Supports IE9+ 👴
 
-<alert>
-
-This module is using a cookie to support server-side rendering, if your visitors are located in Europe, make sure to follow the [EU cookie directive](https://en.wikipedia.org/wiki/HTTP_cookie#EU_cookie_directive)
-
-</alert>
-
 ## Live demo
 
 [![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://color-mode.nuxtjs.app/)
@@ -126,19 +120,12 @@ colorMode: {
   componentName: 'ColorScheme',
   classPrefix: '',
   classSuffix: '-mode',
-  cookie: {
-    key: 'nuxt-color-mode',
-    options: {
-      path: nuxt.options.router.base, // https://nuxtjs.org/api/configuration-router#base
-      sameSite: 'lax' // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
-    }
-  }
+  storageKey: 'nuxt-color-mode'
 }
 ```
 
 Notes:
 - `'system'` is a special value, it will automatically detect the color mode based on the system preferences (see [prefers-color-mode spec](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)). The value injected will be either `'light'` or `'dark'`. If `no-preference` is detected or the browser does not handle color-mode, it will set the `fallback` value.
-- `cookie` are the options where to store the chosen color mode (to make it work universally), the `cookie.options` are available on the [cookie serialize options](https://www.npmjs.com/package/cookie#options-1) documentation. Each option will recursively overwrite the default property (by using [defu](https://github.com/nuxt-contrib/defu)).
 
 ## Caveats
 
