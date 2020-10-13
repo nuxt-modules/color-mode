@@ -12,6 +12,7 @@ csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/t
 ## Features
 
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
+- Force a color mode to a specific page (perfect to incremental development)
 - Works with any NuxtJS target (`static` or `server`) and rendering (`universal` and `spa`)
 - Auto detect the system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
 - Sync between tabs 🔄
@@ -70,6 +71,7 @@ It injects `$colorMode` helper with:
 - `preference`: Actual color-mode selected (can be `'system'`), update it to change the user preferred color mode
 - `value`: Useful to know what color mode has been detected when `$colorMode === 'system'`, you should not update it
 - `unknown`: Useful to know if during SSR or Generate, we need to render a placeholder
+- `forced`: Useful to know if the current color mode is forced by the current page (useful to hide the color picker)
 
 ```html
 <template>
@@ -100,12 +102,29 @@ body {
 </style>
 ```
 
+## Force a color mode
+
+You can force the color mode at the page level (only parent) by setting the `colorMode` property:
+
+```html{}[pages/dark.vue]
+<template>
+  <h1>This page is forced with dark mode</h1>
+</template>
+
+<script>
+export default {
+  colorMode: 'dark',
+}
+</script>
+```
+
+We recommend to hide the color mode picker when on the page since it won't work. This feature is perfect to incremental adopt a dark mode to a website (and set the non-ready page to `colorMode: 'white'` for example).
+
 ## Example
 
 You can see a more advanced example in the [example/ directory](https://github.com/nuxt-community/color-mode-module/tree/master/example) or play online with the CodeSandBox below:
 
 <code-sandbox :src="csb_link"></code-sandbox>
-
 
 ## Configuration
 
