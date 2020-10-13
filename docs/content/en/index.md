@@ -106,19 +106,25 @@ body {
 
 You can force the color mode at the page level (only parent) by setting the `colorMode` property:
 
-```html{}[pages/dark.vue]
+```html{}[pages/light.vue]
 <template>
-  <h1>This page is forced with dark mode</h1>
+  <h1>This page is forced with light mode</h1>
 </template>
 
 <script>
 export default {
-  colorMode: 'dark',
+  colorMode: 'light',
 }
 </script>
 ```
 
-We recommend to hide the color mode picker when on the page since it won't work. This feature is perfect to incremental adopt a dark mode to a website (and set the non-ready page to `colorMode: 'white'` for example).
+This feature is perfect to implement dark mode to a website incrementally by setting the non-ready pages to `colorMode: 'light'`.
+
+<alert>
+
+We recommend to hide or disable the color mode picker on the page since it won't be able to change the current page color mode, using `$colorMode.forced` value.
+
+</alert>
 
 ## Example
 
