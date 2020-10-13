@@ -21,6 +21,7 @@
 ## Features
 
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
+- Force a color mode to a specific page (perfect for incremental development)
 - Works with any NuxtJS target (`static` or `server`) and rendering (`universal` and `spa`)
 - Auto detect the system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
 - Sync between tabs 🔄

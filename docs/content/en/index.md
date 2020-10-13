@@ -12,7 +12,7 @@ csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/t
 ## Features
 
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
-- Force a color mode to a specific page (perfect to incremental development)
+- Force a color mode to a specific page (perfect for incremental development)
 - Works with any NuxtJS target (`static` or `server`) and rendering (`universal` and `spa`)
 - Auto detect the system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
 - Sync between tabs 🔄
@@ -118,7 +118,7 @@ export default {
 </script>
 ```
 
-This feature is perfect to implement dark mode to a website incrementally by setting the non-ready pages to `colorMode: 'light'`.
+This feature is perfect for implementing dark mode to a website incrementally by setting the not-ready pages to `colorMode: 'light'`.
 
 <alert>
 
