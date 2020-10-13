@@ -1,20 +1,3 @@
-export interface ColorModeCookieOptions {
-  /**
-   * Default: `nuxt-color-mode`
-   */
-  key: string,
-  options: {
-    /**
-     * Default: `nuxt.options.router.base`
-     */
-    path: string,
-    /**
-     * Default: `lax`
-     */
-    sameSite: string
-  }
-}
-
 export interface ColorModeOptions {
   /**
    * Default: `system`
@@ -44,7 +27,10 @@ export interface ColorModeOptions {
    * Default: '-mode'
    */
   classSuffix: string,
-  cookie: ColorModeCookieOptions
+  /**
+   * Default: 'nuxt-color-mode'
+   */
+  storageKey: string
 }
 
 export interface ColorModeInstance {

@@ -12,16 +12,11 @@ csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/t
 ## Features
 
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
+- Force a page to a specific color mode (perfect for incremental development)
 - Works with any NuxtJS target (`static` or `server`) and rendering (`universal` and `spa`)
 - Auto detect the system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
-- Sync between tabs 🔄
+- Sync dark mode across tabs and windows 🔄
 - Supports IE9+ 👴
-
-<alert>
-
-This module is using a cookie to support server-side rendering, if your visitors are located in Europe, make sure to follow the [EU cookie directive](https://en.wikipedia.org/wiki/HTTP_cookie#EU_cookie_directive)
-
-</alert>
 
 ## Live demo
 
@@ -76,6 +71,7 @@ It injects `$colorMode` helper with:
 - `preference`: Actual color-mode selected (can be `'system'`), update it to change the user preferred color mode
 - `value`: Useful to know what color mode has been detected when `$colorMode === 'system'`, you should not update it
 - `unknown`: Useful to know if during SSR or Generate, we need to render a placeholder
+- `forced`: Useful to know if the current color mode is forced by the current page (useful to hide the color picker)
 
 ```html
 <template>
@@ -106,12 +102,35 @@ body {
 </style>
 ```
 
+## Force a color mode
+
+You can force the color mode at the page level (only parent) by setting the `colorMode` property:
+
+```html{}[pages/light.vue]
+<template>
+  <h1>This page is forced with light mode</h1>
+</template>
+
+<script>
+export default {
+  colorMode: 'light',
+}
+</script>
+```
+
+This feature is perfect for implementing dark mode to a website incrementally by setting the not-ready pages to `colorMode: 'light'`.
+
+<alert>
+
+We recommend to hide or disable the color mode picker on the page since it won't be able to change the current page color mode, using `$colorMode.forced` value.
+
+</alert>
+
 ## Example
 
 You can see a more advanced example in the [example/ directory](https://github.com/nuxt-community/color-mode-module/tree/master/example) or play online with the CodeSandBox below:
 
 <code-sandbox :src="csb_link"></code-sandbox>
-
 
 ## Configuration
 
@@ -126,23 +145,16 @@ colorMode: {
   componentName: 'ColorScheme',
   classPrefix: '',
   classSuffix: '-mode',
-  cookie: {
-    key: 'nuxt-color-mode',
-    options: {
-      path: nuxt.options.router.base, // https://nuxtjs.org/api/configuration-router#base
-      sameSite: 'lax' // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
-    }
-  }
+  storageKey: 'nuxt-color-mode'
 }
 ```
 
 Notes:
 - `'system'` is a special value, it will automatically detect the color mode based on the system preferences (see [prefers-color-mode spec](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)). The value injected will be either `'light'` or `'dark'`. If `no-preference` is detected or the browser does not handle color-mode, it will set the `fallback` value.
-- `cookie` are the options where to store the chosen color mode (to make it work universally), the `cookie.options` are available on the [cookie serialize options](https://www.npmjs.com/package/cookie#options-1) documentation. Each option will recursively overwrite the default property (by using [defu](https://github.com/nuxt-contrib/defu)).
 
 ## Caveats
 
-If you are doing SSR (`nuxt start` or `nuxt generate`) and if `$colorMode.preference` is set to `'system'`, using `$colorMode` in your Vue template will lead to a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page since they are detected on client-side.
+When `$colorMode.preference` is set to `'system'`, using `$colorMode` in your Vue template will lead to a flash. This is due to the fact that we cannot know the user preferences when pre-rendering the page since they are detected on client-side.
 
 To avoid the flash, you have to guard any rendering path which depends on `$colorMode` with `$colorMode.unknown` to render a placeholder or use our `<ColorScheme>` component.
 
