@@ -3,8 +3,8 @@
     <ColorModePicker />
     <p>
       Go to
-      <NuxtLink to="/dark">
-        dark page
+      <NuxtLink to="/light">
+        light page
       </NuxtLink>
     </p>
   </div>
@@ -13,7 +13,7 @@
 <script>
 export default {
   head: {
-    title: 'Dark page'
+    title: 'Demo of @nuxtjs/color-mode'
   }
 }
 </script>
