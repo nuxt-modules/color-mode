@@ -27,8 +27,8 @@
     "lodash.template": "^4.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@nuxt/types": "^2.14.7",
@@ -37,7 +37,7 @@
     "@nuxtjs/svg": "^0.1.12",
     "babel-eslint": "latest",
     "babel-jest": "^26.6.3",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "husky": "latest",
     "jest": "^26.6.3",
     "nuxt": "^2.14.7",
