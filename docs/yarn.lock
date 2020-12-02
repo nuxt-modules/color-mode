@@ -6682,7 +6682,7 @@ nuxt-i18n@^6.15.4:
     lodash.clonedeep "^4.5.0"
     vue-i18n "^8.18.1"
 
-nuxt@^2.14.8:
+nuxt@^2.14.9:
   version "2.14.9"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.14.9.tgz#823e98c687e0029d655349b3c0b8c1180623095d"
   integrity sha512-AetvJbY0elQ4VWcSURZAV/YXavUQeCzXHW510vLEAMa4ESwY6uFb8BdJFS8fMBvgffQx0YlOiMDAfTA+fRkAdQ==
