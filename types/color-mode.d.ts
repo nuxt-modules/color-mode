@@ -39,3 +39,5 @@ export interface ColorModeInstance {
   unknown: boolean,
   forced: boolean
 }
+
+export type ColorModeConfig = Partial<ColorModeOptions>;
