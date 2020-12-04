@@ -1,8 +1,8 @@
-import { ColorModeOptions, ColorModeInstance } from "./color-mode";
+import { ColorModeConfig, ColorModeInstance } from "./color-mode";
 
 declare module '@nuxt/types/config/index' {
   interface NuxtOptions {
-    colorMode: ColorModeOptions
+    colorMode: ColorModeConfig
   }
 }
 

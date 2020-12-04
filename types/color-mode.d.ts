@@ -2,35 +2,35 @@ export interface ColorModeOptions {
   /**
    * Default: `system`
    */
-  preference?: string, // default value of $colorMode.preference
+  preference: string, // default value of $colorMode.preference
   /**
    * Default: `light`
    */
-  fallback?: string, // fallback value if not system preference found
+  fallback: string, // fallback value if not system preference found
   /**
    * Default: `nuxt-color-mode-script`
    */
-  hid?: string,
+  hid: string,
   /**
    * Default: `__NUXT_COLOR_MODE__`
    */
-  globalName?: string,
+  globalName: string,
   /**
    * Default: `ColorScheme`
    */
-  componentName?: string,
+  componentName: string,
   /**
    * Default: ''
    */
-  classPrefix?: string,
+  classPrefix: string,
   /**
    * Default: '-mode'
    */
-  classSuffix?: string,
+  classSuffix: string,
   /**
    * Default: 'nuxt-color-mode'
    */
-  storageKey?: string
+  storageKey: string
 }
 
 export interface ColorModeInstance {
@@ -39,3 +39,5 @@ export interface ColorModeInstance {
   unknown: boolean,
   forced: boolean
 }
+
+export type ColorModeConfig = Partial<ColorModeOptions>;
