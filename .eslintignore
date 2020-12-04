@@ -3,5 +3,6 @@ node_modules
 dist
 .nuxt
 coverage
+lib/templates
 
 *.min.js
