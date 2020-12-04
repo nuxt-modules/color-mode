@@ -24,14 +24,14 @@
     "test": "yarn lint && jest"
   },
   "dependencies": {
-    "defu": "^2.0.4",
+    "defu": "^3.2.2",
     "lodash.template": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.2",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@nuxt/types": "^2.14.9",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/module-test-utils": "^1.6.3",
@@ -44,8 +44,8 @@
     "nuxt": "^2.14.9",
     "rollup": "^2.34.1",
     "rollup-plugin-babel": "latest",
-    "rollup-plugin-terser": "^6.1.0",
-    "standard-version": "^8.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "standard-version": "^9.0.0"
   },
   "publishConfig": {
     "access": "public"
