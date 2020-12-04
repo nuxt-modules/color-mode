@@ -181,7 +181,7 @@ Tailwind v2 introduced [dark mode](https://tailwindcss.com/docs/dark-mode), in o
 
 ```js{}[tailwind.config.js]
 module.exports = {
-  dark: 'class'
+  darkMode: 'class'
 }
 ```
 
