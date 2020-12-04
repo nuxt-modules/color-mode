@@ -173,28 +173,22 @@ Props:
 - `placeholder`: `String`
 - `tag`: `String`,  default: `'span'`
 
-## TailwindCSS Dark Mode
+## TailwindCSS
 
-### Tailwind v1.8+
+### Tailwind v2
 
-Tailwind v1.8 introduced [dark mode support](https://github.com/tailwindlabs/tailwindcss/pull/2279), in order to work with @nuxtjs/color-mode, you need to set `dark: 'class'` in your `tailwind.config.js`:
+Tailwind v2 introduced [dark mode](https://tailwindcss.com/docs/dark-mode), in order to work with `@nuxtjs/color-mode`, you need to set `dark: 'class'` in your `tailwind.config.js`:
 
-```js
-// tailwind.config.js
+```js{}[tailwind.config.js]
 module.exports = {
-  experimental: {
-    darkModeVariant: true
-  },
   dark: 'class'
 }
 ```
 
 Then in your `nuxt.config.js`, set the `classSuffix` option to an empty string:
 
-```js
-// nuxt.config.js
+```js{}[nuxt.config.js]
 export default {
-  // ...
   colorMode: {
     classSuffix: ''
   }
@@ -203,7 +197,7 @@ export default {
 
 Checkout the [live example on CodeSandBox](https://codesandbox.io/s/nuxt-dark-tailwindcss-vxfuj).
 
-### Tailwindcss Dark Mode Plugin
+### Tailwind Dark Mode Plugin
 
 You can easily integrate this module with [tailwindcss-dark-mode](https://github.com/ChanceArthur/tailwindcss-dark-mode) by just setting `darkSelector: '.dark-mode'`, see [changing the selector documentation](https://github.com/ChanceArthur/tailwindcss-dark-mode#changing-the-selector).
 
