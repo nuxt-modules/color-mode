@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 export interface ColorModeOptions {
   /**
    * Default: `system`
@@ -33,7 +35,7 @@ export interface ColorModeOptions {
   storageKey: string
 }
 
-export interface ColorModeInstance {
+export interface ColorModeInstance extends Vue {
   preference: string,
   value: string,
   unknown: boolean,
