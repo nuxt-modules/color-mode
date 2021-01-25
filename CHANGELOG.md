@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/nuxt-community/color-mode-module/compare/v2.0.2...v2.0.3) (2021-01-25)
+
+
+### Bug Fixes
+
+* **type-defs:** make interface ColorModeInstance extend Vue ([#62](https://github.com/nuxt-community/color-mode-module/issues/62)) ([bac6667](https://github.com/nuxt-community/color-mode-module/commit/bac6667553c1801cd6aaefcce0d829bab03d663a))
+* don't use window in created ([#59](https://github.com/nuxt-community/color-mode-module/issues/59)) ([9b47c6e](https://github.com/nuxt-community/color-mode-module/commit/9b47c6ea630e35c8958a62f5b645fd3ef7216846))
+
 ### [2.0.2](https://github.com/nuxt-community/color-mode-module/compare/v2.0.1...v2.0.2) (2020-12-04)
 
 
