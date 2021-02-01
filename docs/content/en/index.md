@@ -65,6 +65,21 @@ Use the `modules` property instead of `buildModules` if:
 
 You are ready to start theming your CSS with `.dark-mode` and `.light-mode` classes ✨
 
+## TypeScript
+
+Add the types to your "types" array in `tsconfig.json`
+
+```json{}[tsconfig.json]
+{
+  "compilerOptions": {
+    "types": [
+      "@nuxt/types",
+      "@nuxtjs/color-mode"
+    ]
+  }
+}
+```
+
 ## Usage
 
 It injects `$colorMode` helper with:
