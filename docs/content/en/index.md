@@ -16,7 +16,7 @@ csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/t
 
 ## Live demo
 
-[![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://color-mode.nuxtjs.app/)
+<a href="https://color-mode.nuxtjs.app"><img src="https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif" alt="Nuxt color mode demo" class="border-r border-b border-black" /></a>
 
 Checkout the <a href="https://color-mode.nuxtjs.app">online demo</a>.
 
