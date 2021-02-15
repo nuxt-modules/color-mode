@@ -1,8 +1,10 @@
-import theme from '@nuxt/content-theme-docs'
+import { withDocus } from 'docus'
 
-export default theme({
-  docs: {
-    primaryColor: '#00CD82'
+export default withDocus({
+  docus: {
+    colors: {
+      primary: '#00CD82'
+    }
   },
   buildModules: ['vue-plausible'],
   plausible: {
