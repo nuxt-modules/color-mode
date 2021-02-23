@@ -24,3 +24,15 @@ declare module 'vue/types/vue' {
     $colorMode: ColorModeInstance
   }
 }
+
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    /**
+     * Forces a color mode for current page
+     * @see https://color-mode.nuxtjs.org/#force-a-color-mode
+     */
+    colorMode?: string
+  }
+}
+
+
