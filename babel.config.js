@@ -3,7 +3,7 @@ module.exports = {
     [
       '@babel/preset-env', {
         targets: {
-          esmodules: true
+          browsers: '> 0.25%, not dead, ie 11, ie_mob 11'
         }
       }
     ]
