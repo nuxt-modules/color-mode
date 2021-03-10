@@ -33,7 +33,7 @@
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@nuxt/types": "^2.15.3",
-    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/module-test-utils": "^1.6.3",
     "@nuxtjs/svg": "^0.1.12",
     "babel-eslint": "latest",
