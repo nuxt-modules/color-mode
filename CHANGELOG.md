@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://github.com/nuxt-community/color-mode-module/compare/v2.0.4...v2.0.5) (2021-03-10)
+
+
+### Bug Fixes
+
+* spa mode ([139b0e6](https://github.com/nuxt-community/color-mode-module/commit/139b0e68fced030db9035839ffdfd2fa1d80c117))
+
 ### [2.0.4](https://github.com/nuxt-community/color-mode-module/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 
