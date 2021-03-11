@@ -5,8 +5,14 @@
     "light": "/logo-light.svg",
     "dark": "/logo-dark.svg"
   },
-  "github": "nuxt-community/color-mode-module",
+  "header": {
+    "title": false,
+    "logo": true
+  },
+  "github": {
+    "repo": "nuxt-community/color-mode-module",
+    "branch": "master"
+  },
   "twitter": "@nuxt_js",
-  "layout": "single",
-  "defaultBranch": "master"
+  "layout": "readme"
 }
