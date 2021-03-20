@@ -188,7 +188,7 @@ Props:
 
 ### Tailwind v2
 
-Tailwind v2 introduced [dark mode](https://tailwindcss.com/docs/dark-mode), in order to work with `@nuxtjs/color-mode`, you need to set `dark: 'class'` in your `tailwind.config.js`:
+Tailwind v2 introduced [dark mode](https://tailwindcss.com/docs/dark-mode), in order to work with `@nuxtjs/color-mode`, you need to set `darkMode: 'class'` in your `tailwind.config.js`:
 
 ```js{}[tailwind.config.js]
 module.exports = {
