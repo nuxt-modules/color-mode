@@ -1,6 +1,6 @@
 import { join } from 'path'
 import { setup, get } from '@nuxtjs/module-test-utils'
-import colorModeModule from '..'
+import colorModeModule from '../'
 
 describe('module', () => {
   let nuxt
@@ -9,6 +9,7 @@ describe('module', () => {
     const rootDir = join(__dirname, '..', 'example')
 
     const config = {
+      ssr: false,
       rootDir,
       modules: [
         '@nuxtjs/svg',
@@ -25,6 +26,6 @@ describe('module', () => {
 
   test('render', async () => {
     const html = await get('/')
-    expect(html).toContain('@nuxtjs/color-mode')
+    expect(html).toContain('nuxt-color-mode')
   })
 })
