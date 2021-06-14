@@ -1,5 +1,5 @@
 module.exports = {
-  testEnvironment: 'node',
+  preset: '@nuxt/test-utils',
   collectCoverage: true,
   collectCoverageFrom: [
     'lib/module.js',
@@ -10,8 +10,5 @@ module.exports = {
     '^~~$': '<rootDir>',
     '^@@$': '<rootDir>',
     '^@/(.*)$': '<rootDir>/lib/$1'
-  },
-  transform: {
-    '^.+\\.js$': 'babel-jest'
   }
 }
