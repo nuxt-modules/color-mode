@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/nuxt-community/color-mode-module/compare/v2.0.10...v2.1.0) (2021-08-02)
+
+
+### Features
+
+* add csp hash for color script ([#94](https://github.com/nuxt-community/color-mode-module/issues/94)) ([e2f1ffc](https://github.com/nuxt-community/color-mode-module/commit/e2f1ffc2a64dd22d7ed5b40fc6bc78562e47c9d0))
+
 ### [2.0.10](https://github.com/nuxt-community/color-mode-module/compare/v2.0.9...v2.0.10) (2021-06-11)
 
 
