@@ -5,8 +5,8 @@ import defu from 'defu'
 import template from 'lodash.template'
 import { addTemplates } from './utils'
 
-export default async function (moduleOptions) {
-  const defaults = {
+export default async function (moduleOptions: ColorModeOptions) {
+  const defaults: ColorModeOptions = {
     preference: 'system',
     fallback: 'light',
     hid: 'nuxt-color-mode-script',
@@ -65,3 +65,40 @@ export default async function (moduleOptions) {
   const templatesDir = resolve(__dirname, 'templates')
   await addTemplates.call(this, templatesDir, 'color-mode', options)
 }
+
+export interface ColorModeOptions {
+  /**
+   * Default: `system`
+   */
+  preference: string, // default value of $colorMode.preference
+  /**
+   * Default: `light`
+   */
+  fallback: string, // fallback value if not system preference found
+  /**
+   * Default: `nuxt-color-mode-script`
+   */
+  hid: string,
+  /**
+   * Default: `__NUXT_COLOR_MODE__`
+   */
+  globalName: string,
+  /**
+   * Default: `ColorScheme`
+   */
+  componentName: string,
+  /**
+   * Default: ''
+   */
+  classPrefix: string,
+  /**
+   * Default: '-mode'
+   */
+  classSuffix: string,
+  /**
+   * Default: 'nuxt-color-mode'
+   */
+  storageKey: string
+}
+
+export type ColorModeConfig = Partial<ColorModeOptions>

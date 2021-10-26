@@ -13,7 +13,7 @@
     "lib",
     "types"
   ],
-  "main": "lib/module.js",
+  "main": "lib/module.ts",
   "types": "types/index.d.ts",
   "scripts": {
     "dev": "nuxt example",
