@@ -5,6 +5,10 @@ module.exports = {
     'lib/module.js',
     'lib/utils.js'
   ],
+  transform: {
+    '^.+\\.mjs$': 'babel-jest'
+  },
+  transformIgnorePatterns: ['node_modules/(?!@nuxt/kit)/.*'],
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/lib/$1',
     '^~~$': '<rootDir>',
