@@ -24,8 +24,10 @@
     "test": "yarn lint && jest"
   },
   "dependencies": {
+    "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-27252999.d2cc9e4",
     "defu": "^5.0.0",
-    "lodash.template": "^4.5.0"
+    "lodash.template": "^4.5.0",
+    "pathe": "^0.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -36,6 +38,7 @@
     "@nuxt/types": "^2.15.3",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/svg": "^0.1.12",
+    "@types/lodash.template": "^4.5.0",
     "babel-eslint": "latest",
     "babel-jest": "^27.0.2",
     "eslint": "^7.21.0",
