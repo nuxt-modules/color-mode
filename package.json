@@ -21,10 +21,11 @@
     "dist"
   ],
   "scripts": {
-    "dev": "nuxt example",
-    "build": "nuxt-module-build && rollup -c",
+    "prepack": "nuxt-module-build && rollup -c",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "lint": "eslint --ext .js,.vue .",
-    "prepublish": "yarn build",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint"
   },

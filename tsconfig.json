@@ -1,9 +1,3 @@
 {
-  // "extends": "./example/.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true
-  }
+  "extends": "./playground/.nuxt/tsconfig.json"
 }
