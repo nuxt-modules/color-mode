@@ -43,6 +43,7 @@ export default defineNuxtModule({
     }).dst
 
     const runtimeDir = isNuxt2() ? resolve(__dirname, 'runtime/vue2') : resolve(__dirname, 'runtime/vue3')
+    nuxt.options.build.transpile.push(runtimeDir)
 
     // Add plugins
     for (const template of ['plugin.client', 'plugin.server']) {

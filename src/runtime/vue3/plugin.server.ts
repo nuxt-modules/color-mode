@@ -1,5 +1,7 @@
 import { preference, script } from '#color-mode-options'
 import { defineNuxtPlugin } from '#app'
+import { addRouteMiddleware, useMeta } from '#imports'
+import { reactive } from 'vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
   // Workaround until we have support in vueuse/head

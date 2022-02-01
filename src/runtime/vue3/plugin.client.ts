@@ -1,5 +1,7 @@
 import { globalName, storageKey } from '#color-mode-options'
 import { defineNuxtPlugin } from '#app'
+import { addRouteMiddleware, useRoute } from '#imports'
+import { reactive, watch } from 'vue'
 
 // @ts-ignore
 declare module 'vue-router' {
