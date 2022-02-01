@@ -1,3 +1,4 @@
+<script lang="ts">
 import { componentName } from '#color-mode-options'
 
 export default {
@@ -10,7 +11,7 @@ export default {
       default: 'span'
     }
   },
-  render (createElement, { data, props, children }) {
+  render (createElement, { parent, data, props, children }) {
     // transform props for <client-only>
     props = {
       placeholder: props.placeholder,
@@ -20,3 +21,4 @@ export default {
     return createElement('client-only', { ...data, props }, children)
   }
 }
+</script>
