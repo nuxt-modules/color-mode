@@ -1,13 +1,7 @@
+import { defineNuxtConfig } from 'nuxt3'
 import colorModeModule from '..'
 
-export default {
-  target: 'static',
-  components: true,
-  css: [
-    '@/assets/main.css'
-  ],
-  buildModules: [
-    '@nuxtjs/svg',
-    colorModeModule
-  ]
-}
+export default defineNuxtConfig({
+  css: ['~/assets/main.css'],
+  buildModules: [colorModeModule]
+})
