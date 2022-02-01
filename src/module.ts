@@ -1,5 +1,4 @@
 import { promises as fsp } from 'fs'
-import * as crypto from 'crypto'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
 import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent } from '@nuxt/kit'
@@ -35,7 +34,6 @@ export default defineNuxtModule({
 
     // Inject options via virtual template
     nuxt.options.alias['#color-mode-options'] = addTemplate({
-      src: '',
       filename: 'color-mode-options.mjs',
       getContents: () => Object.entries(options).map(([key, value]) =>
         `export const ${key} = ${JSON.stringify(value, null, 2)}
@@ -60,6 +58,10 @@ export default defineNuxtModule({
       })
     }
 
+    if (!isNuxt2()) {
+      return
+    }
+
     // Nuxt 2 - SSR false
     nuxt.hook('vue-renderer:spa:prepareContext', ({ head }) => {
       const script = {
@@ -75,10 +77,13 @@ export default defineNuxtModule({
       head[serializeProp][options.hid] = ['innerHTML']
     })
 
+
+    const createHash = await import('crypto').then(r => r.createHash)
+
     // Nuxt 2 - SSR true
     nuxt.hook('vue-renderer:ssr:csp', (cspScriptSrcHashes) => {
       const { csp } = nuxt.options.render
-      const hash = crypto.createHash((csp as any).hashAlgorithm)
+      const hash = createHash((csp as any).hashAlgorithm)
       hash.update(options.script!)
       cspScriptSrcHashes.push(
         `'${(csp as any).hashAlgorithm}-${hash.digest('base64')}'`
@@ -86,7 +91,7 @@ export default defineNuxtModule({
     })
 
     // In Nuxt 2 dev mode we also inject full script via webpack entrypoint for storybook compatibility
-    if (nuxt.options.dev && isNuxt2()) {
+    if (nuxt.options.dev) {
       const { dst } = addTemplate({
         src: resolve(__dirname, 'script.min.js'),
         fileName: join('color-mode', 'script.min.js'),
@@ -144,20 +149,6 @@ export interface ColorModeOptions {
 
 export type ColorModeConfig = Partial<ColorModeOptions>
 export type ModuleOptions = ColorModeConfig
-
-// @ts-ignore
-declare module '@nuxt/types/config/index' {
-  interface NuxtOptions {
-    colorMode: ColorModeConfig
-  }
-}
-
-// @ts-ignore
-declare module '@nuxt/vue-app' {
-  interface Context {
-    $colorMode: ColorModeInstance
-  }
-}
 
 export interface ColorModeInstance {
   preference: string
