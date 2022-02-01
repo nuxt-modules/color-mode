@@ -1,6 +1,6 @@
 import { globalName, storageKey } from '#color-mode-options'
 import { defineNuxtPlugin } from '#app'
-import { addRouteMiddleware, useRoute } from '#imports'
+import { addRouteMiddleware, useRoute, useState } from '#imports'
 import { reactive, watch } from 'vue'
 
 // @ts-ignore
@@ -19,13 +19,13 @@ const helper = window[globalName] as unknown as {
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const colorMode = reactive(nuxtApp.payload.state.colorMode || {
+  const colorMode = useState('color-mode', () => reactive({
     // For SPA mode or fallback
     preference: helper.preference,
     value: helper.value,
     unknown: false,
     forced: false,
-  })
+  })).value
 
   const route = useRoute()
   if (route.meta.colorMode) {

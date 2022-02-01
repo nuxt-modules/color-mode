@@ -1,6 +1,6 @@
 import { preference, script } from '#color-mode-options'
 import { defineNuxtPlugin } from '#app'
-import { addRouteMiddleware, useMeta } from '#imports'
+import { addRouteMiddleware, useMeta, useState } from '#imports'
 import { reactive } from 'vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -14,14 +14,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   }
 
-  const colorMode = reactive({
+  const colorMode = useState('color-mode', () => reactive({
     preference,
     value: preference,
     unknown: true,
     forced: false
-  })
-
-  nuxtApp.payload.state.colorMode = colorMode
+  })).value
 
   addRouteMiddleware('color-mode', (to, from) => {
     const forcedColorMode = to.meta.colorMode
