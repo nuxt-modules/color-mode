@@ -21,7 +21,7 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build && rollup -c",
+    "prepack": "nuxt-module-build && esbuild --minify dist/script.mjs --outfile=dist/script.min.js",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "prepare": "nuxt-module-build --stub && nuxi prepare playground",
@@ -37,8 +37,6 @@
     "pathe": "^0.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@nuxt/module-builder": "^0.1.7",
@@ -50,10 +48,12 @@
     "husky": "latest",
     "jest": "^27.0.4",
     "nuxt3": "3.0.0-27389502.88da719",
-    "rollup": "^2.41.0",
-    "rollup-plugin-babel": "latest",
-    "rollup-plugin-terser": "^7.0.2",
     "standard-version": "^9.1.1"
+  },
+  "build": {
+    "entries": [
+      "src/script"
+    ]
   },
   "publishConfig": {
     "access": "public"
