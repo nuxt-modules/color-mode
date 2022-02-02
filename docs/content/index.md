@@ -1,16 +1,17 @@
 ---
 title: 'Documentation'
-description: 'Dark and Light mode with auto detection made easy with NuxtJS 🌗'
+description: 'Dark and Light mode with auto detection made easy with Nuxt 🌗'
 category: 'Home'
 csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/tree/master/?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fexample%2Fpages%2Findex.vue&theme=dark&view=preview
 ---
 
 ## Features
 
+- Nuxt 3 and Nuxt Bridge support
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
 - Force a page to a specific color mode (perfect for incremental development)
-- Works with any NuxtJS target (`static` or `server`) and rendering (`universal` and `spa`)
-- Auto detect the system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
+- Works with client-side and universal rendering
+- Auto detect system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
 - Sync dark mode across tabs and windows 🔄
 - Supports IE9+ 👴
 
@@ -21,6 +22,12 @@ csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/t
 Checkout the <a href="https://color-mode.nuxtjs.app">online demo</a>.
 
 ## Setup
+
+<alert>
+
+`@nuxtjs/color-mode` version 3 supports Nuxt Bridge and Nuxt 3 only. For use in Nuxt 2 (without Bridge), make sure to install version 2.
+
+</alert>
 
 Add `@nuxtjs/color-mode` dependency to your project:
 
@@ -41,44 +48,21 @@ Add `@nuxtjs/color-mode` dependency to your project:
   </code-block>
 </code-group>
 
-Then, add `@nuxtjs/color-mode` to the `buildModules` section of your `nuxt.config.js`
+Then, add `@nuxtjs/color-mode` to the `modules` section of your `nuxt.config.js`
 
 ```js{}[nuxt.config.js]
 {
-  buildModules: [
+  modules: [
     '@nuxtjs/color-mode'
   ]
 }
 ```
 
-<alert>
-
-Use the `modules` property instead of `buildModules` if:
-- you are using `ssr: false` and `nuxt start`, see [#25](https://github.com/nuxt-community/color-mode-module/issues/25#issuecomment-692567237)
-- you are using `nuxt < 2.9.0`
-
-</alert>
-
 You are ready to start theming your CSS with `.dark-mode` and `.light-mode` classes ✨
-
-## TypeScript
-
-Add the types to your "types" array in `tsconfig.json`
-
-```json{}[tsconfig.json]
-{
-  "compilerOptions": {
-    "types": [
-      "@nuxt/types",
-      "@nuxtjs/color-mode"
-    ]
-  }
-}
-```
 
 ## Usage
 
-It injects `$colorMode` helper with:
+It injects a `$colorMode` helper with:
 - `preference`: Actual color-mode selected (can be `'system'`), update it to change the user preferred color mode
 - `value`: Useful to know what color mode has been detected when `$colorMode === 'system'`, you should not update it
 - `unknown`: Useful to know if during SSR or Generate, we need to render a placeholder
@@ -123,9 +107,14 @@ You can force the color mode at the page level (only parent) by setting the `col
 </template>
 
 <script>
+// For Nuxt Bridge
 export default {
   colorMode: 'light',
 }
+// For Nuxt 3
+definePageMeta({
+  colorMode: 'light',
+})
 </script>
 ```
 
@@ -145,7 +134,7 @@ You can see a more advanced example in the [example/ directory](https://github.c
 
 ## Configuration
 
-You can configure the module by providing the `colorMode` property in your `nuxt.config.js`, here are the default options:
+You can configure the module by providing the `colorMode` property in your `nuxt.config.js`; here are the default options:
 
 ```js
 colorMode: {
@@ -161,7 +150,7 @@ colorMode: {
 ```
 
 Notes:
-- `'system'` is a special value, it will automatically detect the color mode based on the system preferences (see [prefers-color-mode spec](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)). The value injected will be either `'light'` or `'dark'`. If `no-preference` is detected or the browser does not handle color-mode, it will set the `fallback` value.
+- `'system'` is a special value; it will automatically detect the color mode based on the system preferences (see [prefers-color-mode spec](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)). The value injected will be either `'light'` or `'dark'`. If `no-preference` is detected or the browser does not handle color-mode, it will set the `fallback` value.
 
 ## Caveats
 
@@ -247,4 +236,4 @@ Or locally:
 
 [MIT License](https://github.com/nuxt-community/color-mode-module/blob/master/LICENSE)
 
-Copyright (c) NuxtJS Team
+Copyright (c) Nuxt Team
