@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Meta hid="description" name="description" content="Demo of using @nuxtjs/color-mode for Nuxt, supporting dark mode and custom colors" />
+    <Meta name="description" content="Demo of using @nuxtjs/color-mode for Nuxt, supporting dark mode and custom colors" />
     <p>
       <NuxtLogo />
     </p>
