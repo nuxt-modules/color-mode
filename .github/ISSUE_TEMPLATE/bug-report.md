@@ -17,7 +17,7 @@ nuxt: <!-- ex: v2.12.0 -->
 ### Reproduction Link
 <!--
 A minimal test case based on one of:
-- a fork of https://codesandbox.io/s/github/nuxt-community/color-mode-module/tree/master/example and update the example/ directory
+- a fork of https://codesandbox.io/s/github/nuxt-community/color-mode-module/tree/master/playground and update the playground/ directory
 - a GitHub repository that can reproduce the bug
 -->
 

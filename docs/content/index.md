@@ -2,7 +2,7 @@
 title: 'Documentation'
 description: 'Dark and Light mode with auto detection made easy with Nuxt 🌗'
 category: 'Home'
-csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/tree/master/?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fexample%2Fpages%2Findex.vue&theme=dark&view=preview
+csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/tree/master/?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fplayground%2Fpages%2Findex.vue&theme=dark&view=preview
 ---
 
 ## Features
@@ -128,7 +128,7 @@ We recommend to hide or disable the color mode picker on the page since it won't
 
 ## Example
 
-You can see a more advanced example in the [example/ directory](https://github.com/nuxt-community/color-mode-module/tree/master/example) or play online with the CodeSandBox below:
+You can see a more advanced example in the [playground/ directory](https://github.com/nuxt-community/color-mode-module/tree/master/playground) or play online with the CodeSandBox below:
 
 <code-sandbox :src="csb_link"></code-sandbox>
 

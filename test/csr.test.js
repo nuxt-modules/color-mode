@@ -3,7 +3,7 @@ import { readFile } from 'fs-extra'
 import { setupTest, get, getContext } from '@nuxt/test-utils'
 
 describe('ssr: false, dev mode', () => {
-  const rootDir = join(__dirname, '..', 'example')
+  const rootDir = join(__dirname, '..', 'playground')
 
   setupTest({
     server: true,
@@ -20,7 +20,7 @@ describe('ssr: false, dev mode', () => {
 })
 
 describe('ssr: false, target: server, prod mode', () => {
-  const rootDir = join(__dirname, '..', 'example')
+  const rootDir = join(__dirname, '..', 'playground')
 
   setupTest({
     server: true,
@@ -39,7 +39,7 @@ describe('ssr: false, target: server, prod mode', () => {
 })
 
 describe('ssr: false, target: static, generated files', () => {
-  const rootDir = join(__dirname, '..', 'example')
+  const rootDir = join(__dirname, '..', 'playground')
 
   setupTest({
     generate: true,
