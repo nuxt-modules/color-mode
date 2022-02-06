@@ -3,5 +3,5 @@ import colorModeModule from '..'
 
 export default defineNuxtConfig({
   css: ['~/assets/main.css'],
-  buildModules: [colorModeModule]
+  modules: [colorModeModule]
 })
