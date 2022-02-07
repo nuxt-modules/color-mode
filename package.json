@@ -30,7 +30,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-27389502.88da719",
+    "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-27398533.8edd481",
     "defu": "^5.0.0",
     "lodash.template": "^4.5.0",
     "mlly": "^0.4.1",
@@ -47,7 +47,7 @@
     "eslint": "^7.21.0",
     "husky": "latest",
     "jest": "^27.0.4",
-    "nuxt3": "3.0.0-27389502.88da719",
+    "nuxt3": "3.0.0-27398533.8edd481",
     "standard-version": "^9.1.1"
   },
   "build": {

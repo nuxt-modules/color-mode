@@ -1,7 +1,7 @@
 import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
-import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addAutoImport } from '@nuxt/kit'
 import { createCommonJS } from 'mlly'
 
 import { name, version } from '../package.json'
@@ -49,6 +49,7 @@ export default defineNuxtModule({
     }
 
     addComponent({ name: options.componentName, filePath: resolve(runtimeDir, 'component.vue') })
+    addAutoImport({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
     // Nuxt 3 - SSR false
     // TODO: use nitro hooks
@@ -149,36 +150,3 @@ export interface ColorModeOptions {
 
 export type ColorModeConfig = Partial<ColorModeOptions>
 export type ModuleOptions = ColorModeConfig
-
-export interface ColorModeInstance {
-  preference: string
-  value: string
-  unknown: boolean
-  forced: boolean
-}
-
-// Nuxt 2.9+
-// @ts-ignore
-declare module '@nuxt/types' {
-  interface Context {
-    $colorMode: ColorModeInstance
-  }
-}
-
-// @ts-ignore
-declare module 'vue/types/vue' {
-  interface Vue {
-    $colorMode: ColorModeInstance
-  }
-}
-
-// @ts-ignore
-declare module 'vue/types/options' {
-  interface ComponentOptions<V extends any> {
-    /**
-     * Forces a color mode for current page
-     * @see https://color-mode.nuxtjs.org/#force-a-color-mode
-     */
-    colorMode?: string
-  }
-}

@@ -3,12 +3,7 @@ import { defineNuxtPlugin } from '#app'
 import { addRouteMiddleware, useRoute, useState } from '#imports'
 import { reactive, watch } from 'vue'
 
-// @ts-ignore
-declare module 'vue-router' {
-  interface RouteMeta {
-    colorMode?: string
-  }
-}
+import type { ColorModeInstance } from '../types'
 
 const helper = window[globalName] as unknown as {
   preference: string
@@ -19,7 +14,7 @@ const helper = window[globalName] as unknown as {
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const colorMode = useState('color-mode', () => reactive({
+  const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
     // For SPA mode or fallback
     preference: helper.preference,
     value: helper.value,
@@ -42,7 +37,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
-    darkWatcher.addListener((e) => {
+    darkWatcher.addEventListener('change', () => {
       if (!colorMode.forced && colorMode.preference === 'system') {
         colorMode.value = helper.getColorScheme()
       }

@@ -3,6 +3,8 @@ import { defineNuxtPlugin } from '#app'
 import { addRouteMiddleware, useMeta, useState } from '#imports'
 import { reactive } from 'vue'
 
+import type { ColorModeInstance } from '../types'
+
 export default defineNuxtPlugin((nuxtApp) => {
   // Workaround until we have support in vueuse/head
   if ('renderMeta' in nuxtApp.ssrContext) {
@@ -14,7 +16,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   }
 
-  const colorMode = useState('color-mode', () => reactive({
+  const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
     preference,
     value: preference,
     unknown: true,
