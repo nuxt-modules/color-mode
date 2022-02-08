@@ -1,7 +1,7 @@
 import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
-import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addAutoImport } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addAutoImport, createResolver } from '@nuxt/kit'
 import { fileURLToPath } from 'url'
 
 import { name, version } from '../package.json'
@@ -25,8 +25,10 @@ export default defineNuxtModule({
   },
   defaults: DEFAULTS,
   async setup (options, nuxt) {
+    const resolver = createResolver(import.meta.url)
+
     // Read script from disk and add to options
-    const scriptPath = fileURLToPath(new URL('./script.min.js', import.meta.url))
+    const scriptPath = await resolver.resolvePath('./script.min.js')
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
     options.script = template(scriptT)({ options })
 
@@ -38,7 +40,7 @@ export default defineNuxtModule({
       `).join('\n')
     }).dst
 
-    const runtimeDir = fileURLToPath(new URL(isNuxt2() ? './runtime/vue2' : './runtime/vue3', import.meta.url))
+    const runtimeDir = await resolver.resolvePath(isNuxt2() ? './runtime/vue2' : './runtime/vue3')
     nuxt.options.build.transpile.push(runtimeDir)
 
     // Add plugins
