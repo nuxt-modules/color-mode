@@ -7,6 +7,9 @@ const de = document.documentElement
 const knownColorSchemes = ['dark', 'light']
 
 const preference = window.localStorage.getItem('<%= options.storageKey %>') || '<%= options.preference %>'
+const themeColors = JSON.parse('<%= options.escapedThemeColors %>')
+// Get previous meta element if the script is run the second time (e.g. in dev mode)
+let themeColorMetaElm = d.head.querySelector('meta[data-nuxtjs-color-mode]')
 let value = preference === 'system' ? getColorScheme() : preference
 // Applied forced color mode
 const forcedColorMode = de.getAttribute('data-color-mode-forced')
@@ -34,6 +37,21 @@ function addColorScheme (value) {
   }
   if (dataValue) {
     de.setAttribute('data-' + dataValue, value)
+  }
+
+  const themeColor = themeColors && themeColors[value]
+  if (themeColor) {
+    if (!themeColorMetaElm) {
+      themeColorMetaElm = d.createElement('meta')
+      themeColorMetaElm.setAttribute('data-nuxtjs-color-mode', '')
+      themeColorMetaElm.name = 'theme-color'
+    }
+    themeColorMetaElm.content = themeColor
+    if (themeColorMetaElm.parentNode !== d.head) {
+      d.head.appendChild(themeColorMetaElm)
+    }
+  } else if (themeColorMetaElm && themeColorMetaElm.parentNode) {
+    themeColorMetaElm.parentNode.removeChild(themeColorMetaElm)
   }
 }
 

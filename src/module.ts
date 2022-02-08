@@ -158,4 +158,8 @@ export interface ModuleOptions {
    * The script that will be injected into the head of the page
    */
   script?: string
+  /**
+   * Default: null
+   */
+  themeColors: Record<string, string> | null
 }

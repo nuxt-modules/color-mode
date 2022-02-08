@@ -23,6 +23,7 @@
 
 - Nuxt 3 and Nuxt Bridge support
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
+- Automatically set [theme color](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color) of the page
 - Force a page to a specific color mode (perfect for incremental development)
 - Works with client-side and universal rendering
 - Auto detect system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
