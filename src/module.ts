@@ -2,11 +2,11 @@ import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
 import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addAutoImport } from '@nuxt/kit'
-import { createCommonJS } from 'mlly'
+import { fileURLToPath } from 'url'
 
 import { name, version } from '../package.json'
 
-const DEFAULTS: ColorModeOptions = {
+const DEFAULTS: ModuleOptions = {
   preference: 'system',
   fallback: 'light',
   hid: 'nuxt-color-mode-script',
@@ -25,10 +25,8 @@ export default defineNuxtModule({
   },
   defaults: DEFAULTS,
   async setup (options, nuxt) {
-    const { __dirname } = createCommonJS(import.meta.url)
-
     // Read script from disk and add to options
-    const scriptPath = resolve(__dirname, 'script.min.js')
+    const scriptPath = fileURLToPath(new URL('./script.min.js', import.meta.url))
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
     options.script = template(scriptT)({ options })
 
@@ -40,7 +38,7 @@ export default defineNuxtModule({
       `).join('\n')
     }).dst
 
-    const runtimeDir = isNuxt2() ? resolve(__dirname, 'runtime/vue2') : resolve(__dirname, 'runtime/vue3')
+    const runtimeDir = fileURLToPath(new URL(isNuxt2() ? './runtime/vue2' : './runtime/vue3', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 
     // Add plugins
@@ -94,7 +92,7 @@ export default defineNuxtModule({
     // In Nuxt 2 dev mode we also inject full script via webpack entrypoint for storybook compatibility
     if (nuxt.options.dev) {
       const { dst } = addTemplate({
-        src: resolve(__dirname, 'script.min.js'),
+        src: scriptPath,
         fileName: join('color-mode', 'script.min.js'),
         options
       })
@@ -109,7 +107,7 @@ export default defineNuxtModule({
   }
 })
 
-export interface ColorModeOptions {
+export interface ModuleOptions {
   /**
    * Default: `system`
    */
@@ -147,6 +145,3 @@ export interface ColorModeOptions {
    */
   script?: string
 }
-
-export type ColorModeConfig = Partial<ColorModeOptions>
-export type ModuleOptions = ColorModeConfig

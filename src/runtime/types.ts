@@ -5,14 +5,6 @@ export interface ColorModeInstance {
   forced: boolean
 }
 
-// Nuxt 2.9+
-// @ts-ignore
-declare module '@nuxt/types' {
-  interface Context {
-    $colorMode: ColorModeInstance
-  }
-}
-
 // @ts-ignore
 declare module 'vue/types/vue' {
   interface Vue {
