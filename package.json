@@ -24,7 +24,7 @@
     "prepack": "nuxt-module-build && esbuild --minify dist/script.mjs --outfile=dist/script.min.js",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "lint": "eslint --ext .js,.vue .",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint"

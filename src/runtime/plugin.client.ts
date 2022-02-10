@@ -1,9 +1,9 @@
 import { globalName, storageKey } from '#color-mode-options'
-import { defineNuxtPlugin } from '#app'
-import { addRouteMiddleware, useRoute, useState } from '#imports'
+import { defineNuxtPlugin, isVue2, isVue3 } from '#app'
+import { addRouteMiddleware, useRoute, useRouter, useState } from '#imports'
 import { reactive, watch } from 'vue'
 
-import type { ColorModeInstance } from '../types'
+import type { ColorModeInstance } from './types'
 
 const helper = window[globalName] as unknown as {
   preference: string
@@ -12,6 +12,8 @@ const helper = window[globalName] as unknown as {
   addClass: (className: string) => void
   removeClass: (className: string) => void
 }
+
+const getForcedColorMode = route => route.matched[0] && route.matched[0].components.default.options.colorMode
 
 export default defineNuxtPlugin((nuxtApp) => {
   const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
@@ -23,10 +25,21 @@ export default defineNuxtPlugin((nuxtApp) => {
   })).value
 
   const route = useRoute()
-  if (route.meta.colorMode) {
+  const router = useRouter()
+
+  if (isVue3 && route.meta.colorMode) {
     colorMode.value = route.meta.colorMode
     colorMode.forced = true
     helper.addClass(route.meta.colorMode)
+  }
+
+  if (isVue2) {
+    const pageColorMode = getForcedColorMode(route)
+    if (pageColorMode) {
+      colorMode.value = pageColorMode
+      colorMode.forced = true
+      helper.addClass(pageColorMode)
+    }
   }
 
   let darkWatcher: MediaQueryList
@@ -76,20 +89,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     watchMedia()
   }
 
-  nuxtApp.hook('app:suspense:resolve', () => {
-    if (window.localStorage) {
-      watchStorageChange()
-    }
-    if (colorMode.unknown) {
-      colorMode.preference = helper.preference
-      colorMode.value = helper.value
-      colorMode.unknown = false
-    }
-  })
-
-  addRouteMiddleware('color-mode', (to, from) => {
-    const forcedColorMode = to.meta.colorMode
-
+  function forceColorMode (forcedColorMode: string) {
     if (forcedColorMode && forcedColorMode !== 'system') {
       colorMode.value = forcedColorMode
       colorMode.forced = true
@@ -102,11 +102,43 @@ export default defineNuxtPlugin((nuxtApp) => {
         ? helper.getColorScheme()
         : colorMode.preference
     }
-  }, { global: true })
-
-  return {
-    provide: {
-      colorMode
-    }
   }
+
+  if (isVue3) {
+    nuxtApp.hook('app:suspense:resolve', () => {
+      if (window.localStorage) {
+        watchStorageChange()
+      }
+      if (colorMode.unknown) {
+        colorMode.preference = helper.preference
+        colorMode.value = helper.value
+        colorMode.unknown = false
+      }
+    })
+
+    addRouteMiddleware('color-mode', (to, from) => {
+      const forcedColorMode = to.meta.colorMode
+      forceColorMode(forcedColorMode)
+    }, { global: true })
+  }
+
+  if (isVue2) {
+    (window as any).onNuxtReady(() => {
+      if (window.localStorage) {
+        watchStorageChange()
+      }
+      if (colorMode.unknown) {
+        colorMode.preference = helper.preference
+        colorMode.value = helper.value
+        colorMode.unknown = false
+      }
+    })
+    router.beforeEach((to, _from, next) => {
+      const forcedColorMode = getForcedColorMode(to)
+      forceColorMode(forcedColorMode)
+      next()
+    })
+  }
+
+  nuxtApp.provide('colorMode', colorMode)
 })
