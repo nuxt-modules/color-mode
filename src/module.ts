@@ -27,7 +27,7 @@ export default defineNuxtModule({
     const resolver = createResolver(import.meta.url)
 
     // Read script from disk and add to options
-    const scriptPath = await resolver.resolvePath('./script.min.js')
+    const scriptPath = await resolver.resolve('./script.min.js')
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
     options.script = template(scriptT)({ options })
 
@@ -39,7 +39,7 @@ export default defineNuxtModule({
       `).join('\n')
     }).dst
 
-    const runtimeDir = await resolver.resolvePath('./runtime')
+    const runtimeDir = await resolver.resolve('./runtime')
     nuxt.options.build.transpile.push(runtimeDir)
 
     // Add plugins
