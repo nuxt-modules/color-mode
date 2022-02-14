@@ -58,7 +58,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // Workaround until we have support in vueuse/head
   if ('renderMeta' in nuxtApp.ssrContext) {
-    console.log('rendering meta')
     const originalRender = nuxtApp.ssrContext.renderMeta
     nuxtApp.ssrContext.renderMeta = async () => {
       const result = await originalRender()
