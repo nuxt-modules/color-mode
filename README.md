@@ -30,6 +30,8 @@
 
 [📖 &nbsp;Read more](https://color-mode.nuxtjs.org)
 
+**Note**: v3 of `@nuxtjs/color-mode` is compatible with [Nuxt 3 and Nuxt Bridge](https://v3.nuxtjs.org/). If you're looking for the previous version of this module, check out [the previous docs](https://v2.color-mode.nuxtjs.org/), or [read more about the differences](https://color-mode.nuxtjs.org/#migrating-to-v3).
+
 ## Contributing
 
 You can contribute to this module online with CodeSandBox:

@@ -5,6 +5,12 @@ category: 'Home'
 csb_link: https://codesandbox.io/embed/github/nuxt-community/color-mode-module/tree/master/?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fplayground%2Fpages%2Findex.vue&theme=dark&view=preview
 ---
 
+<alert type="info">
+
+v3 of `@nuxtjs/color-mode` is compatible with [Nuxt 3 and Nuxt Bridge](https://v3.nuxtjs.org/). If you're looking for the previous version of this module, check out [the previous docs](https://v2.color-mode.nuxtjs.org/), or [read more about the differences](#migrating-to-v3).
+
+</alert>
+
 ## Features
 
 - Nuxt 3 and Nuxt Bridge support
@@ -219,6 +225,33 @@ module.exports = {
 ```
 
 Checkout a [live example on CodeSandBox](https://codesandbox.io/s/nuxt-dark-tailwindcss-17g2j?file=/pages/index.vue) as well as [@nuxtjs/tailwindcss](https://github.com/nuxt-community/tailwindcss-module) module.
+
+## Migrating to v3
+
+v3 of `@nuxtjs/color-mode` requires either Nuxt Bridge or Nuxt 3. (If you are using Nuxt 2 without Bridge, you should continue to use v2.)
+
+1. The main change between Nuxt 2 -> Nuxt 3 is that you will define your color mode at the page level with `definePageMeta`:
+
+   ```diff
+     <template>
+       <h1>This page is forced with light mode</h1>
+     </template>
+     
+     <script>
+   - export default {
+   -   colorMode: 'light',
+   - }
+   + definePageMeta({
+   +   colorMode: 'light',
+   + })
+     </script>
+   ```
+
+   ⚠️ If you are using Nuxt Bridge, you should not use `definePageMeta` but instead continue using the component option `colorMode`.
+
+2. The `$colorMode` helper remains the same, but there is also a new composable (`useColorMode`) which is the recommended way of accessing color mode information.
+
+3. If you were directly importing color mode configuration types, note that this has been renamed to `ModuleOptions`.
 
 ## Contributing
 
