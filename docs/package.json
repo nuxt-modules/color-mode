@@ -9,7 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "docus": "^0.0.10",
+    "docus": "^2.1.0",
     "nuxt": "^2.15.3"
   },
   "devDependencies": {
