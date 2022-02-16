@@ -1,4 +1,4 @@
-// Add dark / light detection that runs before loading Nuxt.js
+// Add dark / light detection that runs before loading Nuxt
 
 // Global variable minimizers
 const w = window
