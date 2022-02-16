@@ -43,7 +43,7 @@
     "@types/lodash.template": "^4.5.0",
     "babel-eslint": "latest",
     "babel-jest": "^27.0.2",
-    "eslint": "^7.21.0",
+    "eslint": "^8.9.0",
     "husky": "latest",
     "jest": "^27.0.4",
     "nuxt3": "latest",
