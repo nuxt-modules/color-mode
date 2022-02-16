@@ -57,18 +57,19 @@ Add `@nuxtjs/color-mode` dependency to your project:
 Then, add `@nuxtjs/color-mode` to the `modules` section of your `nuxt.config.js`
 
 ```js{}[nuxt.config.js]
-{
-  modules: [
-    '@nuxtjs/color-mode'
-  ]
-}
+import { defineNuxtConfig } from 'nuxt3'
+
+export default defineNuxtConfig({
+  modules: ['@nuxtjs/color-mode']
+})
 ```
 
 You are ready to start theming your CSS with `.dark-mode` and `.light-mode` classes ✨
 
 ## Usage
 
-It injects a `$colorMode` helper with:
+You can access the color mode helper by either calling `useColorMode()` or accessing `$colorMode` directly in your template. This helper has the following properties:
+
 - `preference`: Actual color-mode selected (can be `'system'`), update it to change the user preferred color mode
 - `value`: Useful to know what color mode has been detected when `$colorMode === 'system'`, you should not update it
 - `unknown`: Useful to know if during SSR or Generate, we need to render a placeholder
@@ -86,6 +87,11 @@ It injects a `$colorMode` helper with:
     </select>
   </div>
 </template>
+
+<script setup>
+  const colorMode = useColorMode()
+  console.log(colorMode.preference)
+</script>
 
 <style>
 body {
@@ -143,16 +149,21 @@ You can see a more advanced example in the [playground/ directory](https://githu
 You can configure the module by providing the `colorMode` property in your `nuxt.config.js`; here are the default options:
 
 ```js
-colorMode: {
-  preference: 'system', // default value of $colorMode.preference
-  fallback: 'light', // fallback value if not system preference found
-  hid: 'nuxt-color-mode-script',
-  globalName: '__NUXT_COLOR_MODE__',
-  componentName: 'ColorScheme',
-  classPrefix: '',
-  classSuffix: '-mode',
-  storageKey: 'nuxt-color-mode'
-}
+import { defineNuxtConfig } from 'nuxt3'
+
+export default defineNuxtConfig({
+  modules: ['@nuxtjs/color-mode'],
+  colorMode: {
+    preference: 'system', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '-mode',
+    storageKey: 'nuxt-color-mode'
+  }
+})
 ```
 
 Notes:
@@ -194,11 +205,14 @@ module.exports = {
 Then in your `nuxt.config.js`, set the `classSuffix` option to an empty string:
 
 ```js{}[nuxt.config.js]
-export default {
+import { defineNuxtConfig } from 'nuxt3'
+
+export default defineNuxtConfig({
+  modules: ['@nuxtjs/color-mode'],
   colorMode: {
     classSuffix: ''
   }
-}
+})
 ```
 
 Checkout the [live example on CodeSandBox](https://codesandbox.io/s/nuxt-dark-tailwindcss-vxfuj).
