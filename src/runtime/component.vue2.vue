@@ -1,5 +1,8 @@
+<script lang="ts">
+import { componentName } from '#color-mode-options'
+
 export default {
-  name: '<%= options.componentName %>',
+  name: componentName,
   functional: true,
   props: {
     placeholder: String,
@@ -18,3 +21,4 @@ export default {
     return createElement('client-only', { ...data, props }, children)
   }
 }
+</script>

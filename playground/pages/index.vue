@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Title>Demo of @nuxtjs/color-mode</Title>
     <ColorModePicker />
     <p>
       Go to
@@ -9,11 +10,3 @@
     </p>
   </div>
 </template>
-
-<script>
-export default {
-  head: {
-    title: 'Demo of @nuxtjs/color-mode'
-  }
-}
-</script>

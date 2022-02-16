@@ -7,4 +7,3 @@ node_modules
 .DS_Store
 coverage
 dist
-*.min.js

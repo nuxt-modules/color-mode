@@ -7,7 +7,7 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-> 🌑 Dark and 🌕 Light mode with auto detection made easy with NuxtJS
+> 🌑 Dark and 🌕 Light mode with auto detection made easy with Nuxt
 
 [![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://color-mode.nuxtjs.app/)
 
@@ -20,14 +20,17 @@
 
 ## Features
 
+- Nuxt 3 and Nuxt Bridge support
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
 - Force a page to a specific color mode (perfect for incremental development)
-- Works with any NuxtJS target (`static` or `server`) and rendering (`universal` and `spa`)
-- Auto detect the system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
+- Works with client-side and universal rendering
+- Auto detect system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
 - Sync dark mode across tabs and windows 🔄
 - Supports IE9+ 👴
 
 [📖 &nbsp;Read more](https://color-mode.nuxtjs.org)
+
+**Note**: v3 of `@nuxtjs/color-mode` is compatible with [Nuxt 3 and Nuxt Bridge](https://v3.nuxtjs.org/). If you're looking for the previous version of this module, check out [the previous docs](https://v2.color-mode.nuxtjs.org/), or [read more about the differences](https://color-mode.nuxtjs.org/#migrating-to-v3).
 
 ## Contributing
 
@@ -45,7 +48,7 @@ Or locally:
 
 [MIT License](./LICENSE)
 
-Copyright (c) NuxtJS Team
+Copyright (c) Nuxt Team
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/color-mode/latest.svg
