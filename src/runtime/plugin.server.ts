@@ -1,25 +1,23 @@
 import { preference, hid, script } from '#color-mode-options'
 import { defineNuxtPlugin, isVue2, isVue3 } from '#app'
-import { addRouteMiddleware, useMeta, useState, useRoute } from '#imports'
+import { useMeta, useState, useRouter } from '#imports'
 import { reactive } from 'vue'
 
 import type { ColorModeInstance } from './types'
 
-const metaScript = {
-  hid,
-  innerHTML: script,
-  pbody: true
-}
-
 const addScript = (head) => {
   head.script = head.script || []
-  head.script.push(metaScript)
+  head.script.push({
+    hid,
+    innerHTML: script,
+    pbody: true
+  })
   const serializeProp = '__dangerouslyDisableSanitizersByTagID'
   head[serializeProp] = head[serializeProp] || {}
   head[serializeProp][hid] = ['innerHTML']
 }
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
   const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
     preference,
     value: preference,
@@ -27,8 +25,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     forced: false
   })).value
 
+  const bodyAttrs = {}
+
   if (isVue2) {
-    const route = useRoute()
     const app = nuxtApp.nuxt2Context.app
 
     if (typeof app.head === 'function') {
@@ -36,56 +35,45 @@ export default defineNuxtPlugin((nuxtApp) => {
       app.head = function () {
         const head = originalHead.call(this) || {}
         addScript(head)
+        head.bodyAttrs = bodyAttrs
         return head
       }
     } else {
       addScript(app.head)
-    }
-
-    if (route.matched[0]) {
-      const pageColorMode = route.matched[0].components.default.options.colorMode
-      if (pageColorMode && pageColorMode !== 'system') {
-        colorMode.value = pageColorMode
-        colorMode.forced = true
-
-        app.head.bodyAttrs = app.head.bodyAttrs || {}
-        app.head.bodyAttrs['data-color-mode-forced'] = pageColorMode
-      } else if (pageColorMode === 'system') {
-        console.warn('You cannot force the colorMode to system at the page level.')
-      }
-    }
-  }
-
-  // Workaround until we have support in vueuse/head
-  if ('renderMeta' in nuxtApp.ssrContext) {
-    const originalRender = nuxtApp.ssrContext.renderMeta
-    nuxtApp.ssrContext.renderMeta = async () => {
-      const result = await originalRender()
-      result.bodyScripts = `<script>${script}</script>` + (result.bodyScripts || '')
-      return result
+      app.head.bodyAttrs = bodyAttrs
     }
   }
 
   if (isVue3) {
-    addRouteMiddleware('color-mode', (to, from) => {
-      const forcedColorMode = to.meta.colorMode
+    useMeta({ bodyAttrs })
 
-      if (forcedColorMode && forcedColorMode !== 'system') {
-        colorMode.value = forcedColorMode
-        colorMode.forced = true
-
-        useMeta({
-          bodyAttrs: {
-            'data-color-mode-forced': forcedColorMode
-          }
-        })
-      } else {
-        if (forcedColorMode === 'system') {
-          console.warn('You cannot force the colorMode to system at the page level.')
-        }
+    // Workaround until we have support in vueuse/head
+    if ('renderMeta' in nuxtApp.ssrContext) {
+      const originalRender = nuxtApp.ssrContext.renderMeta
+      nuxtApp.ssrContext.renderMeta = async () => {
+        const result = await originalRender()
+        // Remove any after https://github.com/nuxt/framework/pull/3257 is merged
+        ;(result as any).bodyScriptsPrepend = `<script>${script}</script>` + ((result as any).bodyScriptsPrepend || '')
+        return result
       }
-    }, { global: true })
+    }
   }
+
+  useRouter().afterEach((to) => {
+    const forcedColorMode = isVue2
+      ? (to.matched[0]?.components.default as any)?.options.colorMode
+      : to.meta.colorMode
+
+    if (forcedColorMode && forcedColorMode !== 'system') {
+      colorMode.value = forcedColorMode
+      colorMode.forced = true
+      bodyAttrs['data-color-mode-forced'] = forcedColorMode
+    } else {
+      if (forcedColorMode === 'system') {
+        console.warn('You cannot force the colorMode to system at the page level.')
+      }
+    }
+  })
 
   nuxtApp.provide('colorMode', colorMode)
 })
