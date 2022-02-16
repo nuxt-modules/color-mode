@@ -39,7 +39,7 @@
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@nuxt/module-builder": "^0.1.7",
-    "@nuxtjs/eslint-config": "^6.0.0",
+    "@nuxtjs/eslint-config": "^8.0.0",
     "@types/lodash.template": "^4.5.0",
     "babel-eslint": "latest",
     "babel-jest": "^27.0.2",
