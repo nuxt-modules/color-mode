@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/color-mode",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Dark and Light mode for Nuxt with auto detection",
   "repository": "nuxt-community/color-mode-module",
   "license": "MIT",

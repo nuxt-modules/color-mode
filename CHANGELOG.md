@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/nuxt-community/color-mode-module/compare/v2.1.1...v3.0.0) (2022-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* add support for nuxt 3/nuxt bridge (#118)
+
+### Features
+
+* add support for nuxt 3/nuxt bridge ([#118](https://github.com/nuxt-community/color-mode-module/issues/118)) ([a5036a4](https://github.com/nuxt-community/color-mode-module/commit/a5036a4a816a3baa2bc2a953048469a7a78a851e))
+
 ### [2.1.1](https://github.com/nuxt-community/color-mode-module/compare/v2.1.0...v2.1.1) (2021-08-02)
 
 
