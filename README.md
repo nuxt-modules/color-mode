@@ -17,6 +17,7 @@
 
 - [✨ &nbsp;Release Notes](https://color-mode.nuxtjs.org/releases)
 - [📖 &nbsp;Documentation](https://color-mode.nuxtjs.org)
+- [▶️ &nbsp;Online playground](https://stackblitz.com/edit/nuxt-color-mode)
 
 ## Features
 
