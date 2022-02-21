@@ -2,15 +2,14 @@
 
 // Global variable minimizers
 const w = window
-const d = document
-const de = d.documentElement
+const de = document.documentElement
 
 const knownColorSchemes = ['dark', 'light']
 
 const preference = window.localStorage.getItem('<%= options.storageKey %>') || '<%= options.preference %>'
 let value = preference === 'system' ? getColorScheme() : preference
 // Applied forced color mode
-const forcedColorMode = d.body.getAttribute('data-color-mode-forced')
+const forcedColorMode = de.getAttribute('data-color-mode-forced')
 if (forcedColorMode) {
   value = forcedColorMode
 }
