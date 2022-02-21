@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/nuxt-community/color-mode-module/compare/v3.0.0...v3.0.1) (2022-02-21)
+
+
+### Bug Fixes
+
+* move script to head and set forced color mode on `<html>` element ([#128](https://github.com/nuxt-community/color-mode-module/issues/128)) ([273f07e](https://github.com/nuxt-community/color-mode-module/commit/273f07ebda0d87fc7574d09658e60a9863ce84a8))
+
 ## [3.0.0](https://github.com/nuxt-community/color-mode-module/compare/v2.1.1...v3.0.0) (2022-02-16)
 
 
