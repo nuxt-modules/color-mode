@@ -10,7 +10,7 @@ const knownColorSchemes = ['dark', 'light']
 const preference = window.localStorage.getItem('<%= options.storageKey %>') || '<%= options.preference %>'
 let value = preference === 'system' ? getColorScheme() : preference
 // Applied forced color mode
-const forcedColorMode = d.body.getAttribute('data-color-mode-forced')
+const forcedColorMode = de.getAttribute('data-color-mode-forced')
 if (forcedColorMode) {
   value = forcedColorMode
 }
