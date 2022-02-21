@@ -2,8 +2,7 @@
 
 // Global variable minimizers
 const w = window
-const d = document
-const de = d.documentElement
+const de = document.documentElement
 
 const knownColorSchemes = ['dark', 'light']
 
