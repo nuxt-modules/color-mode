@@ -1,11 +1,12 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
   rules: {
-    'no-undef': 'off'
+    'no-undef': 'off',
+    'vue/multi-word-component-names': 'off'
   },
   extends: [
     '@nuxtjs'
