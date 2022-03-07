@@ -38,7 +38,7 @@ declare module 'vue-router' {
 }
 
 interface PluginInjection {
-  colorMode: ColorModeInstance
+  $colorMode: ColorModeInstance
 }
 
 declare module '@vue/runtime-core' {
