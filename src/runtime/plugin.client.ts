@@ -1,9 +1,9 @@
-import { globalName, storageKey } from '#color-mode-options'
 import { defineNuxtPlugin, isVue2 } from '#app'
-import { useRouter, useState } from '#imports'
 import { reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
+import { useRouter, useState } from '#imports'
+import { globalName, storageKey } from '#color-mode-options'
 
 const helper = window[globalName] as unknown as {
   preference: string
@@ -19,7 +19,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     preference: helper.preference,
     value: helper.value,
     unknown: false,
-    forced: false,
+    forced: false
   })).value
 
   useRouter().afterEach((to) => {
@@ -32,6 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       colorMode.forced = true
     } else {
       if (forcedColorMode === 'system') {
+        // eslint-disable-next-line no-console
         console.warn('You cannot force the colorMode to system at the page level.')
       }
       colorMode.forced = false
@@ -44,7 +45,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   let darkWatcher: MediaQueryList
 
   function watchMedia () {
-    if (darkWatcher || !window.matchMedia) return
+    if (darkWatcher || !window.matchMedia) { return }
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
     darkWatcher.addEventListener('change', () => {
@@ -62,7 +63,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  watch(() => colorMode.preference, preference => {
+  watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
       return
     }

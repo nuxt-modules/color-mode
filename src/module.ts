@@ -22,7 +22,7 @@ export default defineNuxtModule({
     version,
     configKey: 'colorMode',
     compatibility: {
-      bridge: true,
+      bridge: true
     }
   },
   defaults: DEFAULTS,
@@ -79,7 +79,6 @@ export default defineNuxtModule({
       head[serializeProp] = head[serializeProp] || {}
       head[serializeProp][options.hid] = ['innerHTML']
     })
-
 
     const createHash = await import('crypto').then(r => r.createHash)
 

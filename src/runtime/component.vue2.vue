@@ -11,7 +11,7 @@ export default {
       default: 'span'
     }
   },
-  render (createElement, { parent, data, props, children }) {
+  render (createElement, { data, props, children }) {
     // transform props for <client-only>
     props = {
       placeholder: props.placeholder,

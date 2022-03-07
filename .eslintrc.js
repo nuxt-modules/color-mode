@@ -5,10 +5,11 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'no-undef': 'off',
+    'no-use-before-define': 'off',
+    'vue/require-default-prop': 'off',
     'vue/multi-word-component-names': 'off'
   },
   extends: [
-    '@nuxtjs'
+    '@nuxtjs/eslint-config-typescript'
   ]
 }
