@@ -2,7 +2,7 @@ import { defineNuxtPlugin, isVue2, isVue3 } from '#app'
 import { reactive } from 'vue'
 
 import type { ColorModeInstance } from './types'
-import { useMeta, useState, useRouter } from '#imports'
+import { useHead, useState, useRouter } from '#imports'
 import { preference, hid, script } from '#color-mode-options'
 
 const addScript = (head) => {
@@ -44,7 +44,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   if (isVue3) {
-    useMeta({
+    useHead({
       htmlAttrs,
       script: [{ children: script }]
     })
