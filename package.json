@@ -30,8 +30,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
-    "defu": "^5.0.0",
+    "@nuxt/kit": "^3.0.0-rc.1",
     "lodash.template": "^4.5.0",
     "pathe": "^0.2.0"
   },
@@ -39,6 +38,7 @@
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
     "@nuxt/module-builder": "^0.1.7",
+    "@nuxt/schema": "^3.0.0-rc.1",
     "@nuxtjs/eslint-config-typescript": "^9.0.0",
     "@types/lodash.template": "^4.5.0",
     "@typescript-eslint/parser": "^5.12.0",
@@ -46,7 +46,7 @@
     "eslint": "^8.9.0",
     "husky": "latest",
     "jest": "^27.0.4",
-    "nuxt3": "latest",
+    "nuxt": "npm:nuxt3@latest",
     "standard-version": "^9.3.2",
     "typescript": "^4.5.5"
   },
