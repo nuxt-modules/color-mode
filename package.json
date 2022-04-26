@@ -9,13 +9,11 @@
       "name": "Nuxt Team"
     }
   ],
+  "type": "module",
   "exports": {
-    ".": {
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
+    ".": "./dist/module.mjs"
   },
-  "main": "./dist/module.cjs",
+  "main": "./dist/module.mjs",
   "types": "./dist/types.d.ts",
   "files": [
     "dist"
