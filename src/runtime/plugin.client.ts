@@ -1,9 +1,9 @@
-import { defineNuxtPlugin, isVue2 } from '#app'
+import { defineNuxtPlugin, isVue2, isVue3 } from '#app'
 import { reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { useRouter, useState } from '#imports'
-import { globalName, storageKey } from '#color-mode-options'
+import { globalName, storageKey, dataValue } from '#color-mode-options'
 
 const helper = window[globalName] as unknown as {
   preference: string
@@ -21,6 +21,23 @@ export default defineNuxtPlugin((nuxtApp) => {
     unknown: false,
     forced: false
   })).value
+
+  if (dataValue) {
+    if (isVue3) {
+      useHead({
+        htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) }
+      })
+    } else {
+      const app = nuxtApp.nuxt2Context.app
+      const originalHead = app.head
+      app.head = function () {
+        const head = (typeof originalHead === 'function' ? originalHead.call(this) : originalHead) || {}
+        head.htmlAttrs = head.htmlAttrs || {}
+        head.htmlAttrs['data-theme'] = colorMode.value
+        return head
+      }
+    }
+  }
 
   useRouter().afterEach((to) => {
     const forcedColorMode = isVue2

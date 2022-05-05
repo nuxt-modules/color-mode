@@ -3,7 +3,7 @@ import { reactive } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { useHead, useState, useRouter } from '#imports'
-import { preference, hid, script } from '#color-mode-options'
+import { preference, hid, script, dataValue } from '#color-mode-options'
 
 const addScript = (head) => {
   head.script = head.script || []
@@ -24,7 +24,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     forced: false
   })).value
 
-  const htmlAttrs = {}
+  const htmlAttrs: Record<string, string> = {}
 
   if (isVue2) {
     const app = nuxtApp.nuxt2Context.app
@@ -57,6 +57,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     if (forcedColorMode && forcedColorMode !== 'system') {
       colorMode.value = htmlAttrs['data-color-mode-forced'] = forcedColorMode
+      if (dataValue) {
+        htmlAttrs[`data-${dataValue}`] = colorMode.value
+      }
       colorMode.forced = true
     } else if (forcedColorMode === 'system') {
       // eslint-disable-next-line no-console
