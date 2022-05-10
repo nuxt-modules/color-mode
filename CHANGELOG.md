@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/nuxt-community/color-mode-module/compare/v3.0.2...v3.0.3) (2022-05-10)
+
+
+### Bug Fixes
+
+* **plugin:** prevent infinite loop on watch ([#145](https://github.com/nuxt-community/color-mode-module/issues/145)) ([d4ee818](https://github.com/nuxt-community/color-mode-module/commit/d4ee8186e5073e248baa8cea6438f8a50f6a9f19))
+* rename useMeta to useHead ([#135](https://github.com/nuxt-community/color-mode-module/issues/135)) ([63d86ab](https://github.com/nuxt-community/color-mode-module/commit/63d86ab9702e247a89ca18167874051850665dec))
+
 ### [3.0.2](https://github.com/nuxt-community/color-mode-module/compare/v3.0.1...v3.0.2) (2022-03-07)
 
 
