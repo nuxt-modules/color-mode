@@ -74,7 +74,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   function watchStorageChange () {
     window.addEventListener('storage', (e) => {
-      if (e.key === storageKey) {
+      if (e.key === storageKey && e.newValue && colorMode.preference !== e.newValue) {
         colorMode.preference = e.newValue
       }
     })
