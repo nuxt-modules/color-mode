@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/nuxt-community/color-mode-module/compare/v3.0.3...v3.1.0) (2022-05-31)
+
+
+### Features
+
+* add support for `data-*` attribute in `<html>` tag ([#144](https://github.com/nuxt-community/color-mode-module/issues/144)) ([7a92150](https://github.com/nuxt-community/color-mode-module/commit/7a92150a802aba29b6db0d78b3dfba3535bf3ceb))
+
 ### [3.0.3](https://github.com/nuxt-community/color-mode-module/compare/v3.0.2...v3.0.3) (2022-05-10)
 
 
