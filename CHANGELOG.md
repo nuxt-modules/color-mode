@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/nuxt-community/color-mode-module/compare/v3.1.1...v3.1.2) (2022-05-31)
+
+
+### Bug Fixes
+
+* add missing imports in client-plugin ([c0ce7b2](https://github.com/nuxt-community/color-mode-module/commit/c0ce7b2944e099600bcfb1541b42b9398821daa1))
+
 ### [3.1.1](https://github.com/nuxt-community/color-mode-module/compare/v3.1.0...v3.1.1) (2022-05-31)
 
 
