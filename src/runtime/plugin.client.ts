@@ -8,8 +8,8 @@ const helper = window[globalName] as unknown as {
   preference: string
   value: string
   getColorScheme: () => string
-  addClass: (className: string) => void
-  removeClass: (className: string) => void
+  addColorScheme: (className: string) => void
+  removeColorScheme: (className: string) => void
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -32,7 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       app.head = function () {
         const head = (typeof originalHead === 'function' ? originalHead.call(this) : originalHead) || {}
         head.htmlAttrs = head.htmlAttrs || {}
-        head.htmlAttrs['data-theme'] = colorMode.value
+        head.htmlAttrs[`data-${dataValue}`] = colorMode.value
         return head
       }
     }
@@ -95,8 +95,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   }, { immediate: true })
 
   watch(() => colorMode.value, (newValue, oldValue) => {
-    helper.removeClass(oldValue)
-    helper.addClass(newValue)
+    helper.removeColorScheme(oldValue)
+    helper.addColorScheme(newValue)
   })
 
   if (colorMode.preference === 'system') {

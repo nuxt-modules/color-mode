@@ -14,31 +14,39 @@ if (forcedColorMode) {
   value = forcedColorMode
 }
 
-addClass(value)
+addColorScheme(value)
 
 w['<%= options.globalName %>'] = {
   preference,
   value,
   getColorScheme,
-  addClass,
-  removeClass
+  addColorScheme,
+  removeColorScheme
 }
 
-function addClass (value) {
+function addColorScheme (value) {
   const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
+  const dataValue = '<%= options.dataValue %>'
   if (de.classList) {
     de.classList.add(className)
   } else {
     de.className += ' ' + className
   }
+  if (dataValue) {
+    de.setAttribute('data-' + dataValue, value)
+  }
 }
 
-function removeClass (value) {
+function removeColorScheme (value) {
   const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
+  const dataValue = '<%= options.dataValue %>'
   if (de.classList) {
     de.classList.remove(className)
   } else {
     de.className = de.className.replace(new RegExp(className, 'g'), '')
+  }
+  if (dataValue) {
+    de.removeAttribute('data-' + dataValue)
   }
 }
 
