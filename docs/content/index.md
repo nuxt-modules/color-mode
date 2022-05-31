@@ -57,7 +57,7 @@ Add `@nuxtjs/color-mode` dependency to your project:
 Then, add `@nuxtjs/color-mode` to the `modules` section of your `nuxt.config.js`
 
 ```js{}[nuxt.config.js]
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/color-mode']
@@ -149,7 +149,7 @@ You can see a more advanced example in the [playground/ directory](https://githu
 You can configure the module by providing the `colorMode` property in your `nuxt.config.js`; here are the default options:
 
 ```js
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/color-mode'],
@@ -205,7 +205,7 @@ module.exports = {
 Then in your `nuxt.config.js`, set the `classSuffix` option to an empty string:
 
 ```js{}[nuxt.config.js]
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/color-mode'],

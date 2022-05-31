@@ -1,8 +1,7 @@
-import { defineNuxtPlugin, isVue2, isVue3 } from '#app'
 import { reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
-import { useRouter, useState } from '#imports'
+import { defineNuxtPlugin, isVue2, useRouter, useState } from '#imports'
 import { globalName, storageKey, dataValue } from '#color-mode-options'
 
 const helper = window[globalName] as unknown as {

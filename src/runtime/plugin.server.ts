@@ -1,8 +1,7 @@
-import { defineNuxtPlugin, isVue2, isVue3 } from '#app'
 import { reactive } from 'vue'
 
 import type { ColorModeInstance } from './types'
-import { useHead, useState, useRouter } from '#imports'
+import { defineNuxtPlugin, isVue2, isVue3, useHead, useState, useRouter } from '#imports'
 import { preference, hid, script, dataValue } from '#color-mode-options'
 
 const addScript = (head) => {
