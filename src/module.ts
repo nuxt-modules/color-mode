@@ -13,6 +13,7 @@ const DEFAULTS: ModuleOptions = {
   componentName: 'ColorScheme',
   classPrefix: '',
   classSuffix: '-mode',
+  dataValue: '',
   storageKey: 'nuxt-color-mode'
 }
 
@@ -112,35 +113,43 @@ export default defineNuxtModule({
 
 export interface ModuleOptions {
   /**
-   * Default: `system`
+   * The default value of $colorMode.preference
+   * @default `system`
    */
-  preference: string, // default value of $colorMode.preference
+  preference: string
   /**
-   * Default: `light`
+   * Fallback value if no system preference found
+   * @default `light`
    */
-  fallback: string, // fallback value if not system preference found
+  fallback: string
   /**
-   * Default: `nuxt-color-mode-script`
+   * @default `nuxt-color-mode-script`
    */
-  hid: string,
+  hid: string
   /**
-   * Default: `__NUXT_COLOR_MODE__`
+   * @default `__NUXT_COLOR_MODE__`
    */
-  globalName: string,
+  globalName: string
   /**
-   * Default: `ColorScheme`
+   * @default `ColorScheme`
    */
-  componentName: string,
+  componentName: string
   /**
-   * Default: ''
+   * @default ''
    */
-  classPrefix: string,
+  classPrefix: string
   /**
-   * Default: '-mode'
+   * @default '-mode'
    */
-  classSuffix: string,
+  classSuffix: string
   /**
-   * Default: 'nuxt-color-mode'
+   * Whether to add a data attribute to the html tag. If set, it defines the key of the data attribute.
+   * For example, setting this to `theme` will output `<html data-theme="dark">` if dark mode is enabled.
+   * @default ''
+   */
+  dataValue: string
+  /**
+   * @default 'nuxt-color-mode'
    */
   storageKey: string
   /**
