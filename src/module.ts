@@ -55,11 +55,11 @@ export default defineNuxtModule({
     addAutoImport({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
     // Nuxt 3 - SSR false
-    // TODO: use nitro hooks
     if (!nuxt.options.ssr) {
-      // nuxt.hook('nitro:document', (template) => {
-      //   template.contents = template.contents.replace('</body>', `</body><script>${options.script}</script>`)
-      // })
+      // @ts-ignore TODO: use nitro plugin
+      nuxt.hook('nitro:document', (template) => {
+        template.contents = template.contents.replace('</body>', `</body><script>${options.script}</script>`)
+      })
     }
 
     if (!isNuxt2()) {
