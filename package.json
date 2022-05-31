@@ -43,10 +43,10 @@
     "@nuxtjs/eslint-config-typescript": "^9.0.0",
     "@types/lodash.template": "^4.5.0",
     "@typescript-eslint/parser": "^5.12.0",
-    "babel-jest": "^27.0.2",
+    "babel-jest": "^28.1.0",
     "eslint": "^8.9.0",
     "husky": "latest",
-    "jest": "^27.0.4",
+    "jest": "^28.1.0",
     "nuxt": "npm:nuxt3@latest",
     "standard-version": "^9.3.2",
     "typescript": "^4.5.5"
