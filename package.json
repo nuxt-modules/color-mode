@@ -11,9 +11,12 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./dist/module.mjs"
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
   },
-  "main": "./dist/module.mjs",
+  "main": "./dist/module.cjs",
   "types": "./dist/types.d.ts",
   "files": [
     "dist"
