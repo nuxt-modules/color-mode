@@ -1,7 +1,7 @@
 import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
-import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addAutoImport, createResolver } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, addPluginTemplate, isNuxt2, addComponent, addAutoImport, createResolver } from '@nuxt/kit'
 
 import { name, version } from '../package.json'
 
@@ -56,9 +56,13 @@ export default defineNuxtModule({
 
     // Nuxt 3 - SSR false
     if (!nuxt.options.ssr) {
-      // @ts-ignore TODO: use nitro plugin
-      nuxt.hook('nitro:document', (template) => {
-        template.contents = template.contents.replace('</body>', `</body><script>${options.script}</script>`)
+      addPluginTemplate({
+        filename: 'color-mode-script.mjs',
+        getContents () {
+          return options.script + '\nexport default () => {}'
+        }
+      }, {
+        append: true
       })
     }
 
