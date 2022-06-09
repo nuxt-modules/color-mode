@@ -1,5 +1,4 @@
 import { defineNuxtConfig } from 'nuxt'
-import colors from 'tailwindcss/colors.js'
 
 export default defineNuxtConfig({
   extends: ['./node_modules/@docus/docs-theme'],
@@ -7,6 +6,12 @@ export default defineNuxtConfig({
     owner: 'nuxt-community',
     repo: 'color-mode-module',
     branch: 'main'
+  },
+  theme: {},
+  content: {
+    navigation: {
+      fields: ['exact']
+    }
   },
   modules: ['@nuxthq/admin', '@docus/github', 'vue-plausible'],
   plausible: {
