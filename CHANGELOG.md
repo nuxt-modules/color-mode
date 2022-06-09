@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.4](https://github.com/nuxt-community/color-mode-module/compare/v3.1.3...v3.1.4) (2022-06-09)
+
+
+### Bug Fixes
+
+* works with ssr: false ([#149](https://github.com/nuxt-community/color-mode-module/issues/149)) ([3dde9cb](https://github.com/nuxt-community/color-mode-module/commit/3dde9cb8d7c4c37db745c6c35bc7e7feb85b5716))
+
 ### [3.1.3](https://github.com/nuxt-community/color-mode-module/compare/v3.1.2...v3.1.3) (2022-05-31)
 
 
