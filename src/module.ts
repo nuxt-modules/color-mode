@@ -61,8 +61,6 @@ export default defineNuxtModule({
         getContents () {
           return options.script + '\nexport default () => {}'
         }
-      }, {
-        append: true
       })
     }
 
