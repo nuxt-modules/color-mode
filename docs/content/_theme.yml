@@ -18,7 +18,10 @@ colors:
 github:
   root: docs/content
   edit: true
-  releases: false
+  releases: true
+
+aside:
+  level: 1
 
 cover: false
 
