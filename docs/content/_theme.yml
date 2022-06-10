@@ -7,7 +7,7 @@ url: "https://color-mode.nuxtjs.org"
 description: "Dark and Light mode with auto detection made easy with Nuxt 🌗"
 
 socials:
-  twitter: "@nuxt_js"
+  twitter: "nuxt_js"
   github: "nuxt-community/color-mode-module"
 
 debug: false

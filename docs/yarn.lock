@@ -280,10 +280,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.0.tgz#65b12f12db55188422070e34687bf3af09870922"
   integrity sha512-rZ6vufeY/UjAgtyiJ4WvfF6XP6HizIyOfbZOg0RnecIwjrvH8Am3nN1BpKnnPZunYAkUcPPXDhwbxOtGop8cfQ==
 
-"@docus/base@npm:@docus/base-edge@3.0.0-921a586":
-  version "3.0.0-921a586"
-  resolved "https://registry.yarnpkg.com/@docus/base-edge/-/base-edge-3.0.0-921a586.tgz#01971b2eb61a1905bc12044f6c2cd8e4010eb9ff"
-  integrity sha512-NE79hpUMUP7Qz3kXUfj7Y1eWvBwsp0ACKo3lBGHyHgtS5A5lMxZIFWyhuqM3IRth4FaXItTfXyL2aLQV2qYPDw==
+"@docus/base@npm:@docus/base-edge@3.0.0-59b8fe5":
+  version "3.0.0-59b8fe5"
+  resolved "https://registry.yarnpkg.com/@docus/base-edge/-/base-edge-3.0.0-59b8fe5.tgz#4e7bd6072f56c05827fd671c93a608308717203f"
+  integrity sha512-LH/8iNCFA2FTzJJozVzw/MCjhXqwie1WJMHby+DMTgpXWr2MbEd3ZgYOTVmC8cxDHCgUpMpHUCd3PIjCxyBXuA==
   dependencies:
     "@nuxt/content" "npm:@nuxt/content-edge@latest"
     "@nuxthq/admin" "npm:@nuxthq/admin-edge@latest"
@@ -294,11 +294,11 @@
     pkg-types "^0.3.2"
 
 "@docus/docs-theme@npm:@docus/docs-theme-edge@latest":
-  version "3.0.0-921a586"
-  resolved "https://registry.yarnpkg.com/@docus/docs-theme-edge/-/docs-theme-edge-3.0.0-921a586.tgz#1b7c226c3c1b7f57d53c0294a975b9a927cd1de9"
-  integrity sha512-vAB3+MK4fy2iCW6pFZmdP87wG+D4GH1fGUJUvpR4CIGDD0DfMtK0NR8+jpkOyRJGYYW4z4ILK7iBCkSb0KOMxg==
+  version "3.0.0-59b8fe5"
+  resolved "https://registry.yarnpkg.com/@docus/docs-theme-edge/-/docs-theme-edge-3.0.0-59b8fe5.tgz#6d409e7328e17d83a59adf819f6d9271ee9e6b06"
+  integrity sha512-i+Zm5bn4f6fCRzgPqmVDT6DFr0laDIXdnPhcEl0uh3+PgV9q2/Qn4i8YAUMDEk4SjrBvQixbXRzhSCbOIbzOOA==
   dependencies:
-    "@docus/base" "npm:@docus/base-edge@3.0.0-921a586"
+    "@docus/base" "npm:@docus/base-edge@3.0.0-59b8fe5"
     "@iconify/vue" "^3.2.1"
     "@nuxtjs/color-mode" "^3.0.3"
     "@nuxtjs/tailwindcss" "^5.1.2"
