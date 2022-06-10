@@ -12,9 +12,6 @@ socials:
 
 debug: false
 
-colors:
-  primary: "#00dc82"
-
 github:
   root: docs/content
   edit: true
