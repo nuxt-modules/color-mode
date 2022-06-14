@@ -2,14 +2,15 @@
 
 // Global variable minimizers
 const w = window
-const de = document.documentElement
+const d = document
+const de = d.documentElement
 
 const knownColorSchemes = ['dark', 'light']
 
 const preference = window.localStorage.getItem('<%= options.storageKey %>') || '<%= options.preference %>'
-const themeColors = JSON.parse('<%= options.escapedThemeColors %>')
+const themeColors = JSON.parse('<%= options.themeColors %>')
 // Get previous meta element if the script is run the second time (e.g. in dev mode)
-let themeColorMetaElm = d.head.querySelector('meta[data-nuxtjs-color-mode]')
+let themeColorMetaElm = d.head.querySelector('meta[name=theme-color]')
 let value = preference === 'system' ? getColorScheme() : preference
 // Applied forced color mode
 const forcedColorMode = de.getAttribute('data-color-mode-forced')
@@ -43,7 +44,6 @@ function addColorScheme (value) {
   if (themeColor) {
     if (!themeColorMetaElm) {
       themeColorMetaElm = d.createElement('meta')
-      themeColorMetaElm.setAttribute('data-nuxtjs-color-mode', '')
       themeColorMetaElm.name = 'theme-color'
     }
     themeColorMetaElm.content = themeColor

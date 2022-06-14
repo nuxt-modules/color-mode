@@ -14,7 +14,8 @@ const DEFAULTS: ModuleOptions = {
   classPrefix: '',
   classSuffix: '-mode',
   dataValue: '',
-  storageKey: 'nuxt-color-mode'
+  storageKey: 'nuxt-color-mode',
+  themeColors: null
 }
 
 export default defineNuxtModule({
@@ -33,7 +34,12 @@ export default defineNuxtModule({
     // Read script from disk and add to options
     const scriptPath = await resolver.resolve('./script.min.js')
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
-    options.script = template(scriptT)({ options })
+    options.script = template(scriptT)({
+      options: {
+        ...options,
+        themeColors: JSON.stringify(options.themeColors)
+      }
+    })
 
     // Inject options via virtual template
     nuxt.options.alias['#color-mode-options'] = addTemplate({
