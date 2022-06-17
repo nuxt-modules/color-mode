@@ -20,7 +20,9 @@ github:
 aside:
   level: 1
 
-cover: false
+cover:
+  src: /cover.jpg
+  alt: A screenshot of the Nuxt Color Mode module.
 
 header:
   title: false
