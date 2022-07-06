@@ -1,0 +1,42 @@
+title: Nuxt Color Mode
+
+layout: docs
+
+url: "https://color-mode.nuxtjs.org"
+
+description: "Dark and Light mode with auto detection made easy with Nuxt 🌗"
+
+socials:
+  twitter: "nuxt_js"
+  github: "nuxt-community/color-mode-module"
+
+debug: false
+
+github:
+  root: docs/content
+  edit: true
+  releases: true
+
+aside:
+  level: 1
+
+cover:
+  src: /cover.jpg
+  alt: A screenshot of the Nuxt Color Mode module.
+
+header:
+  title: false
+  logo: true
+
+footer:
+  credits:
+    icon: IconDocus
+    text: Powered by Docus
+    href: https://docus.com
+  icons:
+  - label: NuxtJS
+    href: https://nuxtjs.org
+    component: IconNuxt
+  - label: Vue Telescope
+    href: https://vuetelescope.com
+    component: IconVueTelescope
