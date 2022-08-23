@@ -914,6 +914,30 @@
     unimport "^0.4.5"
     untyped "^0.4.4"
 
+"@nuxt/kit@3.0.0-rc.8":
+  version "3.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.0.0-rc.8.tgz#e65e739e986abf5bfe99fa44a3bf44bacc66a35a"
+  integrity sha512-FkbO7DPkJxuLqeiWEMUI8OWXaQ4qzmreIjslIPrc9buYdB9nbJqVVzQRicxcKzF09R7VwpJTiG6onIZq6iGuDQ==
+  dependencies:
+    "@nuxt/schema" "3.0.0-rc.8"
+    c12 "^0.2.9"
+    consola "^2.15.3"
+    defu "^6.0.0"
+    globby "^13.1.2"
+    hash-sum "^2.0.0"
+    ignore "^5.2.0"
+    jiti "^1.14.0"
+    knitwork "^0.1.2"
+    lodash.template "^4.5.0"
+    mlly "^0.5.12"
+    pathe "^0.3.4"
+    pkg-types "^0.3.3"
+    scule "^0.3.2"
+    semver "^7.3.7"
+    unctx "^2.0.1"
+    unimport "^0.6.7"
+    untyped "^0.4.5"
+
 "@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-rc.8-27686415.9f1ecd1":
   version "3.0.0-rc.8-27686415.9f1ecd1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.8-27686415.9f1ecd1.tgz#e603328d6656394473ac6b3761ead998c7c78d65"
@@ -949,7 +973,7 @@
     pathe "^0.2.0"
     unbuild "^0.6.7"
 
-"@nuxt/schema@^3.0.0-rc.6", "@nuxt/schema@^3.0.0-rc.8":
+"@nuxt/schema@3.0.0-rc.8", "@nuxt/schema@^3.0.0-rc.6", "@nuxt/schema@^3.0.0-rc.8":
   version "3.0.0-rc.8"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.0.0-rc.8.tgz#d8fab177f4b58fcdb83bd530a887d3b4acea90b7"
   integrity sha512-ODl9cmjH8fupvXjzITIvYT4OzapNvLrvWq9QUUgLhgv3Uxl2iX2J03oLj2aCQgfhte4mJhgHsBrtXvDLF/1GwA==

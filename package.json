@@ -31,6 +31,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
+    "@nuxt/kit": "3.0.0-rc.8",
     "lodash.template": "^4.5.0",
     "pathe": "^0.3.5"
   },
