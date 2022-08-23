@@ -43,5 +43,8 @@ jobs:
       - name: Test
         run: yarn test
 
+      - name: Build project
+        run: yarn prepack
+
       - name: Coverage
         uses: codecov/codecov-action@v3
