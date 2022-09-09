@@ -1,7 +1,7 @@
 import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
-import { addPlugin, addTemplate, defineNuxtModule, addPluginTemplate, isNuxt2, addComponent, addAutoImport, createResolver } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, addPluginTemplate, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
 
 import { name, version } from '../package.json'
 
@@ -52,7 +52,7 @@ export default defineNuxtModule({
     }
 
     addComponent({ name: options.componentName, filePath: resolve(runtimeDir, 'component.' + (isNuxt2() ? 'vue2' : 'vue3') + '.vue') })
-    addAutoImport({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
+    addImports({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
     // Nuxt 3 - SSR false
     if (!nuxt.options.ssr) {
