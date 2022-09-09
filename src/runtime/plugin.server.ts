@@ -51,7 +51,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   useRouter().afterEach((to) => {
     const forcedColorMode = isVue2
-      ? (to.matched[0]?.components.default as any)?.options.colorMode
+      ? (to.matched[0]?.components.default as any)?.options?.colorMode
       : to.meta.colorMode
 
     if (forcedColorMode && forcedColorMode !== 'system') {
