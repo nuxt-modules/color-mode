@@ -56,11 +56,11 @@ export default defineNuxtModule({
 
     // Nuxt 3 - SSR false
     if (!nuxt.options.ssr) {
-      addPluginTemplate({
-        filename: 'color-mode-script.mjs',
-        getContents () {
-          return options.script + '\nexport default () => {}'
-        }
+      nuxt.hook('nitro:config', (config) => {
+        config.virtual = config.virtual || {}
+        config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
+        config.plugins = config.plugins || []
+        config.plugins.push(resolve(runtimeDir, 'nitro-plugin'))
       })
     }
 
