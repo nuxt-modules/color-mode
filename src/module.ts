@@ -56,6 +56,9 @@ export default defineNuxtModule({
 
     // Nuxt 3 and Bridge - inject script
     nuxt.hook('nitro:config', (config) => {
+      config.externals = config.externals || {}
+      config.externals.inline = config.externals.inline || []
+      config.externals.inline.push(runtimeDir)
       config.virtual = config.virtual || {}
       config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
       config.plugins = config.plugins || []
