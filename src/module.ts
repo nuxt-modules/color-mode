@@ -1,7 +1,7 @@
 import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
-import { addPlugin, addTemplate, defineNuxtModule, addPluginTemplate, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
 
 import { name, version } from '../package.json'
 
@@ -54,15 +54,16 @@ export default defineNuxtModule({
     addComponent({ name: options.componentName, filePath: resolve(runtimeDir, 'component.' + (isNuxt2() ? 'vue2' : 'vue3') + '.vue') })
     addImports({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
-    // Nuxt 3 - SSR false
-    if (!nuxt.options.ssr) {
-      addPluginTemplate({
-        filename: 'color-mode-script.mjs',
-        getContents () {
-          return options.script + '\nexport default () => {}'
-        }
-      })
-    }
+    // Nuxt 3 and Bridge - inject script
+    nuxt.hook('nitro:config', (config) => {
+      config.externals = config.externals || {}
+      config.externals.inline = config.externals.inline || []
+      config.externals.inline.push(runtimeDir)
+      config.virtual = config.virtual || {}
+      config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
+      config.plugins = config.plugins || []
+      config.plugins.push(resolve(runtimeDir, 'nitro-plugin'))
+    })
 
     if (!isNuxt2()) {
       return
