@@ -43,10 +43,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   if (isVue3) {
-    useHead({
-      htmlAttrs,
-      script: [{ children: script }]
-    })
+    useHead({ htmlAttrs })
   }
 
   useRouter().afterEach((to) => {
