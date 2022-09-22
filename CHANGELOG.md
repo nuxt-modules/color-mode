@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.6](https://github.com/nuxt-community/color-mode-module/compare/v3.1.5...v3.1.6) (2022-09-22)
+
+
+### Bug Fixes
+
+* inject color-mode script with nitro plugin (handles mixed spa/ssr) ([#164](https://github.com/nuxt-community/color-mode-module/issues/164)) ([620ca17](https://github.com/nuxt-community/color-mode-module/commit/620ca1799f8788bcdd275829ffbb796d346138d7))
+
 ### [3.1.5](https://github.com/nuxt-community/color-mode-module/compare/v3.1.4...v3.1.5) (2022-09-09)
 
 
