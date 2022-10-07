@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.8](https://github.com/nuxt-community/color-mode-module/compare/v3.1.7...v3.1.8) (2022-10-07)
+
+
+### Bug Fixes
+
+* remove localStorage watch (blink) ([b7b32ed](https://github.com/nuxt-community/color-mode-module/commit/b7b32edf383fc259b98aa21c3895d4b388ce7ee4))
+
 ### [3.1.7](https://github.com/nuxt-community/color-mode-module/compare/v3.1.6...v3.1.7) (2022-10-04)
 
 ### [3.1.6](https://github.com/nuxt-community/color-mode-module/compare/v3.1.5...v3.1.6) (2022-09-22)
