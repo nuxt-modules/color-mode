@@ -71,14 +71,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  function watchStorageChange () {
-    window.addEventListener('storage', (e) => {
-      if (e.key === storageKey && e.newValue && colorMode.preference !== e.newValue) {
-        colorMode.preference = e.newValue
-      }
-    })
-  }
-
   watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
       return
@@ -104,9 +96,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   nuxtApp.hook('app:mounted', () => {
-    if (window.localStorage) {
-      watchStorageChange()
-    }
     if (colorMode.unknown) {
       colorMode.preference = helper.preference
       colorMode.value = helper.value

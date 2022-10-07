@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from 'nuxt'
-import colorModeModule from '..'
+import colorModeModule from '../src/module'
 
 export default defineNuxtConfig({
   components: { global: true, dirs: ['~/components'] },

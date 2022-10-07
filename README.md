@@ -26,7 +26,6 @@
 - Force a page to a specific color mode (perfect for incremental development)
 - Works with client-side and universal rendering
 - Auto detect system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
-- Sync dark mode across tabs and windows 🔄
 - Supports IE9+ 👴
 
 [📖 &nbsp;Read more](https://color-mode.nuxtjs.org)

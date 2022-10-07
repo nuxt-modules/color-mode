@@ -8,6 +8,7 @@
     <p class="note">
       Demo based on <a href="https://color-mode.nuxtjs.org">@nuxtjs/color-mode</a> module.
     </p>
+    <iframe src="http://localhost:3000" />
   </div>
 </template>
 
