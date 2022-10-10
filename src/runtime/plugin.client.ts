@@ -39,16 +39,17 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   const forcedColorModeAfterEach = (to) => {
-    const forcedColorMode = isVue2 ? to.matched[0]?.components.default?.options.colorMode : to.meta.colorMode;
-    if (forcedColorMode && forcedColorMode !== "system") {
-      colorMode.value = forcedColorMode;
-      colorMode.forced = true;
+    const forcedColorMode = isVue2 ? to.matched[0]?.components.default?.options.colorMode : to.meta.colorMode
+    if (forcedColorMode && forcedColorMode !== 'system') {
+      colorMode.value = forcedColorMode
+      colorMode.forced = true
     } else {
-      if (forcedColorMode === "system") {
-        console.warn("You cannot force the colorMode to system at the page level.");
+      if (forcedColorMode === 'system') {
+        // eslint-disable-next-line no-console
+        console.warn('You cannot force the colorMode to system at the page level.')
       }
-      colorMode.forced = false;
-      colorMode.value = colorMode.preference === "system" ? helper.getColorScheme() : colorMode.preference;
+      colorMode.forced = false
+      colorMode.value = colorMode.preference === 'system' ? helper.getColorScheme() : colorMode.preference
     }
   }
 
