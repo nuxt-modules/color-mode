@@ -33,7 +33,7 @@
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.9",
     "lodash.template": "^4.5.0",
-    "pathe": "^0.3.5"
+    "pathe": "^1.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
