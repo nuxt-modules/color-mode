@@ -15,7 +15,7 @@ declare module 'vue/types/vue' {
 
 // @ts-ignore
 declare module 'vue/types/options' {
-  interface ComponentOptions<V extends any> {
+  interface ComponentOptions<V> {
     /**
      * Forces a color mode for current page
      * @see https://color-mode.nuxtjs.org/#force-a-color-mode
