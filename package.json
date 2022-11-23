@@ -40,7 +40,7 @@
     "@commitlint/config-conventional": "^17.0.3",
     "@nuxt/module-builder": "^0.1.7",
     "@nuxt/schema": "^3.0.0-rc.9",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@types/lodash.template": "^4.5.1",
     "@typescript-eslint/parser": "^5.34.0",
     "babel-jest": "^29.3.1",
