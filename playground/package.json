@@ -1,0 +1,8 @@
+{
+  "name": "color-mode-playground",
+  "private": true,
+  "dependencies": {
+    "@nuxtjs/color-mode": "latest",
+    "nuxt": "latest"
+  }
+}
