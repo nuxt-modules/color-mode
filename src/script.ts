@@ -16,6 +16,7 @@ if (forcedColorMode) {
 
 addColorScheme(value)
 
+// @ts-ignore
 w['<%= options.globalName %>'] = {
   preference,
   value,
@@ -24,6 +25,7 @@ w['<%= options.globalName %>'] = {
   removeColorScheme
 }
 
+// @ts-ignore
 function addColorScheme (value) {
   const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
   const dataValue = '<%= options.dataValue %>'
@@ -37,6 +39,7 @@ function addColorScheme (value) {
   }
 }
 
+// @ts-ignore
 function removeColorScheme (value) {
   const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
   const dataValue = '<%= options.dataValue %>'
@@ -50,11 +53,13 @@ function removeColorScheme (value) {
   }
 }
 
+// @ts-ignore
 function prefersColorScheme (suffix) {
   return w.matchMedia('(prefers-color-scheme' + suffix + ')')
 }
 
 function getColorScheme () {
+  // @ts-ignore
   if (w.matchMedia && prefersColorScheme('').media !== 'not all') {
     for (const colorScheme of knownColorSchemes) {
       if (prefersColorScheme(':' + colorScheme).matches) {
