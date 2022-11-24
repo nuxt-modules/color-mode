@@ -70,6 +70,7 @@ export default defineNuxtModule({
     }
 
     // Nuxt 2 - SSR false
+    // @ts-expect-error TODO: add nuxt2 types when merged to bridge
     nuxt.hook('vue-renderer:spa:prepareContext', ({ head }) => {
       const script = {
         hid: options.hid,
@@ -87,7 +88,9 @@ export default defineNuxtModule({
     const createHash = await import('crypto').then(r => r.createHash)
 
     // Nuxt 2 - SSR true
+    // @ts-expect-error TODO: add nuxt2 types when merged to bridge
     nuxt.hook('vue-renderer:ssr:csp', (cspScriptSrcHashes) => {
+      // @ts-expect-error TODO: add nuxt2 types when merged to bridge
       const { csp } = nuxt.options.render
       const hash = createHash((csp as any).hashAlgorithm)
       hash.update(options.script!)
@@ -100,7 +103,7 @@ export default defineNuxtModule({
     if (nuxt.options.dev) {
       const { dst } = addTemplate({
         src: scriptPath,
-        fileName: join('color-mode', 'script.min.js'),
+        filename: join('color-mode', 'script.min.js'),
         options
       })
       nuxt.hook('webpack:config', (configs) => {
