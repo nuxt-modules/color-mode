@@ -1,3 +1,2 @@
 typescript.includeWorkspace=true
-imports.autoImport=false
 sourcemap=false
