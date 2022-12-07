@@ -4,7 +4,6 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![License][license-src]][license-href]
 
 > 🌑 Dark and 🌕 Light mode with auto detection made easy with Nuxt
@@ -51,17 +50,14 @@ Or locally:
 Copyright (c) Nuxt Team
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/color-mode/latest.svg
+[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/color-mode/latest.svg?style=flat&colorA=002438&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@nuxtjs/color-mode
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/color-mode.svg
+[npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/color-mode.svg?style=flat&colorA=002438&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@nuxtjs/color-mode
 
-[github-actions-ci-src]: https://github.com/nuxt-community/color-mode-module/workflows/ci/badge.svg
-[github-actions-ci-href]: https://github.com/nuxt-community/color-mode-module/actions?query=workflow%3Aci
-
-[codecov-src]: https://img.shields.io/codecov/c/github/nuxt-community/color-mode-module.svg
+[codecov-src]: https://img.shields.io/codecov/c/github/nuxt-community/color-mode-module.svg?style=flat&colorA=002438&colorB=28CF8D
 [codecov-href]: https://codecov.io/gh/nuxt-community/color-mode-module
 
-[license-src]: https://img.shields.io/npm/l/@nuxtjs/color-mode.svg
+[license-src]: https://img.shields.io/npm/l/@nuxtjs/color-mode.svg?style=flat&colorA=002438&colorB=28CF8D
 [license-href]: https://npmjs.com/package/@nuxtjs/color-mode
