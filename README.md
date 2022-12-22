@@ -5,6 +5,7 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
+<a href="https://volta.net/nuxt-modules/color-mode?utm_source=nuxt_color_mode_readme"><img src="https://user-images.githubusercontent.com/904724/209143798-32345f6c-3cf8-4e06-9659-f4ace4a6acde.svg" alt="Volta board"></a>
 
 > 🌑 Dark and 🌕 Light mode with auto detection made easy with Nuxt
 
@@ -50,14 +51,14 @@ Or locally:
 Copyright (c) Nuxt Team
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/color-mode/latest.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/color-mode/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@nuxtjs/color-mode
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/color-mode.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/color-mode.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@nuxtjs/color-mode
 
-[codecov-src]: https://img.shields.io/codecov/c/github/nuxt-community/color-mode-module.svg?style=flat&colorA=002438&colorB=28CF8D
+[codecov-src]: https://img.shields.io/codecov/c/github/nuxt-community/color-mode-module.svg?style=flat&colorA=18181B&colorB=28CF8D
 [codecov-href]: https://codecov.io/gh/nuxt-community/color-mode-module
 
-[license-src]: https://img.shields.io/npm/l/@nuxtjs/color-mode.svg?style=flat&colorA=002438&colorB=28CF8D
+[license-src]: https://img.shields.io/npm/l/@nuxtjs/color-mode.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://npmjs.com/package/@nuxtjs/color-mode
