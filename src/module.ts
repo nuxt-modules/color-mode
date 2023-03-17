@@ -8,6 +8,7 @@ import { name, version } from '../package.json'
 const DEFAULTS: ModuleOptions = {
   preference: 'system',
   fallback: 'light',
+  syncCookie: false,
   hid: 'nuxt-color-mode-script',
   globalName: '__NUXT_COLOR_MODE__',
   componentName: 'ColorScheme',
@@ -158,6 +159,10 @@ export interface ModuleOptions {
    * @default 'nuxt-color-mode'
    */
   storageKey: string
+  /**
+   * @default false
+   */
+  syncCookie: boolean
   /**
    * The script that will be injected into the head of the page
    */
