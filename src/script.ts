@@ -6,7 +6,7 @@ const de = document.documentElement
 
 const knownColorSchemes = ['dark', 'light']
 
-const preference = window.localStorage.getItem('<%= options.storageKey %>') || '<%= options.preference %>'
+const preference = window.localStorage.getItem('<%= options.storageKey %>') || getCookie('<%= options.storageKey %>') || '<%= options.preference %>'
 let value = preference === 'system' ? getColorScheme() : preference
 // Applied forced color mode
 const forcedColorMode = de.getAttribute('data-color-mode-forced')
@@ -69,4 +69,11 @@ function getColorScheme () {
   }
 
   return '<%= options.fallback %>'
+}
+
+// @ts-ignore
+function getCookie (name) {
+  const value = '; ' + window.document.cookie
+  const parts = value.split('; ' + name + '=')
+  if (parts.length === 2) { return parts.pop().split(';').shift() }
 }

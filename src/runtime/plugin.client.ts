@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue } from '#color-mode-options'
+import { globalName, storageKey, dataValue, syncCookie } from '#color-mode-options'
 
 const helper = window[globalName] as unknown as {
   preference: string
@@ -80,6 +80,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       watchMedia()
     } else {
       colorMode.value = preference
+    }
+
+    // Sync Cookie
+    if (syncCookie && !!preference) {
+      window.document.cookie = storageKey + '=' + preference
     }
 
     // Local storage to sync with other tabs
