@@ -7,6 +7,7 @@ import { globalName, storageKey, dataValue } from '#color-mode-options'
 const helper = window[globalName] as unknown as {
   preference: string
   value: string
+  disableTransition: string
   getColorScheme: () => string
   addColorScheme: (className: string) => void
   removeColorScheme: (className: string) => void
@@ -87,8 +88,20 @@ export default defineNuxtPlugin((nuxtApp) => {
   }, { immediate: true })
 
   watch(() => colorMode.value, (newValue, oldValue) => {
+    let style: HTMLStyleElement | undefined
+    if (helper.disableTransition === 'true') {
+      style = window!.document.createElement('style')
+      style.appendChild(document.createTextNode('*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'))
+      window!.document.head.appendChild(style)
+    }
     helper.removeColorScheme(oldValue)
     helper.addColorScheme(newValue)
+    if (helper.disableTransition === 'true') {
+      // Calling getComputedStyle forces the browser to redraw
+      // @ts-expect-error unused variable
+      const _ = window!.getComputedStyle(style!).opacity
+      document.head.removeChild(style!)
+    }
   })
 
   if (colorMode.preference === 'system') {

@@ -14,7 +14,8 @@ const DEFAULTS: ModuleOptions = {
   classPrefix: '',
   classSuffix: '-mode',
   dataValue: '',
-  storageKey: 'nuxt-color-mode'
+  storageKey: 'nuxt-color-mode',
+  disableTransition: true
 }
 
 export default defineNuxtModule({
@@ -162,4 +163,11 @@ export interface ModuleOptions {
    * The script that will be injected into the head of the page
    */
   script?: string
+  /**
+   * Disable transition on switch
+   *
+   * @see https://paco.me/writing/disable-theme-transitions
+   * @default true
+   */
+  disableTransition?: boolean
 }
