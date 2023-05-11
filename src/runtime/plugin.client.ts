@@ -7,7 +7,7 @@ import { globalName, storageKey, dataValue } from '#color-mode-options'
 const helper = window[globalName] as unknown as {
   preference: string
   value: string
-  disableTransition: string
+  disableTransition: boolean
   getColorScheme: () => string
   addColorScheme: (className: string) => void
   removeColorScheme: (className: string) => void
@@ -89,14 +89,14 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   watch(() => colorMode.value, (newValue, oldValue) => {
     let style: HTMLStyleElement | undefined
-    if (helper.disableTransition === 'true') {
+    if (helper.disableTransition) {
       style = window!.document.createElement('style')
       style.appendChild(document.createTextNode('*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'))
       window!.document.head.appendChild(style)
     }
     helper.removeColorScheme(oldValue)
     helper.addColorScheme(newValue)
-    if (helper.disableTransition === 'true') {
+    if (helper.disableTransition) {
       // Calling getComputedStyle forces the browser to redraw
       // @ts-expect-error unused variable
       const _ = window!.getComputedStyle(style!).opacity

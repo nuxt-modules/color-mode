@@ -20,7 +20,8 @@ addColorScheme(value)
 w['<%= options.globalName %>'] = {
   preference,
   value,
-  disableTransition: '<%= options.disableTransition %>',
+  // @ts-ignore
+  disableTransition: '<%= options.disableTransition %>' === 'true',
   getColorScheme,
   addColorScheme,
   removeColorScheme
