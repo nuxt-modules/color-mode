@@ -98,7 +98,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     helper.addColorScheme(newValue)
     if (helper.disableTransition) {
       // Calling getComputedStyle forces the browser to redraw
-      // @ts-expect-error unused variable
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const _ = window!.getComputedStyle(style!).opacity
       document.head.removeChild(style!)
     }
