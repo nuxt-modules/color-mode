@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/nuxt-community/color-mode-module/compare/v3.2.0...v3.3.0) (2023-06-21)
+
+
+### Features
+
+* **docs:** upgrade to latest Docus ([#178](https://github.com/nuxt-community/color-mode-module/issues/178)) ([303d5f7](https://github.com/nuxt-community/color-mode-module/commit/303d5f7762b0f1afa0edf81bd36bcef32de66b27))
+
+
+### Bug Fixes
+
+* wrap injected script with iife ([#196](https://github.com/nuxt-community/color-mode-module/issues/196)) ([b03873b](https://github.com/nuxt-community/color-mode-module/commit/b03873b78cd22d1d6a7e9a279279fbbbfd77a25f))
+
 ## [3.2.0](https://github.com/nuxt-community/color-mode-module/compare/v3.1.8...v3.2.0) (2022-11-24)
 
 
