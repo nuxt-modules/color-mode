@@ -24,6 +24,7 @@
   ],
   "scripts": {
     "prepack": "nuxt-module-build && esbuild --minify dist/script.mjs --outfile=dist/script.min.js",
+    "build": "pnpm run prepack",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
@@ -46,7 +47,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@types/lodash.template": "^4.5.1",
     "@typescript-eslint/parser": "^5.60.0",
-    "@vitest/coverage-c8": "^0.32.2",
+    "@vitest/coverage-v8": "^0.32.2",
     "eslint": "^8.43.0",
     "husky": "8.0.3",
     "nuxt": "3.5.3",
