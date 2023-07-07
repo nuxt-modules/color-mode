@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useHead, useState, useRouter } from '#imports'
-import { preference, hid, script, dataValue } from '#color-mode-options'
+import { preference, hid, script, dataValue, remember } from '#color-mode-options'
 
 const addScript = (head) => {
   head.script = head.script || []
@@ -20,7 +20,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     preference,
     value: preference,
     unknown: true,
-    forced: false
+    forced: false,
+    remember
   })).value
 
   const htmlAttrs: Record<string, string> = {}

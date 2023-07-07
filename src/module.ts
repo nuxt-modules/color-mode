@@ -14,7 +14,8 @@ const DEFAULTS: ModuleOptions = {
   classPrefix: '',
   classSuffix: '-mode',
   dataValue: '',
-  storageKey: 'nuxt-color-mode'
+  storageKey: 'nuxt-color-mode',
+  remember: true
 }
 
 export default defineNuxtModule({
@@ -158,6 +159,10 @@ export interface ModuleOptions {
    * @default 'nuxt-color-mode'
    */
   storageKey: string
+  /**
+   * @default 'true'
+   */
+  remember: boolean
   /**
    * The script that will be injected into the head of the page
    */

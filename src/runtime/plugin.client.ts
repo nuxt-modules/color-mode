@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue } from '#color-mode-options'
+import { globalName, storageKey, dataValue, remember } from '#color-mode-options'
 
 const helper = window[globalName] as unknown as {
   preference: string
@@ -18,7 +18,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     preference: helper.preference,
     value: helper.value,
     unknown: false,
-    forced: false
+    forced: false,
+    remember
   })).value
 
   if (dataValue) {
@@ -82,8 +83,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       colorMode.value = preference
     }
 
-    // Local storage to sync with other tabs
-    window.localStorage?.setItem(storageKey, preference)
+    if (colorMode.remember) {
+      // Local storage to sync with other tabs
+      window.localStorage?.setItem(storageKey, preference)
+    }
   }, { immediate: true })
 
   watch(() => colorMode.value, (newValue, oldValue) => {
@@ -100,6 +103,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       colorMode.preference = helper.preference
       colorMode.value = helper.value
       colorMode.unknown = false
+      colorMode.remember = false
     }
   })
 
