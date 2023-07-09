@@ -16,12 +16,14 @@ const addScript = (head) => {
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
-    preference,
-    value: preference,
-    unknown: true,
-    forced: false
-  })).value
+  const colorMode = nuxtApp.ssrContext && 'islandContext' in nuxtApp.ssrContext
+    ? reactive({})
+    : useState<ColorModeInstance>('color-mode', () => reactive({
+      preference,
+      value: preference,
+      unknown: true,
+      forced: false
+    })).value
 
   const htmlAttrs: Record<string, string> = {}
 
