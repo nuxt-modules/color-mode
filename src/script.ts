@@ -74,6 +74,8 @@
 
 // @ts-ignore
 function getStorageValue(storageType, storageKey) {
+  if (typeof window === 'undefined') return null;
+
   switch (storageType) {
     case 'localStorage':
       return window.localStorage.getItem(storageKey)
