@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue, syncCookie } from '#color-mode-options'
+import { globalName, storageKey, dataValue, storage } from '#color-mode-options'
 
 const helper = window[globalName] as unknown as {
   preference: string
@@ -71,6 +71,20 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
+  function setPreferenceToStorage (storageType: typeof storage, preference: string) {
+    switch (storageType) {
+      case 'cookie':
+        window.document.cookie = storageKey + '=' + preference
+        break
+      case 'sessionStorage':
+        window.sessionStorage?.setItem(storageKey, preference)
+        break
+      case 'localStorage':
+      default:
+        window.localStorage?.setItem(storageKey, preference)
+    }
+  }
+
   watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
       return
@@ -82,13 +96,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       colorMode.value = preference
     }
 
-    // Sync Cookie
-    if (syncCookie && !!preference) {
-      window.document.cookie = storageKey + '=' + preference
-    }
-
+    setPreferenceToStorage(storage, preference)
     // Local storage to sync with other tabs
-    window.localStorage?.setItem(storageKey, preference)
+    // window.localStorage?.setItem(storageKey, preference)
   }, { immediate: true })
 
   watch(() => colorMode.value, (newValue, oldValue) => {
