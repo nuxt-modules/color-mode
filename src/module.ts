@@ -15,7 +15,7 @@ const DEFAULTS: ModuleOptions = {
   classSuffix: '-mode',
   dataValue: '',
   storageKey: 'nuxt-color-mode',
-  disableTransition: true
+  disableTransition: false
 }
 
 export default defineNuxtModule({
@@ -167,7 +167,7 @@ export interface ModuleOptions {
    * Disable transition on switch
    *
    * @see https://paco.me/writing/disable-theme-transitions
-   * @default true
+   * @default false
    */
   disableTransition?: boolean
 }
