@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Add dark / light detection that runs before loading Nuxt
 (() => {
   // Global variable minimizers
@@ -26,7 +27,6 @@
 
   addColorScheme(value)
 
-  // @ts-ignore
   w['<%= options.globalName %>'] = {
     preference,
     value,
@@ -35,7 +35,6 @@
     removeColorScheme
   }
 
-  // @ts-ignore
   function addColorScheme (value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -55,10 +54,8 @@
     if (currentMetaThemeColor) {
       if (!metaElementThemeColor) {
         metaElementThemeColor = d.createElement('meta')
-        // @ts-ignore
         metaElementThemeColor.name = 'theme-color'
       }
-      // @ts-ignore
       metaElementThemeColor.content = currentMetaThemeColor
       if (metaElementThemeColor.parentNode !== d.head) {
         d.head.appendChild(metaElementThemeColor)
@@ -68,7 +65,6 @@
     }
   }
 
-  // @ts-ignore
   function removeColorScheme (value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -82,13 +78,11 @@
     }
   }
 
-  // @ts-ignore
   function prefersColorScheme (suffix) {
     return w.matchMedia('(prefers-color-scheme' + suffix + ')')
   }
 
   function getColorScheme () {
-    // @ts-ignore
     if (w.matchMedia && prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
         if (prefersColorScheme(':' + colorScheme).matches) {
