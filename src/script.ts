@@ -8,7 +8,13 @@
   const knownColorSchemes = ['dark', 'light']
 
   const preference = (window && window.localStorage && window.localStorage.getItem && window.localStorage.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
-  const metaThemeColors = JSON.parse('<%= options.themeColors %>')
+
+  /* Backticks are needed to proper escape quotes in options.themeColors.
+     Using ES template literals instead of "interpolate" delimiter (lodash)
+     is needed to preserve the backticks in the minify process
+     */
+  const metaThemeColors = JSON.parse(`${options.themeColors}`)
+
   // Get previous meta element if the script is run the second time (e.g. in dev mode)
   let metaElementThemeColor = d.head.querySelector('meta[name=theme-color]')
   let value = preference === 'system' ? getColorScheme() : preference
