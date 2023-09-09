@@ -1,6 +1,6 @@
 [![@nuxtjs/color-mode](https://color-mode.nuxtjs.org/cover.jpg)](https://color-mode.nuxtjs.org)
 
-# @nuxtjs/color-mode
+# Nuxt Color Mode
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -8,7 +8,7 @@
 [![Nuxt][nuxt-src]][nuxt-href]
 <a href="https://volta.net/nuxt-modules/color-mode?utm_source=nuxt_color_mode_readme"><img src="https://user-images.githubusercontent.com/904724/209143798-32345f6c-3cf8-4e06-9659-f4ace4a6acde.svg" alt="Volta board"></a>
 
-🌑 Dark and 🌕 Light mode with auto detection made easy with Nuxt
+🌑 Dark and 🌕 Light mode with auto detection made easy with Nuxt.
 
 [![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://color-mode.nuxtjs.app/)
 
