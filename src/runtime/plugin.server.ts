@@ -16,14 +16,14 @@ const addScript = (head) => {
   head[serializeProp][hid] = ['innerHTML']
 }
 
-const themeHeader = 'Sec-CH-Prefers-Color-Scheme';
-const getSystemThemeFromReq = (req: IncomingMessage): string | null => {
+const schemeHeader = 'Sec-CH-Prefers-Color-Scheme';
+const getSystemSchemeFromReq = (req: IncomingMessage): string | null => {
   return req.headers[
-    themeHeader.toLowerCase()
+    schemeHeader.toLowerCase()
   ] as string || null;
 }
-const setThemeHeaderForRes = (res: ServerResponse): void => {
-  res.setHeader('Accept-CH', themeHeader);
+const setSchemeHeaderForRes = (res: ServerResponse): void => {
+  res.setHeader('Accept-CH', schemeHeader);
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -32,26 +32,27 @@ export default defineNuxtPlugin((nuxtApp) => {
   if (nuxtApp.ssrContext && 'islandContext' in nuxtApp.ssrContext) {
     colorMode = reactive({} as ColorModeInstance);
   } else {
-    let systemTheme: string | null = null;
+    let systemScheme: string | null = null;
 
     if (isVue2) {
       const { req, res } = nuxtApp.nuxt2Context;
 
-      setThemeHeaderForRes(res);
+      setSchemeHeaderForRes(res);
 
-      systemTheme = getSystemThemeFromReq(req) || systemTheme;
+      systemScheme = getSystemSchemeFromReq(req) || systemScheme;
     } else {
       const { req, res } = useRequestEvent()?.node || {};
 
-      setThemeHeaderForRes(res);
+      setSchemeHeaderForRes(res);
 
-      systemTheme = getSystemThemeFromReq(req) || systemTheme;
+      systemScheme = getSystemSchemeFromReq(req) || systemScheme;
     }
 
     colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
       preference,
-      value: systemTheme || preference,
-      unknown: !systemTheme,
+      systemScheme,
+      value: systemScheme || preference,
+      unknown: !systemScheme,
       forced: false
     })).value
   }
