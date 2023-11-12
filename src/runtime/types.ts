@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export interface ColorModeInstance {
   preference: string
+  systemScheme: string | null
   value: string
   unknown: boolean
   forced: boolean

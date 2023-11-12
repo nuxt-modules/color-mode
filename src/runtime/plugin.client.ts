@@ -6,6 +6,8 @@ import { globalName, storageKey, dataValue } from '#color-mode-options'
 
 const helper = window[globalName] as unknown as {
   preference: string
+  systemScheme: string | null
+  getSystemScheme: () => string | null
   value: string
   getColorScheme: () => string
   addColorScheme: (className: string) => void
@@ -16,6 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
     // For SPA mode or fallback
     preference: helper.preference,
+    systemScheme: helper.systemScheme,
     value: helper.value,
     unknown: false,
     forced: false
@@ -65,6 +68,8 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
     darkWatcher.addEventListener('change', () => {
+      colorMode.systemScheme = helper.getSystemScheme()
+
       if (!colorMode.forced && colorMode.preference === 'system') {
         colorMode.value = helper.getColorScheme()
       }

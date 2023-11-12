@@ -7,6 +7,7 @@
   const knownColorSchemes = ['dark', 'light']
 
   const preference = (window && window.localStorage && window.localStorage.getItem && window.localStorage.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
+  const systemScheme = getSystemScheme()
   let value = preference === 'system' ? getColorScheme() : preference
   // Applied forced color mode
   const forcedColorMode = de.getAttribute('data-color-mode-forced')
@@ -19,7 +20,9 @@
   // @ts-ignore
   w['<%= options.globalName %>'] = {
     preference,
+    systemScheme,
     value,
+    getSystemScheme,
     getColorScheme,
     addColorScheme,
     removeColorScheme
@@ -58,7 +61,7 @@
     return w.matchMedia('(prefers-color-scheme' + suffix + ')')
   }
 
-  function getColorScheme () {
+  function getSystemScheme () {
     // @ts-ignore
     if (w.matchMedia && prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
@@ -68,6 +71,10 @@
       }
     }
 
-    return '<%= options.fallback %>'
+    return null;
+  }
+
+  function getColorScheme () {
+    return getSystemScheme() || '<%= options.fallback %>'
   }
 })()
