@@ -58,10 +58,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const htmlAttrs: Record<string, string> = {}
 
-  if ('unknown' in colorMode && !colorMode.unknown) {
-    htmlAttrs[`data-${dataValue}`] = colorMode.value
-  }
-
   if (isVue2) {
     const app = nuxtApp.nuxt2Context.app
 
