@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.1](https://github.com/nuxt-community/color-mode-module/compare/v3.3.0...v3.3.1) (2023-11-15)
+
+
+### Bug Fixes
+
+* avoid setting color-mode when rendering islands ([#200](https://github.com/nuxt-community/color-mode-module/issues/200)) ([d856d7a](https://github.com/nuxt-community/color-mode-module/commit/d856d7a7415a68872cf9e87e5f576fc12cff6be7))
+* check when localStorage is available ([e4e84fe](https://github.com/nuxt-community/color-mode-module/commit/e4e84fe11e1eec8946e157a4a659ed7c911fe3f1)), closes [#202](https://github.com/nuxt-community/color-mode-module/issues/202)
+* initialise helper to empty object when testing ([34c4e0e](https://github.com/nuxt-community/color-mode-module/commit/34c4e0e1e403215ccfce3308751fbb43a384e0fd))
+
 ## [3.3.0](https://github.com/nuxt-community/color-mode-module/compare/v3.2.0...v3.3.0) (2023-06-21)
 
 
