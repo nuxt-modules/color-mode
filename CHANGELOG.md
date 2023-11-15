@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.2](https://github.com/nuxt-community/color-mode-module/compare/v3.3.1...v3.3.2) (2023-11-15)
+
+
+### Bug Fixes
+
+* use `ref` for island color-mode stub and check it is truthy ([486c28f](https://github.com/nuxt-community/color-mode-module/commit/486c28f57cd817cbdbd53bbc9d5302d62bd6b8c9))
+
 ### [3.3.1](https://github.com/nuxt-community/color-mode-module/compare/v3.3.0...v3.3.1) (2023-11-15)
 
 
