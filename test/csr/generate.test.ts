@@ -6,16 +6,20 @@ import { describe, it, expect } from 'vitest'
 
 const fixture = fileURLToPath(new URL('../../playground', import.meta.url))
 
-describe('ssr: false, target: static, generated files', async () => {
-  await setup({
-    fixture,
-    server: false,
-    nuxtConfig: {
-      _generate: true,
-      ssr: false
+await setup({
+  rootDir: fixture,
+  server: false,
+  nuxtConfig: {
+    ssr: false,
+    nitro: {
+      prerender: {
+        routes: ['/', '/200.html']
+      }
     }
-  })
+  }
+})
 
+describe('ssr: false, target: static, generated files', () => {
   it('generated file', async () => {
     const ctx = useTestContext()
     const generateDir = resolve(ctx.nuxt!.options.nitro.output?.dir || '', 'public')
