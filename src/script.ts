@@ -8,6 +8,7 @@
 
   const preference = (window && window.localStorage && window.localStorage.getItem && window.localStorage.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
   let value = preference === 'system' ? getColorScheme() : preference
+  const disableTransition = '<%= options.disableTransition %>'
   // Applied forced color mode
   const forcedColorMode = de.getAttribute('data-color-mode-forced')
   if (forcedColorMode) {
@@ -21,7 +22,7 @@
     preference,
     value,
     // @ts-ignore
-    disableTransition: '<%= options.disableTransition %>' === 'true',
+    disableTransition: disableTransition === 'true',
     getColorScheme,
     addColorScheme,
     removeColorScheme
