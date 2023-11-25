@@ -2,9 +2,8 @@ import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
 import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
-import type { ColorModeStorage } from './runtime/types'
-
 import { name, version } from '../package.json'
+import type { ColorModeStorage } from './runtime/types'
 
 const DEFAULTS: ModuleOptions = {
   preference: 'system',

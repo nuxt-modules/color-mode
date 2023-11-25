@@ -73,8 +73,8 @@
 })()
 
 // @ts-ignore
-function getStorageValue(storageType, storageKey) {
-  if (window?.document === 'undefined') return null;
+function getStorageValue (storageType, storageKey) {
+  if (window?.document === 'undefined') { return null }
 
   switch (storageType) {
     case 'localStorage':
@@ -82,9 +82,9 @@ function getStorageValue(storageType, storageKey) {
     case 'sessionStorage':
       return window.sessionStorage.getItem(storageKey)
     case 'cookie':
-      return getCookie(storageKey);
+      return getCookie(storageKey)
     default:
-      return null;
+      return null
   }
 }
 
