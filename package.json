@@ -28,7 +28,7 @@
     "build": "pnpm run prepack",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxi prepare playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "lint": "eslint --ext .js,.vue,.ts .",
     "prepublishOnly": "pnpm run prepack",
     "release": "pnpm test && standard-version && git push --follow-tags && npm publish",
