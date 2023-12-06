@@ -2,8 +2,8 @@ import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
 import template from 'lodash.template'
 import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
-
 import { name, version } from '../package.json'
+import type { ColorModeStorage } from './runtime/types'
 
 const DEFAULTS: ModuleOptions = {
   preference: 'system',
@@ -14,7 +14,8 @@ const DEFAULTS: ModuleOptions = {
   classPrefix: '',
   classSuffix: '-mode',
   dataValue: '',
-  storageKey: 'nuxt-color-mode'
+  storageKey: 'nuxt-color-mode',
+  storage: 'localStorage'
 }
 
 export default defineNuxtModule({
@@ -158,6 +159,11 @@ export interface ModuleOptions {
    * @default 'nuxt-color-mode'
    */
   storageKey: string
+  /**
+   * The default storage
+   * @default `localStorage`
+   */
+  storage?: ColorModeStorage
   /**
    * The script that will be injected into the head of the page
    */

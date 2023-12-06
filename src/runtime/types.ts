@@ -6,6 +6,8 @@ export interface ColorModeInstance {
   forced: boolean
 }
 
+export type ColorModeStorage = 'localStorage'|'sessionStorage'|'cookie';
+
 // @ts-ignore
 declare module 'vue/types/vue' {
   interface Vue {
