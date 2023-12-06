@@ -6,7 +6,7 @@
 
   const knownColorSchemes = ['dark', 'light']
 
-  const preference = (window && window.localStorage && window.localStorage.getItem && window.localStorage.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
+  const preference = getStorageValue('<%= options.storage %>', '<%= options.storageKey %>') || '<%= options.preference %>'
   let value = preference === 'system' ? getColorScheme() : preference
   // Applied forced color mode
   const forcedColorMode = de.getAttribute('data-color-mode-forced')
@@ -71,3 +71,26 @@
     return '<%= options.fallback %>'
   }
 })()
+
+// @ts-ignore
+function getStorageValue(storageType, storageKey) {
+  if (typeof window === 'undefined') return null;
+
+  switch (storageType) {
+    case 'localStorage':
+      return window.localStorage.getItem(storageKey)
+    case 'sessionStorage':
+      return window.sessionStorage.getItem(storageKey)
+    case 'cookie':
+      return getCookie(storageKey);
+    default:
+      return null;
+  }
+}
+
+// @ts-ignore
+function getCookie (name) {
+  const value = '; ' + window.document.cookie
+  const parts = value.split('; ' + name + '=')
+  if (parts.length === 2) { return parts.pop()?.split(';').shift() }
+}
