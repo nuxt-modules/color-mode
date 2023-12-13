@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useHead, useState, useRouter } from '#imports'
@@ -16,13 +16,15 @@ const addScript = (head) => {
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
-    preference,
-    value: preference,
-    unknown: true,
-    forced: false,
-    remember
-  })).value
+  const colorMode = nuxtApp.ssrContext?.islandContext
+    ? ref({})
+    : useState<ColorModeInstance>('color-mode', () => reactive({
+      preference,
+      value: preference,
+      unknown: true,
+      forced: false,
+      remember
+    })).value
 
   const htmlAttrs: Record<string, string> = {}
 

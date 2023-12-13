@@ -4,7 +4,8 @@ import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
 import { globalName, storageKey, dataValue, remember } from '#color-mode-options'
 
-const helper = window[globalName] as unknown as {
+// Initialise to empty object to avoid hard error when hydrating app in test mode
+const helper = (window[globalName] || {}) as unknown as {
   preference: string
   value: string
   getColorScheme: () => string

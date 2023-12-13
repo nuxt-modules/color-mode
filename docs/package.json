@@ -11,8 +11,8 @@
     "preview": "nuxi preview"
   },
   "devDependencies": {
-    "@nuxt-themes/docus": "^1.12.3",
-    "nuxt": "^3.5.3",
-    "nuxt-plausible": "^0.1.2"
+    "@nuxt-themes/docus": "^1.15.0",
+    "@nuxtjs/plausible": "^0.2.3",
+    "nuxt": "^3.8.2"
   }
 }
