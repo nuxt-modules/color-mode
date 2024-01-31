@@ -49,4 +49,4 @@ jobs:
         run: pnpm run prepack
 
       - name: Coverage
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
