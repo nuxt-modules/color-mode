@@ -65,6 +65,11 @@ export default defineNuxtModule({
       config.plugins.push(resolve(runtimeDir, 'nitro-plugin'))
     })
 
+    nuxt.hook('tailwindcss:config', (tailwindConfig) => {
+      options.classSuffix = ''
+      tailwindConfig.darkMode = 'class'
+    })
+
     if (!isNuxt2()) {
       return
     }
