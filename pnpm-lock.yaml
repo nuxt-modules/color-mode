@@ -26,7 +26,7 @@ importers:
         version: 18.4.3
       '@nuxt/module-builder':
         specifier: ^0.5.4
-        version: 0.5.4(@nuxt/kit@3.8.2)(nuxi@3.9.1)(typescript@5.3.2)
+        version: 0.5.4(@nuxt/kit@3.8.2)(nuxi@3.10.0)(typescript@5.3.2)
       '@nuxt/schema':
         specifier: ^3.8.2
         version: 3.8.2(rollup@3.29.4)
@@ -49,8 +49,8 @@ importers:
         specifier: ^8.55.0
         version: 8.55.0
       husky:
-        specifier: 8.0.3
-        version: 8.0.3
+        specifier: 9.0.11
+        version: 9.0.11
       nuxt:
         specifier: ^3.8.2
         version: 3.8.2(@types/node@18.18.9)(eslint@8.55.0)(rollup@3.29.4)(typescript@5.3.2)(vite@4.5.0)
@@ -1998,7 +1998,7 @@ packages:
       - rollup
       - supports-color
 
-  /@nuxt/module-builder@0.5.4(@nuxt/kit@3.8.2)(nuxi@3.9.1)(typescript@5.3.2):
+  /@nuxt/module-builder@0.5.4(@nuxt/kit@3.8.2)(nuxi@3.10.0)(typescript@5.3.2):
     resolution: {integrity: sha512-lCPh8s8LSfYqHgIMMsctDhz+AX1z6TnATkUes/GXc/No4kApC0zmJkQWrbtDRjmsWjElwl1kE7l7OzYdYc3d4w==}
     hasBin: true
     peerDependencies:
@@ -2009,7 +2009,7 @@ packages:
       citty: 0.1.4
       consola: 3.2.3
       mlly: 1.4.2
-      nuxi: 3.9.1
+      nuxi: 3.10.0
       pathe: 1.1.1
       unbuild: 2.0.0(typescript@5.3.2)
     transitivePeerDependencies:
@@ -6591,9 +6591,9 @@ packages:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
 
-  /husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
+  /husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
+    engines: {node: '>=18'}
     hasBin: true
     dev: true
 
@@ -8651,6 +8651,7 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
+    dev: false
 
   /nuxt-component-meta@0.5.4(rollup@3.29.4):
     resolution: {integrity: sha512-0ou1O5Dky/avUAm6XrO4r4aZiRgP3wCwBlOe49FcyVZo0uAULFw8b3j48BvKWzBdOywf8hJEL4V5o7FWnd1E+A==}
