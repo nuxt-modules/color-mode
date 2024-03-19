@@ -27,7 +27,7 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build build && esbuild --minify dist/script.mjs --outfile=dist/script.min.js",
+    "prepack": "nuxt-module-build build && esbuild --minify src/script.js --outfile=dist/script.min.js",
     "build": "pnpm run prepack",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",

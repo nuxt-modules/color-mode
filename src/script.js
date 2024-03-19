@@ -1,3 +1,5 @@
+// @ts-check
+
 // Add dark / light detection that runs before loading Nuxt
 (() => {
   // Global variable minimizers
@@ -16,7 +18,7 @@
 
   addColorScheme(value)
 
-  // @ts-ignore
+
   w['<%= options.globalName %>'] = {
     preference,
     value,
@@ -25,7 +27,7 @@
     removeColorScheme
   }
 
-  // @ts-ignore
+  /** @param {string} value */
   function addColorScheme (value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -39,7 +41,7 @@
     }
   }
 
-  // @ts-ignore
+  /** @param {string} value */
   function removeColorScheme (value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -53,14 +55,16 @@
     }
   }
 
-  // @ts-ignore
+  /** @param {string} suffix */
   function prefersColorScheme (suffix) {
     return w.matchMedia('(prefers-color-scheme' + suffix + ')')
   }
 
   function getColorScheme () {
-    // @ts-ignore
-    if (w.matchMedia && prefersColorScheme('').media !== 'not all') {
+    if (
+      // @ts-expect-error TS assumes matchMedia is always defined
+      w.matchMedia
+      && prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
         if (prefersColorScheme(':' + colorScheme).matches) {
           return colorScheme
