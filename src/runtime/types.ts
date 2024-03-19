@@ -4,6 +4,7 @@ export interface ColorModeInstance {
   value: string
   unknown: boolean
   forced: boolean
+  remember: boolean
 }
 
 // @ts-ignore
