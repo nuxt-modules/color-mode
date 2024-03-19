@@ -13,6 +13,7 @@ const DEFAULTS: ModuleOptions = {
   classPrefix: '',
   classSuffix: '-mode',
   dataValue: '',
+  attrName: '',
   storageKey: 'nuxt-color-mode'
 }
 
@@ -154,6 +155,12 @@ export interface ModuleOptions {
    * @default ''
    */
   dataValue: string
+  /**
+   * Whether to add an attribute to the html tag. If set, it defines the name of the attribute.
+   * For example, setting this to `theme-mode` will output `<html theme-mode="dark">` if dark mode is enabled.
+   * @default ''
+   */
+  attrName: string
   /**
    * @default 'nuxt-color-mode'
    */

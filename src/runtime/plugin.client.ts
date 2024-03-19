@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue } from '#color-mode-options'
+import { globalName, storageKey, dataValue, attrName } from '#color-mode-options'
 
 // Initialise to empty object to avoid hard error when hydrating app in test mode
 const helper = (window[globalName] || {}) as unknown as {
@@ -34,6 +34,23 @@ export default defineNuxtPlugin((nuxtApp) => {
         const head = (typeof originalHead === 'function' ? originalHead.call(this) : originalHead) || {}
         head.htmlAttrs = head.htmlAttrs || {}
         head.htmlAttrs[`data-${dataValue}`] = colorMode.value
+        return head
+      }
+    }
+  }
+
+  if (attrName) {
+    if (isVue3) {
+      useHead({
+        htmlAttrs: { [attrName]: computed(() => colorMode.value) }
+      })
+    } else {
+      const app = nuxtApp.nuxt2Context.app
+      const originalHead = app.head
+      app.head = function () {
+        const head = (typeof originalHead === 'function' ? originalHead.call(this) : originalHead) || {}
+        head.htmlAttrs = head.htmlAttrs || {}
+        head.htmlAttrs[attrName] = colorMode.value
         return head
       }
     }

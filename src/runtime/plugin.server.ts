@@ -2,7 +2,7 @@ import { reactive, ref } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useHead, useState, useRouter } from '#imports'
-import { preference, hid, script, dataValue } from '#color-mode-options'
+import { preference, hid, script, dataValue, attrName } from '#color-mode-options'
 
 const addScript = (head) => {
   head.script = head.script || []
@@ -57,6 +57,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       colorMode.value = htmlAttrs['data-color-mode-forced'] = forcedColorMode
       if (dataValue) {
         htmlAttrs[`data-${dataValue}`] = colorMode.value
+      }
+      if (attrName) {
+        htmlAttrs[attrName] = colorMode.value
       }
       colorMode.forced = true
     } else if (forcedColorMode === 'system') {
