@@ -5,10 +5,11 @@
   // Global variable minimizers
   const w = window
   const de = document.documentElement
+  const ls = window.localStorage
 
   const knownColorSchemes = ['dark', 'light']
 
-  const preference = (window && window.localStorage && window.localStorage.getItem && window.localStorage.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
+  const preference = (ls && ls.getItem && ls.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
   let value = preference === 'system' ? getColorScheme() : preference
   // Applied forced color mode
   const forcedColorMode = de.getAttribute('data-color-mode-forced')
@@ -17,7 +18,6 @@
   }
 
   addColorScheme(value)
-
 
   w['<%= options.globalName %>'] = {
     preference,
@@ -63,8 +63,8 @@
   function getColorScheme () {
     if (
       // @ts-expect-error TS assumes matchMedia is always defined
-      w.matchMedia
-      && prefersColorScheme('').media !== 'not all') {
+      w.matchMedia &&
+      prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
         if (prefersColorScheme(':' + colorScheme).matches) {
           return colorScheme
