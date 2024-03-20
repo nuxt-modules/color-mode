@@ -1,6 +1,5 @@
 import { promises as fsp } from 'fs'
 import { join, resolve } from 'pathe'
-import template from 'lodash.template'
 import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
 
 import { name, version } from '../package.json'
@@ -33,7 +32,8 @@ export default defineNuxtModule({
     // Read script from disk and add to options
     const scriptPath = await resolver.resolve('./script.min.js')
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
-    options.script = template(scriptT)({ options })
+    type ScriptOption = 'storageKey' | 'preference' | 'globalName' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'fallback'
+    options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option])
 
     // Inject options via virtual template
     nuxt.options.alias['#color-mode-options'] = addTemplate({

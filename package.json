@@ -1,10 +1,13 @@
 {
   "name": "@nuxtjs/color-mode",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "description": "Dark and Light mode for Nuxt with auto detection",
-  "repository": "nuxt-community/color-mode-module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt-modules/color-mode.git"
+  },
   "license": "MIT",
-  "packageManager": "pnpm@8.11.0",
+  "packageManager": "pnpm@8.15.5",
   "contributors": [
     {
       "name": "Nuxt Team"
@@ -24,7 +27,7 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build build && esbuild --minify dist/script.mjs --outfile=dist/script.min.js",
+    "prepack": "nuxt-module-build build && esbuild --minify src/script.js --outfile=dist/script.min.js",
     "build": "pnpm run prepack",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
@@ -35,25 +38,24 @@
     "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.8.2",
-    "lodash.template": "^4.5.0",
-    "pathe": "^1.1.1"
+    "@nuxt/kit": "^3.11.1",
+    "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
-    "@nuxt/module-builder": "^0.5.4",
-    "@nuxt/schema": "^3.8.2",
-    "@nuxt/test-utils": "^3.8.1",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.11.1",
+    "@nuxt/test-utils": "^3.12.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/lodash.template": "^4.5.3",
-    "@typescript-eslint/parser": "^6.13.1",
-    "@vitest/coverage-v8": "^0.34.6",
-    "eslint": "^8.55.0",
-    "husky": "8.0.3",
-    "nuxt": "^3.8.2",
+    "@typescript-eslint/parser": "^7.3.1",
+    "@vitest/coverage-v8": "^1.4.0",
+    "eslint": "^8.57.0",
+    "husky": "9.0.11",
+    "nuxt": "^3.11.1",
     "standard-version": "^9.5.0",
-    "typescript": "^5.3.2",
-    "vitest": "^0.34.6"
+    "typescript": "^5.4.2",
+    "vitest": "^1.4.0"
   }
 }
