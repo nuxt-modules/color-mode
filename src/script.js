@@ -1,12 +1,15 @@
+// @ts-check
+
 // Add dark / light detection that runs before loading Nuxt
 (() => {
   // Global variable minimizers
   const w = window
   const de = document.documentElement
+  const ls = window.localStorage
 
   const knownColorSchemes = ['dark', 'light']
 
-  const preference = (window && window.localStorage && window.localStorage.getItem && window.localStorage.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
+  const preference = (ls && ls.getItem && ls.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
   let value = preference === 'system' ? getColorScheme() : preference
   const disableTransition = '<%= options.disableTransition %>'
   // Applied forced color mode
@@ -17,7 +20,6 @@
 
   addColorScheme(value)
 
-  // @ts-ignore
   w['<%= options.globalName %>'] = {
     preference,
     value,
@@ -28,7 +30,7 @@
     removeColorScheme
   }
 
-  // @ts-ignore
+  /** @param {string} value */
   function addColorScheme (value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -42,7 +44,7 @@
     }
   }
 
-  // @ts-ignore
+  /** @param {string} value */
   function removeColorScheme (value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -56,14 +58,16 @@
     }
   }
 
-  // @ts-ignore
+  /** @param {string} suffix */
   function prefersColorScheme (suffix) {
     return w.matchMedia('(prefers-color-scheme' + suffix + ')')
   }
 
   function getColorScheme () {
-    // @ts-ignore
-    if (w.matchMedia && prefersColorScheme('').media !== 'not all') {
+    if (
+      // @ts-expect-error TS assumes matchMedia is always defined
+      w.matchMedia &&
+      prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
         if (prefersColorScheme(':' + colorScheme).matches) {
           return colorScheme
