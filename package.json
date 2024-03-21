@@ -55,7 +55,7 @@
     "husky": "9.0.11",
     "nuxt": "^3.11.1",
     "standard-version": "^9.5.0",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.3",
     "vitest": "^1.4.0"
   }
 }
