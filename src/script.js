@@ -11,7 +11,6 @@
 
   const preference = (ls && ls.getItem && ls.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
   let value = preference === 'system' ? getColorScheme() : preference
-  const disableTransition = '<%= options.disableTransition %>'
   // Applied forced color mode
   const forcedColorMode = de.getAttribute('data-color-mode-forced')
   if (forcedColorMode) {
@@ -23,8 +22,6 @@
   w['<%= options.globalName %>'] = {
     preference,
     value,
-    // @ts-ignore
-    disableTransition: disableTransition === 'true',
     getColorScheme,
     addColorScheme,
     removeColorScheme
