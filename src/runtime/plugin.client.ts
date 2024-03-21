@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue } from '#color-mode-options'
+import { globalName, storageKey, dataValue, disableTransition } from '#color-mode-options'
 
 // Initialise to empty object to avoid hard error when hydrating app in test mode
 const helper = (window[globalName] || {}) as unknown as {
@@ -88,8 +88,20 @@ export default defineNuxtPlugin((nuxtApp) => {
   }, { immediate: true })
 
   watch(() => colorMode.value, (newValue, oldValue) => {
+    let style: HTMLStyleElement | undefined
+    if (disableTransition) {
+      style = window!.document.createElement('style')
+      style.appendChild(document.createTextNode('*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'))
+      window!.document.head.appendChild(style)
+    }
     helper.removeColorScheme(oldValue)
     helper.addColorScheme(newValue)
+    if (disableTransition) {
+      // Calling getComputedStyle forces the browser to redraw
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const _ = window!.getComputedStyle(style!).opacity
+      document.head.removeChild(style!)
+    }
   })
 
   if (colorMode.preference === 'system') {
