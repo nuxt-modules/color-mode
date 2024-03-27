@@ -8,5 +8,11 @@
         light page
       </NuxtLink>
     </p>
+    <p>
+      Go to
+      <NuxtLink to="/tailwind">
+        tailwind integration
+      </NuxtLink>
+    </p>
   </div>
 </template>
