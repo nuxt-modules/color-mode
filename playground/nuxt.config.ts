@@ -1,7 +1,5 @@
-import colorModeModule from '../src/module'
-
 export default defineNuxtConfig({
   components: { global: true, dirs: ['~/components'] },
   css: ['~/assets/main.css'],
-  modules: [colorModeModule, '@nuxtjs/tailwindcss']
+  modules: ['../src/module', '@nuxtjs/tailwindcss'],
 })

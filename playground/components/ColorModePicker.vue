@@ -6,14 +6,20 @@
         :key="color"
         :class="{
           preferred: !$colorMode.unknown && color === $colorMode.preference,
-          selected: !$colorMode.unknown && color === $colorMode.value
+          selected: !$colorMode.unknown && color === $colorMode.value,
         }"
       >
-        <component :is="`icon-${color}`" @click="$colorMode.preference = color" />
+        <component
+          :is="`icon-${color}`"
+          @click="$colorMode.preference = color"
+        />
       </li>
     </ul>
     <p>
-      <ColorScheme placeholder="..." tag="span">
+      <ColorScheme
+        placeholder="..."
+        tag="span"
+      >
         Color mode: <b>{{ $colorMode.preference }}</b>
         <span v-if="$colorMode.preference === 'system'">&nbsp;(<i>{{ $colorMode.value }}</i> mode detected)</span>
       </ColorScheme>

@@ -1,4 +1,4 @@
-import { promises as fsp } from 'fs'
+import { promises as fsp } from 'node:fs'
 import { join, resolve } from 'pathe'
 import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
 import { readPackageJSON } from 'pkg-types'
@@ -16,7 +16,7 @@ const DEFAULTS: ModuleOptions = {
   classSuffix: '-mode',
   dataValue: '',
   storageKey: 'nuxt-color-mode',
-  disableTransition: false
+  disableTransition: false,
 }
 
 export default defineNuxtModule({
@@ -25,11 +25,11 @@ export default defineNuxtModule({
     version,
     configKey: 'colorMode',
     compatibility: {
-      bridge: true
-    }
+      bridge: true,
+    },
   },
   defaults: DEFAULTS,
-  async setup (options, nuxt) {
+  async setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     // Read script from disk and add to options
@@ -42,7 +42,7 @@ export default defineNuxtModule({
       filename: 'color-mode-options.mjs',
       getContents: () => Object.entries(options).map(([key, value]) =>
         `export const ${key} = ${JSON.stringify(value, null, 2)}
-      `).join('\n')
+      `).join('\n'),
     }).dst
 
     const runtimeDir = await resolver.resolve('./runtime')
@@ -69,7 +69,7 @@ export default defineNuxtModule({
 
     // @ts-expect-error module may not be installed
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
-      const isAfter341 = await readPackageJSON('tailwindcss').then((twPkg) => gte(twPkg.version || '3.0.0', '3.4.1'))
+      const isAfter341 = await readPackageJSON('tailwindcss').then(twPkg => gte(twPkg.version || '3.0.0', '3.4.1'))
       tailwindConfig.darkMode = tailwindConfig.darkMode ?? [isAfter341 ? 'selector' : 'class', `[class="${options.classPrefix}dark${options.classSuffix}"]`]
     })
 
@@ -83,7 +83,7 @@ export default defineNuxtModule({
       const script = {
         hid: options.hid,
         innerHTML: options.script,
-        pbody: true
+        pbody: true,
       }
 
       head.script.push(script)
@@ -93,17 +93,19 @@ export default defineNuxtModule({
       head[serializeProp][options.hid] = ['innerHTML']
     })
 
-    const createHash = await import('crypto').then(r => r.createHash)
+    const createHash = await import('node:crypto').then(r => r.createHash)
 
     // Nuxt 2 - SSR true
     // @ts-expect-error TODO: add nuxt2 types when merged to bridge
     nuxt.hook('vue-renderer:ssr:csp', (cspScriptSrcHashes) => {
       // @ts-expect-error TODO: add nuxt2 types when merged to bridge
       const { csp } = nuxt.options.render
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const hash = createHash((csp as any).hashAlgorithm)
       hash.update(options.script!)
       cspScriptSrcHashes.push(
-        `'${(csp as any).hashAlgorithm}-${hash.digest('base64')}'`
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        `'${(csp as any).hashAlgorithm}-${hash.digest('base64')}'`,
       )
     })
 
@@ -112,17 +114,18 @@ export default defineNuxtModule({
       const { dst } = addTemplate({
         src: scriptPath,
         filename: join('color-mode', 'script.min.js'),
-        options
+        options,
       })
       nuxt.hook('webpack:config', (configs) => {
         for (const config of configs) {
           if (config.name !== 'server') {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (config.entry as any).app.unshift(resolve(nuxt.options.buildDir, dst!))
           }
         }
       })
     }
-  }
+  },
 })
 
 export interface ModuleOptions {
