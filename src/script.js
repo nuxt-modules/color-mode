@@ -24,16 +24,17 @@
     value,
     getColorScheme,
     addColorScheme,
-    removeColorScheme
+    removeColorScheme,
   }
 
   /** @param {string} value */
-  function addColorScheme (value) {
+  function addColorScheme(value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
     if (de.classList) {
       de.classList.add(className)
-    } else {
+    }
+    else {
       de.className += ' ' + className
     }
     if (dataValue) {
@@ -42,12 +43,13 @@
   }
 
   /** @param {string} value */
-  function removeColorScheme (value) {
+  function removeColorScheme(value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
     if (de.classList) {
       de.classList.remove(className)
-    } else {
+    }
+    else {
       de.className = de.className.replace(new RegExp(className, 'g'), '')
     }
     if (dataValue) {
@@ -56,15 +58,15 @@
   }
 
   /** @param {string} suffix */
-  function prefersColorScheme (suffix) {
+  function prefersColorScheme(suffix) {
     return w.matchMedia('(prefers-color-scheme' + suffix + ')')
   }
 
-  function getColorScheme () {
+  function getColorScheme() {
     if (
       // @ts-expect-error TS assumes matchMedia is always defined
-      w.matchMedia &&
-      prefersColorScheme('').media !== 'not all') {
+      w.matchMedia
+      && prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
         if (prefersColorScheme(':' + colorScheme).matches) {
           return colorScheme

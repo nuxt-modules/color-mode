@@ -19,15 +19,16 @@ export default defineNuxtPlugin((nuxtApp) => {
     preference: helper.preference,
     value: helper.value,
     unknown: false,
-    forced: false
+    forced: false,
   })).value
 
   if (dataValue) {
     if (isVue3) {
       useHead({
-        htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) }
+        htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) },
       })
-    } else {
+    }
+    else {
       const app = nuxtApp.nuxt2Context.app
       const originalHead = app.head
       app.head = function () {
@@ -47,9 +48,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (forcedColorMode && forcedColorMode !== 'system') {
       colorMode.value = forcedColorMode
       colorMode.forced = true
-    } else {
+    }
+    else {
       if (forcedColorMode === 'system') {
-        // eslint-disable-next-line no-console
         console.warn('You cannot force the colorMode to system at the page level.')
       }
       colorMode.forced = false
@@ -61,7 +62,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   let darkWatcher: MediaQueryList
 
-  function watchMedia () {
+  function watchMedia() {
     if (darkWatcher || !window.matchMedia) { return }
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
@@ -79,7 +80,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (preference === 'system') {
       colorMode.value = helper.getColorScheme()
       watchMedia()
-    } else {
+    }
+    else {
       colorMode.value = preference
     }
 
@@ -98,7 +100,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     helper.addColorScheme(newValue)
     if (disableTransition) {
       // Calling getComputedStyle forces the browser to redraw
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       const _ = window!.getComputedStyle(style!).opacity
       document.head.removeChild(style!)
     }

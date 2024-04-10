@@ -32,7 +32,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "lint": "eslint --ext .js,.vue,.ts .",
+    "lint": "eslint .",
     "prepublishOnly": "pnpm run prepack",
     "release": "pnpm test && standard-version && git push --follow-tags && npm publish",
     "test": "vitest run --coverage"
@@ -47,15 +47,15 @@
     "@nuxt/module-builder": "^0.5.5",
     "@nuxt/schema": "^3.11.1",
     "@nuxt/test-utils": "^3.12.0",
-    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/lodash.template": "^4.5.3",
     "@typescript-eslint/parser": "^7.3.1",
     "@vitest/coverage-v8": "^1.4.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "husky": "9.0.11",
     "nuxt": "^3.11.1",
     "standard-version": "^9.5.0",
     "typescript": "^5.4.3",
-    "vitest": "^1.4.0"
+    "vitest": "^1.4.0",
+    "@nuxt/eslint-config": "^0.3.5"
   }
 }

@@ -8,7 +8,7 @@ const addScript = (head) => {
   head.script = head.script || []
   head.script.push({
     hid,
-    innerHTML: script
+    innerHTML: script,
   })
   const serializeProp = '__dangerouslyDisableSanitizersByTagID'
   head[serializeProp] = head[serializeProp] || {}
@@ -22,7 +22,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       preference,
       value: preference,
       unknown: true,
-      forced: false
+      forced: false,
     })).value
 
   const htmlAttrs: Record<string, string> = {}
@@ -38,7 +38,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         head.htmlAttrs = htmlAttrs
         return head
       }
-    } else {
+    }
+    else {
       addScript(app.head)
       app.head.htmlAttrs = htmlAttrs
     }
@@ -59,8 +60,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         htmlAttrs[`data-${dataValue}`] = colorMode.value
       }
       colorMode.forced = true
-    } else if (forcedColorMode === 'system') {
-      // eslint-disable-next-line no-console
+    }
+    else if (forcedColorMode === 'system') {
       console.warn('You cannot force the colorMode to system at the page level.')
     }
   })

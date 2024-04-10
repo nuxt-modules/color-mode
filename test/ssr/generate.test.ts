@@ -1,6 +1,6 @@
-import { join, resolve } from 'path'
-import { fileURLToPath } from 'url'
-import { readFile } from 'fs/promises'
+import { join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { readFile } from 'node:fs/promises'
 import { setup, useTestContext } from '@nuxt/test-utils'
 import { describe, it, expect } from 'vitest'
 
@@ -12,10 +12,10 @@ await setup({
   nuxtConfig: {
     nitro: {
       prerender: {
-        routes: ['/', '/200.html']
-      }
-    }
-  }
+        routes: ['/', '/200.html'],
+      },
+    },
+  },
 })
 
 describe('ssr: true, target: static, generated files', () => {
@@ -25,7 +25,7 @@ describe('ssr: true, target: static, generated files', () => {
     const files = ['index.html', '200.html']
     for (const file of files) {
       const contents = await readFile(join(generateDir, file), 'utf-8')
-      expect(contents).toMatch("getItem('nuxt-color-mode')")
+      expect(contents).toMatch('getItem(\'nuxt-color-mode\')')
     }
   })
 })
