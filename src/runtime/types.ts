@@ -6,14 +6,14 @@ export interface ColorModeInstance {
   forced: boolean
 }
 
-// @ts-ignore
+// @ts-expect-error vue 2 types
 declare module 'vue/types/vue' {
   interface Vue {
     $colorMode: ColorModeInstance
   }
 }
 
-// @ts-ignore
+// @ts-expect-error vue 2 types
 declare module 'vue/types/options' {
   interface ComponentOptions<V> {
     /**
@@ -30,7 +30,6 @@ declare module '#app' {
 }
 
 // Nuxt 3
-// @ts-ignore
 declare module 'vue-router' {
   interface RouteMeta {
     colorMode?: string
