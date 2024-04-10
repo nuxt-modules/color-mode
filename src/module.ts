@@ -93,9 +93,11 @@ export default defineNuxtModule({
     nuxt.hook('vue-renderer:ssr:csp', (cspScriptSrcHashes) => {
       // @ts-expect-error TODO: add nuxt2 types when merged to bridge
       const { csp } = nuxt.options.render
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const hash = createHash((csp as any).hashAlgorithm)
       hash.update(options.script!)
       cspScriptSrcHashes.push(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         `'${(csp as any).hashAlgorithm}-${hash.digest('base64')}'`,
       )
     })
@@ -110,6 +112,7 @@ export default defineNuxtModule({
       nuxt.hook('webpack:config', (configs) => {
         for (const config of configs) {
           if (config.name !== 'server') {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (config.entry as any).app.unshift(resolve(nuxt.options.buildDir, dst!))
           }
         }

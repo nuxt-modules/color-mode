@@ -12,4 +12,17 @@ export default createConfigForNuxt({
       './docs',
     ],
   },
-})
+}).append(
+  {
+    files: ['test/**'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
+  {
+    files: ['docs/**'],
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
+)

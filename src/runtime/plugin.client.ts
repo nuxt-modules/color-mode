@@ -42,6 +42,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   useRouter().afterEach((to) => {
     const forcedColorMode = isVue2
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ? (to.matched[0]?.components.default as any)?.options.colorMode
       : to.meta.colorMode
 
@@ -63,7 +64,9 @@ export default defineNuxtPlugin((nuxtApp) => {
   let darkWatcher: MediaQueryList
 
   function watchMedia() {
-    if (darkWatcher || !window.matchMedia) { return }
+    if (darkWatcher || !window.matchMedia) {
+      return
+    }
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
     darkWatcher.addEventListener('change', () => {
