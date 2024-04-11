@@ -1,26 +1,18 @@
 // @ts-check
-/**
- * @typedef {'dark' | 'light'} KnownColorScheme
- * @typedef {import('./module').ModuleOptions} ModuleOptions
- * @typedef {`<%= options.${keyof ModuleOptions} %>`} TemplateTag
- */
 
 // Add dark / light detection that runs before loading Nuxt
 (() => {
   // Global variable minimizers
-  /** @type {typeof window & { ['<%= options.globalName %>']?: any }} */
   const w = window
   const de = document.documentElement
   const ls = window.localStorage
 
-  /** @type {KnownColorScheme[]} */
   const knownColorSchemes = ['dark', 'light']
 
-  const localPreference = /** @type {KnownColorScheme | 'system' | null} */ (ls && ls.getItem && ls.getItem('<%= options.storageKey %>'))
-  const preference = localPreference || '<%= options.preference %>'
-  let value = /** @type {Exclude<typeof preference, 'system'>} */ (preference === 'system' ? getColorScheme() : preference)
+  const preference = (ls && ls.getItem && ls.getItem('<%= options.storageKey %>')) || '<%= options.preference %>'
+  let value = preference === 'system' ? getColorScheme() : preference
   // Applied forced color mode
-  const forcedColorMode = /** @type {KnownColorScheme | null} */ (de.getAttribute('data-color-mode-forced'))
+  const forcedColorMode = de.getAttribute('data-color-mode-forced')
   if (forcedColorMode) {
     value = forcedColorMode
   }
@@ -35,7 +27,7 @@
     removeColorScheme,
   }
 
-  /** @param {KnownColorScheme | Extract<TemplateTag, '<%= options.preference %>' | '<%= options.fallback %>'>} value */
+  /** @param {string} value */
   function addColorScheme(value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -50,7 +42,7 @@
     }
   }
 
-  /** @param {KnownColorScheme} value */
+  /** @param {string} value */
   function removeColorScheme(value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
@@ -65,7 +57,7 @@
     }
   }
 
-  /** @param {`:${KnownColorScheme}` | ''} suffix */
+  /** @param {string} suffix */
   function prefersColorScheme(suffix) {
     return w.matchMedia('(prefers-color-scheme' + suffix + ')')
   }
@@ -76,7 +68,7 @@
       w.matchMedia
       && prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
-        if (prefersColorScheme(`:${colorScheme}`).matches) {
+        if (prefersColorScheme(':' + colorScheme).matches) {
           return colorScheme
         }
       }

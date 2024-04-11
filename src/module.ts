@@ -35,7 +35,8 @@ export default defineNuxtModule({
     // Read script from disk and add to options
     const scriptPath = await resolver.resolve('./script.min.js')
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
-    options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: keyof ModuleOptions) => options[option])
+    type ScriptOption = 'storageKey' | 'preference' | 'globalName' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'fallback'
+    options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option])
 
     // Inject options via virtual template
     nuxt.options.alias['#color-mode-options'] = addTemplate({
