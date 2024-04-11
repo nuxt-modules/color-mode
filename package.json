@@ -39,7 +39,9 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
-    "pathe": "^1.1.2"
+    "pathe": "^1.1.2",
+    "pkg-types": "^1.0.3",
+    "semver": "^7.6.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",

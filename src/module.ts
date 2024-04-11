@@ -1,6 +1,8 @@
 import { promises as fsp } from 'node:fs'
 import { join, resolve } from 'pathe'
-import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImports, createResolver } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImports, createResolver, tryResolveModule } from '@nuxt/kit'
+import { readPackageJSON } from 'pkg-types'
+import { gte } from 'semver'
 
 import { name, version } from '../package.json'
 
@@ -33,7 +35,7 @@ export default defineNuxtModule({
     // Read script from disk and add to options
     const scriptPath = await resolver.resolve('./script.min.js')
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
-    type ScriptOption = 'storageKey' | 'preference' | 'globalName' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'fallback'
+    type ScriptOption = 'storageKey' | 'preference' | 'globalName' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'fallback'
     options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option])
 
     // Inject options via virtual template
@@ -64,6 +66,13 @@ export default defineNuxtModule({
       config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
       config.plugins = config.plugins || []
       config.plugins.push(resolve(runtimeDir, 'nitro-plugin'))
+    })
+
+    // @ts-expect-error module may not be installed
+    nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
+      const tailwind = await tryResolveModule('tailwindcss', nuxt.options.modulesDir) || 'tailwindcss'
+      const isAfter341 = await readPackageJSON(tailwind).then(twPkg => gte(twPkg.version || '3.0.0', '3.4.1'))
+      tailwindConfig.darkMode = tailwindConfig.darkMode ?? [isAfter341 ? 'selector' : 'class', `[class="${options.classPrefix}dark${options.classSuffix}"]`]
     })
 
     if (!isNuxt2()) {
