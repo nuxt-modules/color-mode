@@ -58,6 +58,6 @@
     "standard-version": "^9.5.0",
     "typescript": "^5.4.5",
     "vitest": "^1.4.0",
-    "@nuxt/eslint-config": "^0.3.5"
+    "@nuxt/eslint-config": "^0.3.6"
   }
 }

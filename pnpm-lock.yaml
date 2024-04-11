@@ -28,8 +28,8 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0
       '@nuxt/eslint-config':
-        specifier: ^0.3.5
-        version: 0.3.5(eslint@9.0.0)(typescript@5.4.5)
+        specifier: ^0.3.6
+        version: 0.3.6(eslint@9.0.0)(typescript@5.4.5)
       '@nuxt/module-builder':
         specifier: ^0.5.5
         version: 0.5.5(@nuxt/kit@3.11.2)(nuxi@3.11.1)(typescript@5.4.5)
@@ -2040,20 +2040,20 @@ packages:
       - utf-8-validate
       - vue
 
-  /@nuxt/eslint-config@0.3.5(eslint@9.0.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-Sh8YJbna0ENg3r7minGipkxTMJ3ew0KOGY9Imb+YyS/0UfKsU/EJoWxNJqk1PKwTPQ+kSiTaai7fdwehwSNh0Q==}
+  /@nuxt/eslint-config@0.3.6(eslint@9.0.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-uuAPflhCSym2UUs+613CU4GJo10wtFFwzZLba/fHO7H6IqpVk8kHGDuwrV/AvVwnty8IhIIqOXBgrx16RoDkSA==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
     dependencies:
       '@eslint/js': 9.0.0
-      '@nuxt/eslint-plugin': 0.3.5(eslint@9.0.0)(typescript@5.4.5)
+      '@nuxt/eslint-plugin': 0.3.6(eslint@9.0.0)(typescript@5.4.5)
       '@rushstack/eslint-patch': 1.10.1
       '@stylistic/eslint-plugin': 1.7.0(eslint@9.0.0)(typescript@5.4.5)
       '@typescript-eslint/eslint-plugin': 7.6.0(@typescript-eslint/parser@7.6.0)(eslint@9.0.0)(typescript@5.4.5)
       '@typescript-eslint/parser': 7.6.0(eslint@9.0.0)(typescript@5.4.5)
       eslint: 9.0.0
       eslint-config-flat-gitignore: 0.1.5
-      eslint-flat-config-utils: 0.2.1
+      eslint-flat-config-utils: 0.2.2
       eslint-plugin-import-x: 0.5.0(eslint@9.0.0)(typescript@5.4.5)
       eslint-plugin-jsdoc: 48.2.3(eslint@9.0.0)
       eslint-plugin-unicorn: 52.0.0(eslint@9.0.0)
@@ -2067,8 +2067,8 @@ packages:
       - typescript
     dev: true
 
-  /@nuxt/eslint-plugin@0.3.5(eslint@9.0.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-RW6/3CilMRaTtZRHBHgyWJ4lx7j+yeLl8DQ3ugvt6oMXaqLXeZ+NHzA4n5tkFeLkE3gbl84RDJGWfht+MR0q/w==}
+  /@nuxt/eslint-plugin@0.3.6(eslint@9.0.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-kyfvqWkxcMT672WkiupEZI6a/sDL6CLdZt5HS8SfjUe2rcZOvc0TRSMXKAvo+XBZlnJA/fIOKQMa8qUkLoBXWw==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
     dependencies:
@@ -5766,8 +5766,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: true
 
-  /eslint-flat-config-utils@0.2.1:
-    resolution: {integrity: sha512-SKnSr4YdPD7xxynNpaad/IlJYfeDmtWvZ0UEmHEA0+eTOcZFPt1075KO87LIWN30jXGCREG2qcCqdAnRoCiAWQ==}
+  /eslint-flat-config-utils@0.2.2:
+    resolution: {integrity: sha512-iWjXCsGBuyqlGhmam4V9IXlxpDfnc7l0VC1YzncROF2PYIPSRpejugrIp2bXPT5mutKF3zq69Vbt7J9su9E/Lw==}
     dependencies:
       '@types/eslint': 8.56.7
       pathe: 1.1.2
