@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/nuxt-modules/color-mode/compare/v3.3.3...v3.4.0) (2024-04-11)
+
+
+### Features
+
+* add `disableTransition` option ([#192](https://github.com/nuxt-modules/color-mode/issues/192)) ([23ef3d9](https://github.com/nuxt-modules/color-mode/commit/23ef3d9780a0dffe49dd4a36917f84e132ed7dc8))
+* automatic integration with `@nuxtjs/tailwindcss` ([#237](https://github.com/nuxt-modules/color-mode/issues/237)) ([7e4db61](https://github.com/nuxt-modules/color-mode/commit/7e4db61f3afb0a27ed62008c57712653d5a6c34b))
+
 ### [3.3.3](https://github.com/nuxt-modules/color-mode/compare/v3.3.2...v3.3.3) (2024-03-19)
 
 
