@@ -49,7 +49,15 @@ export default defineNuxtPlugin((nuxtApp) => {
       const { cookie } = useRequestHeaders(['cookie'])
       const [, value] = cookie?.split('; ').map(s => s.split('=')).find(([k]) => k === storageKey) ?? []
       if (value) {
+        if (value !== 'system') {
+          // its impossible to predict what the users system color is set to, so only set the value
+          // on values that arent system
+          colorMode.value = value
+          colorMode.unknown = false
+        }
+
         colorMode.preference = value
+        console.log(value, colorMode.preference, colorMode.value, colorMode.unknown, colorMode.forced)
       }
     }
     useHead({ htmlAttrs })
