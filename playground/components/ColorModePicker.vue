@@ -16,13 +16,15 @@
       </li>
     </ul>
     <p>
-      <ColorScheme
-        placeholder="..."
-        tag="span"
-      >
+      <span v-if="$colorMode.unknown">
+        ...
+      </span>
+      <span v-else>
         Color mode: <b>{{ $colorMode.preference }}</b>
-        <span v-if="$colorMode.preference === 'system'">&nbsp;(<i>{{ $colorMode.value }}</i> mode detected)</span>
-      </ColorScheme>
+        <span v-if="$colorMode.preference === 'system' && !$colorMode.unknown">&nbsp;(<i>{{ $colorMode.value
+            }}</i> mode
+          detected)</span>
+      </span>
     </p>
   </div>
 </template>

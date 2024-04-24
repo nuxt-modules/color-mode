@@ -4,7 +4,9 @@ import { addPlugin, addTemplate, defineNuxtModule, isNuxt2, addComponent, addImp
 import { readPackageJSON } from 'pkg-types'
 import { gte } from 'semver'
 
+import template from 'lodash.template'
 import { name, version } from '../package.json'
+import type { ColorModeStorage } from './runtime/types'
 
 const DEFAULTS: ModuleOptions = {
   preference: 'system',
@@ -17,6 +19,7 @@ const DEFAULTS: ModuleOptions = {
   dataValue: '',
   storageKey: 'nuxt-color-mode',
   disableTransition: false,
+  storage: 'localStorage'
 }
 
 export default defineNuxtModule({
@@ -171,6 +174,11 @@ export interface ModuleOptions {
    * @default 'nuxt-color-mode'
    */
   storageKey: string
+  /**
+   * The default storage
+   * @default `localStorage`
+   */
+  storage?: ColorModeStorage
   /**
    * The script that will be injected into the head of the page
    */

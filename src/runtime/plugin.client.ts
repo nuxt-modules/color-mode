@@ -2,7 +2,11 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
+<<<<<<< HEAD
 import { globalName, storageKey, dataValue, disableTransition } from '#color-mode-options'
+=======
+import { globalName, storageKey, dataValue, storage } from '#color-mode-options'
+>>>>>>> origin/cookie-storage
 
 // Initialise to empty object to avoid hard error when hydrating app in test mode
 const helper = (window[globalName] || {}) as unknown as {
@@ -76,6 +80,20 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
+  function setPreferenceToStorage (storageType: typeof storage, preference: string) {
+    switch (storageType) {
+      case 'cookie':
+        window.document.cookie = storageKey + '=' + preference
+        break
+      case 'sessionStorage':
+        window.sessionStorage?.setItem(storageKey, preference)
+        break
+      case 'localStorage':
+      default:
+        window.localStorage?.setItem(storageKey, preference)
+    }
+  }
+
   watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
       return
@@ -88,8 +106,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       colorMode.value = preference
     }
 
+    setPreferenceToStorage(storage, preference)
     // Local storage to sync with other tabs
-    window.localStorage?.setItem(storageKey, preference)
+    // window.localStorage?.setItem(storageKey, preference)
   }, { immediate: true })
 
   watch(() => colorMode.value, (newValue, oldValue) => {

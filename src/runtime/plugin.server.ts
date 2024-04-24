@@ -1,8 +1,8 @@
 import { reactive, ref } from 'vue'
 
 import type { ColorModeInstance } from './types'
-import { defineNuxtPlugin, isVue2, isVue3, useHead, useState, useRouter } from '#imports'
-import { preference, hid, script, dataValue } from '#color-mode-options'
+import { defineNuxtPlugin, isVue2, isVue3, useHead, useState, useRouter, useRequestHeaders } from '#imports'
+import { preference, hid, script, dataValue, storage, storageKey } from '#color-mode-options'
 
 const addScript = (head) => {
   head.script = head.script || []
@@ -46,6 +46,21 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   if (isVue3) {
+    if (storage === 'cookie') {
+      const { cookie } = useRequestHeaders(['cookie'])
+      const [, value] = cookie?.split('; ').map(s => s.split('=')).find(([k]) => k === storageKey) ?? []
+      if (value) {
+        if (value !== 'system') {
+          // its impossible to predict what the users system color is set to, so only set the value
+          // on values that arent system
+          colorMode.value = value
+          colorMode.unknown = false
+        }
+
+        colorMode.preference = value
+        console.log(value, colorMode.preference, colorMode.value, colorMode.unknown, colorMode.forced)
+      }
+    }
     useHead({ htmlAttrs })
   }
 
