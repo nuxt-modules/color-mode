@@ -2,11 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-<<<<<<< HEAD
-import { globalName, storageKey, dataValue, disableTransition } from '#color-mode-options'
-=======
-import { globalName, storageKey, dataValue, storage } from '#color-mode-options'
->>>>>>> origin/cookie-storage
+import { globalName, storageKey, dataValue, storage, disableTransition } from '#color-mode-options'
 
 // Initialise to empty object to avoid hard error when hydrating app in test mode
 const helper = (window[globalName] || {}) as unknown as {

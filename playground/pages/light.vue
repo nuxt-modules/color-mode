@@ -1,3 +1,9 @@
+<script setup>
+definePageMeta({
+  colorMode: 'light',
+})
+</script>
+
 <template>
   <div>
     <Title>Light page</Title>
@@ -13,8 +19,3 @@
   </div>
 </template>
 
-<script setup lang="ts">
-definePageMeta({
-  colorMode: 'light',
-})
-</script>

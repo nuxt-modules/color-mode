@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container-nuxt">
     <Meta
       name="description"
       content="Demo of using @nuxtjs/color-mode for Nuxt, supporting dark mode and custom colors"
     />
-    <p>
+    <p class="center">
       <NuxtLogo />
     </p>
     <slot />
@@ -19,7 +19,11 @@ p {
   padding: 20px 0;
   margin: 0;
 }
-.container {
+.center {
+    display: flex;
+    justify-content: center;
+}
+.container-nuxt {
   text-align: center;
   padding: 50px;
 }

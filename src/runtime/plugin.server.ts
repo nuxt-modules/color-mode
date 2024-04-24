@@ -58,7 +58,6 @@ export default defineNuxtPlugin((nuxtApp) => {
         }
 
         colorMode.preference = value
-        console.log(value, colorMode.preference, colorMode.value, colorMode.unknown, colorMode.forced)
       }
     }
     useHead({ htmlAttrs })
