@@ -7,7 +7,7 @@
     "url": "git+https://github.com/nuxt-modules/color-mode.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@9.0.6",
   "contributors": [
     {
       "name": "Nuxt Team"
