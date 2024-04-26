@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.4.1](https://github.com/nuxt-modules/color-mode/compare/v3.4.0...v3.4.1) (2024-04-26)
+
+
+### Bug Fixes
+
+* add tilde to css selector for tailwind integration ([#259](https://github.com/nuxt-modules/color-mode/issues/259)) ([16ae123](https://github.com/nuxt-modules/color-mode/commit/16ae1236f0d6a0f85c3e665b919c75f0742fa7de))
+
 ## [3.4.0](https://github.com/nuxt-modules/color-mode/compare/v3.3.3...v3.4.0) (2024-04-11)
 
 
