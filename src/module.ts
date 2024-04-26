@@ -72,7 +72,7 @@ export default defineNuxtModule({
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
       const tailwind = await tryResolveModule('tailwindcss', nuxt.options.modulesDir) || 'tailwindcss'
       const isAfter341 = await readPackageJSON(tailwind).then(twPkg => gte(twPkg.version || '3.0.0', '3.4.1'))
-      tailwindConfig.darkMode = tailwindConfig.darkMode ?? [isAfter341 ? 'selector' : 'class', `[class="${options.classPrefix}dark${options.classSuffix}"]`]
+      tailwindConfig.darkMode = tailwindConfig.darkMode ?? [isAfter341 ? 'selector' : 'class', `[class~="${options.classPrefix}dark${options.classSuffix}"]`]
     })
 
     if (!isNuxt2()) {
