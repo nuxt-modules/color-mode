@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.4.2](https://github.com/nuxt-modules/color-mode/compare/v3.4.1...v3.4.2) (2024-06-24)
+
+
+### Bug Fixes
+
+* remove newline at end of minified script ([#268](https://github.com/nuxt-modules/color-mode/issues/268)) ([0ccbc5c](https://github.com/nuxt-modules/color-mode/commit/0ccbc5c84c6146aba01616281e0bcfe868a10491))
+
 ### [3.4.1](https://github.com/nuxt-modules/color-mode/compare/v3.4.0...v3.4.1) (2024-04-26)
 
 
