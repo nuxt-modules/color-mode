@@ -26,6 +26,7 @@ declare module 'vue/types/options' {
 
 // Nuxt Bridge & Nuxt 3
 declare module '#app' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface NuxtApp extends PluginInjection { }
 }
 
@@ -41,5 +42,6 @@ interface PluginInjection {
 }
 
 declare module 'vue' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface ComponentCustomProperties extends PluginInjection { }
 }
