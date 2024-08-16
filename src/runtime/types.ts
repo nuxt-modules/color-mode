@@ -40,6 +40,6 @@ interface PluginInjection {
   $colorMode: ColorModeInstance
 }
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   interface ComponentCustomProperties extends PluginInjection { }
 }
