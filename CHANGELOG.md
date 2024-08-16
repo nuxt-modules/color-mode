@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.4.3](https://github.com/nuxt-modules/color-mode/compare/v3.4.2...v3.4.3) (2024-08-16)
+
+
+### Bug Fixes
+
+* augment `vue` rather than `@vue/runtime-core` ([#278](https://github.com/nuxt-modules/color-mode/issues/278)) ([8efb0f0](https://github.com/nuxt-modules/color-mode/commit/8efb0f02ae3d3fd0facaab7d73f031a12ffd359d))
+
 ### [3.4.2](https://github.com/nuxt-modules/color-mode/compare/v3.4.1...v3.4.2) (2024-06-24)
 
 
