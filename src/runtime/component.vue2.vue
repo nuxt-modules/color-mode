@@ -11,8 +11,19 @@ export default {
       default: 'span',
     },
   },
-  render(createElement, { data, props, children }) {
+  render(createElement, { data, props, children, slots }) {
     // transform props for <client-only>
+    if (slots.placeholder) {
+      props = {
+        placeholderTag: props.placeholderTag,
+      }
+      const scopedSlots = {
+        placeholder: () => slots.placeholder(),
+      }
+
+      return createElement('client-only', { ...data, props, scopedSlots }, children)
+    }
+
     props = {
       placeholder: props.placeholder,
       placeholderTag: props.tag,

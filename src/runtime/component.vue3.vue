@@ -19,5 +19,11 @@ export default {
     :placeholder-tag="tag"
   >
     <slot />
+    <template
+      v-if="!placeholder"
+      #fallback
+    >
+      <slot name="placeholder" />
+    </template>
   </ClientOnly>
 </template>
