@@ -16,7 +16,7 @@
   <a href="https://color-mode.nuxtjs.app">Live demo</a>
 </p>
 
-- [✨ &nbsp;Release Notes](https://color-mode.nuxtjs.org/releases)
+- [✨ &nbsp;Release Notes](https://github.com/nuxt-modules/color-mode/releases)
 - [📖 &nbsp;Documentation](https://color-mode.nuxtjs.org)
 - [▶️ &nbsp;Online playground](https://stackblitz.com/edit/nuxt-color-mode)
 
