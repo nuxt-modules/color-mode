@@ -1,8 +1,11 @@
+// @ts-check
+
 // Add dark / light detection that runs before loading Nuxt
 (() => {
   // Global variable minimizers
   const w = window
   const de = document.documentElement
+  const ls = window.localStorage
 
   const knownColorSchemes = ['dark', 'light']
 
@@ -16,22 +19,22 @@
 
   addColorScheme(value)
 
-  // @ts-ignore
   w['<%= options.globalName %>'] = {
     preference,
     value,
     getColorScheme,
     addColorScheme,
-    removeColorScheme
+    removeColorScheme,
   }
 
-  // @ts-ignore
-  function addColorScheme (value) {
+  /** @param {string} value */
+  function addColorScheme(value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
     if (de.classList) {
       de.classList.add(className)
-    } else {
+    }
+    else {
       de.className += ' ' + className
     }
     if (dataValue) {
@@ -39,13 +42,14 @@
     }
   }
 
-  // @ts-ignore
-  function removeColorScheme (value) {
+  /** @param {string} value */
+  function removeColorScheme(value) {
     const className = '<%= options.classPrefix %>' + value + '<%= options.classSuffix %>'
     const dataValue = '<%= options.dataValue %>'
     if (de.classList) {
       de.classList.remove(className)
-    } else {
+    }
+    else {
       de.className = de.className.replace(new RegExp(className, 'g'), '')
     }
     if (dataValue) {
@@ -53,14 +57,16 @@
     }
   }
 
-  // @ts-ignore
-  function prefersColorScheme (suffix) {
+  /** @param {string} suffix */
+  function prefersColorScheme(suffix) {
     return w.matchMedia('(prefers-color-scheme' + suffix + ')')
   }
 
-  function getColorScheme () {
-    // @ts-ignore
-    if (w.matchMedia && prefersColorScheme('').media !== 'not all') {
+  function getColorScheme() {
+    if (
+      // @ts-expect-error TS assumes matchMedia is always defined
+      w.matchMedia
+      && prefersColorScheme('').media !== 'not all') {
       for (const colorScheme of knownColorSchemes) {
         if (prefersColorScheme(':' + colorScheme).matches) {
           return colorScheme

@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue, storage } from '#color-mode-options'
+import { globalName, storageKey, dataValue, disableTransition, storage } from '#color-mode-options'
 
 // Initialise to empty object to avoid hard error when hydrating app in test mode
 const helper = (window[globalName] || {}) as unknown as {
@@ -19,15 +19,16 @@ export default defineNuxtPlugin((nuxtApp) => {
     preference: helper.preference,
     value: helper.value,
     unknown: false,
-    forced: false
+    forced: false,
   })).value
 
   if (dataValue) {
     if (isVue3) {
       useHead({
-        htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) }
+        htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) },
       })
-    } else {
+    }
+    else {
       const app = nuxtApp.nuxt2Context.app
       const originalHead = app.head
       app.head = function () {
@@ -41,15 +42,16 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   useRouter().afterEach((to) => {
     const forcedColorMode = isVue2
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ? (to.matched[0]?.components.default as any)?.options.colorMode
       : to.meta.colorMode
 
     if (forcedColorMode && forcedColorMode !== 'system') {
       colorMode.value = forcedColorMode
       colorMode.forced = true
-    } else {
+    }
+    else {
       if (forcedColorMode === 'system') {
-        // eslint-disable-next-line no-console
         console.warn('You cannot force the colorMode to system at the page level.')
       }
       colorMode.forced = false
@@ -61,8 +63,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   let darkWatcher: MediaQueryList
 
-  function watchMedia () {
-    if (darkWatcher || !window.matchMedia) { return }
+  function watchMedia() {
+    if (darkWatcher || !window.matchMedia) {
+      return
+    }
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
     darkWatcher.addEventListener('change', () => {
@@ -93,7 +97,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (preference === 'system') {
       colorMode.value = helper.getColorScheme()
       watchMedia()
-    } else {
+    }
+    else {
       colorMode.value = preference
     }
 
@@ -103,8 +108,20 @@ export default defineNuxtPlugin((nuxtApp) => {
   }, { immediate: true })
 
   watch(() => colorMode.value, (newValue, oldValue) => {
+    let style: HTMLStyleElement | undefined
+    if (disableTransition) {
+      style = window!.document.createElement('style')
+      style.appendChild(document.createTextNode('*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'))
+      window!.document.head.appendChild(style)
+    }
     helper.removeColorScheme(oldValue)
     helper.addColorScheme(newValue)
+    if (disableTransition) {
+      // Calling getComputedStyle forces the browser to redraw
+
+      const _ = window!.getComputedStyle(style!).opacity
+      document.head.removeChild(style!)
+    }
   })
 
   if (colorMode.preference === 'system') {

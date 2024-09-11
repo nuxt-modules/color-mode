@@ -1,4 +1,4 @@
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, it, expect } from 'vitest'
 
@@ -9,10 +9,10 @@ describe('ssr: false, dev mode', async () => {
     server: true,
     dev: true,
     fixture,
-    nuxtConfig: { ssr: false }
+    nuxtConfig: { ssr: false },
   })
   it('renders', async () => {
     const html = await $fetch('/')
-    expect(html).toContain("getItem('nuxt-color-mode')")
+    expect(html).toContain('getItem(\'nuxt-color-mode\')')
   })
 })

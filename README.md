@@ -16,7 +16,7 @@
   <a href="https://color-mode.nuxtjs.app">Live demo</a>
 </p>
 
-- [✨ &nbsp;Release Notes](https://color-mode.nuxtjs.org/releases)
+- [✨ &nbsp;Release Notes](https://github.com/nuxt-modules/color-mode/releases)
 - [📖 &nbsp;Documentation](https://color-mode.nuxtjs.org)
 - [▶️ &nbsp;Online playground](https://stackblitz.com/edit/nuxt-color-mode)
 
@@ -37,7 +37,7 @@
 
 You can contribute to this module online with CodeSandBox:
 
-[![Edit @nuxtjs/color-mode](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/nuxt-community/color-mode-module/tree/master/?fontsize=14&hidenavigation=1&theme=dark)
+[![Edit @nuxtjs/color-mode](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/nuxt-modules/color-mode/tree/main/?fontsize=14&hidenavigation=1&theme=dark)
 
 Or locally:
 
@@ -58,8 +58,8 @@ Copyright (c) Nuxt Team
 [npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/color-mode.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@nuxtjs/color-mode
 
-[codecov-src]: https://img.shields.io/codecov/c/github/nuxt-community/color-mode-module.svg?style=flat&colorA=18181B&colorB=28CF8D
-[codecov-href]: https://codecov.io/gh/nuxt-community/color-mode-module
+[codecov-src]: https://img.shields.io/codecov/c/github/nuxt-modules/color-mode.svg?style=flat&colorA=18181B&colorB=28CF8D
+[codecov-href]: https://codecov.io/gh/nuxt-modules/color-mode
 
 [license-src]: https://img.shields.io/npm/l/@nuxtjs/color-mode.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://npmjs.com/package/@nuxtjs/color-mode

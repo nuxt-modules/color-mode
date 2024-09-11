@@ -6,16 +6,16 @@ export interface ColorModeInstance {
   forced: boolean
 }
 
-export type ColorModeStorage = 'localStorage'|'sessionStorage'|'cookie';
+export type ColorModeStorage = 'localStorage' | 'sessionStorage' | 'cookie'
 
-// @ts-ignore
+// @ts-expect-error vue 2 types
 declare module 'vue/types/vue' {
   interface Vue {
     $colorMode: ColorModeInstance
   }
 }
 
-// @ts-ignore
+// @ts-expect-error vue 2 types
 declare module 'vue/types/options' {
   interface ComponentOptions<V> {
     /**
@@ -28,11 +28,11 @@ declare module 'vue/types/options' {
 
 // Nuxt Bridge & Nuxt 3
 declare module '#app' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface NuxtApp extends PluginInjection { }
 }
 
 // Nuxt 3
-// @ts-ignore
 declare module 'vue-router' {
   interface RouteMeta {
     colorMode?: string
@@ -43,6 +43,7 @@ interface PluginInjection {
   $colorMode: ColorModeInstance
 }
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface ComponentCustomProperties extends PluginInjection { }
 }

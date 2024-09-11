@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@nuxtjs/color-mode": "latest",
-    "nuxt": "latest"
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "nuxt": "^3.13.1"
   }
 }

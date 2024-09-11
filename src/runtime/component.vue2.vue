@@ -8,17 +8,17 @@ export default {
     placeholder: String,
     tag: {
       type: String,
-      default: 'span'
-    }
+      default: 'span',
+    },
   },
-  render (createElement, { data, props, children }) {
+  render(createElement, { data, props, children }) {
     // transform props for <client-only>
     props = {
       placeholder: props.placeholder,
-      placeholderTag: props.tag
+      placeholderTag: props.tag,
     }
 
     return createElement('client-only', { ...data, props }, children)
-  }
+  },
 }
 </script>
