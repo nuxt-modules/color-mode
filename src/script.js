@@ -5,7 +5,6 @@
   // Global variable minimizers
   const w = window
   const de = document.documentElement
-  const ls = window.localStorage
 
   const knownColorSchemes = ['dark', 'light']
 
@@ -79,9 +78,7 @@
 })()
 
 // @ts-ignore
-function getStorageValue (storageType, storageKey) {
-  if (window?.document === 'undefined') { return null }
-
+function getStorageValue(storageType, storageKey) {
   switch (storageType) {
     case 'localStorage':
       return window.localStorage.getItem(storageKey)
@@ -95,8 +92,10 @@ function getStorageValue (storageType, storageKey) {
 }
 
 // @ts-ignore
-function getCookie (name) {
+function getCookie(name) {
   const value = '; ' + window.document.cookie
   const parts = value.split('; ' + name + '=')
-  if (parts.length === 2) { return parts.pop()?.split(';').shift() }
+  if (parts.length === 2) {
+    return parts.pop()?.split(';').shift()
+  }
 }

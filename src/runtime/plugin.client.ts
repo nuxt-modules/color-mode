@@ -76,7 +76,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  function setPreferenceToStorage (storageType: typeof storage, preference: string) {
+  function setPreferenceToStorage(storageType: typeof storage, preference: string) {
     switch (storageType) {
       case 'cookie':
         window.document.cookie = storageKey + '=' + preference
