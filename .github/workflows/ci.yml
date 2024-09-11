@@ -10,44 +10,25 @@ on:
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        node: [18, 20]
+    runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
-
-      - name: checkout
-        uses: actions/checkout@v4
-
-      - name: cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
-
-      - run: corepack enable
-
+          node-version: 20
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-
       - name: Prepare TypeScript environment
         run: pnpm run dev:prepare
-
       - name: Lint
         run: pnpm run lint
-
       - name: Test
         run: pnpm run test
-
       - name: Build project
         run: pnpm run prepack
-
       - name: Coverage
         uses: codecov/codecov-action@v4
         env:
