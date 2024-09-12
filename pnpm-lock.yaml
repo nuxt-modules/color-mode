@@ -87,6 +87,9 @@ importers:
 
   playground:
     dependencies:
+      '@nuxt/icon':
+        specifier: ^1.5.1
+        version: 1.5.1(magicast@0.3.5)(rollup@4.18.0)(vite@5.4.3(@types/node@20.5.1)(terser@5.19.2))(vue@3.5.4(typescript@5.5.4))(webpack-sources@3.2.3)
       '@nuxtjs/color-mode':
         specifier: latest
         version: 3.4.4(magicast@0.3.5)(rollup@4.18.0)
@@ -110,6 +113,9 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@antfu/install-pkg@0.4.1':
+    resolution: {integrity: sha512-T7yB5QNG29afhWVkVq7XeIMBa5U/vs9mX69YqayXypPRmYzUmzwnYltplHmPtZ4HPCn+sQKeXW8I47wCbuBOjw==}
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
@@ -1142,11 +1148,22 @@ packages:
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
     engines: {node: '>=6.9.0'}
 
+  '@iconify/collections@1.0.459':
+    resolution: {integrity: sha512-OoyCit2aKFH5ZpcLvaWJDnsFerWN+fb1108lpDVUpbccqRb0zjyeRwCvTEtL1QVYct+vxGUO/9USYmxCtRR+Qw==}
+
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
+  '@iconify/utils@2.1.32':
+    resolution: {integrity: sha512-LeifFZPPKu28O3AEDpYJNdEbvS4/ojAPyIW+pF/vUpJTYnbTiXUHkCh0bwgFRzKvdpb8H4Fbfd/742++MF4fPQ==}
+
   '@iconify/vue@4.1.1':
     resolution: {integrity: sha512-RL85Bm/DAe8y6rT6pux7D2FJSiUEM/TPfyK7GrbAOfTSwrhvwJW+S5yijdGcmtXouA8MtuH9C7l4hiSE4mLMjg==}
+    peerDependencies:
+      vue: '>=3'
+
+  '@iconify/vue@4.1.3-beta.1':
+    resolution: {integrity: sha512-N7iEOnWfhjbMqiyGMhotJKip23nrK5l3+T1hQwpEjKeMD2o4zOjm8zmeEfOOH81EXllhhOm7upR8jcH499YRWA==}
     peerDependencies:
       vue: '>=3'
 
@@ -1265,6 +1282,9 @@ packages:
     resolution: {integrity: sha512-p0HNkpNxur0DKW3euIR25FgYMSSRp7hkecA0vOdQo+4qTipYLznqj9MjUvRo10CZtS0g9D9Gv5NyIkjPLTMN8A==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
+
+  '@nuxt/icon@1.5.1':
+    resolution: {integrity: sha512-NCCJFumuCfLTaPWyfB0NhOqSPmjK3OCCUbsAk0gfQIxwW0ERudrqiwhCtGJljxA8Ae/952OtI79Fpj1M5Sfuhg==}
 
   '@nuxt/kit@3.12.4':
     resolution: {integrity: sha512-aNRD1ylzijY0oYolldNcZJXVyxdGzNTl+Xd0UYyFQCu9f4wqUZqQ9l+b7arCEzchr96pMK0xdpvLcS3xo1wDcw==}
@@ -5033,6 +5053,9 @@ packages:
   package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
 
+  package-manager-detector@0.2.0:
+    resolution: {integrity: sha512-E385OSk9qDcXhcM9LNSe4sdhx8a9mAPrZ4sMLW+tmxl5ZuGtPUcdFu+MPP2jbgiWAZ6Pfe5soGFMd+0Db5Vrog==}
+
   paneer@0.1.0:
     resolution: {integrity: sha512-SZfJe/y9fbpeXZU+Kf7cSG2G7rnGP50hUYzCvcWyhp7hYzA3YXGthpkGfv6NSt0oo6QbcRyKwycg/6dpG5p8aw==}
     deprecated: Please migrate to https://github.com/unjs/magicast
@@ -6813,6 +6836,11 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
+  '@antfu/install-pkg@0.4.1':
+    dependencies:
+      package-manager-detector: 0.2.0
+      tinyexec: 0.3.0
+
   '@antfu/utils@0.7.10': {}
 
   '@babel/code-frame@7.24.7':
@@ -7599,9 +7627,30 @@ snapshots:
 
   '@hutson/parse-repository-url@3.0.2': {}
 
+  '@iconify/collections@1.0.459':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/types@2.0.0': {}
 
+  '@iconify/utils@2.1.32':
+    dependencies:
+      '@antfu/install-pkg': 0.4.1
+      '@antfu/utils': 0.7.10
+      '@iconify/types': 2.0.0
+      debug: 4.3.7
+      kolorist: 1.8.0
+      local-pkg: 0.5.0
+      mlly: 1.7.1
+    transitivePeerDependencies:
+      - supports-color
+
   '@iconify/vue@4.1.1(vue@3.5.4(typescript@5.5.4))':
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.5.4(typescript@5.5.4)
+
+  '@iconify/vue@4.1.3-beta.1(vue@3.5.4(typescript@5.5.4))':
     dependencies:
       '@iconify/types': 2.0.0
       vue: 3.5.4(typescript@5.5.4)
@@ -8026,6 +8075,28 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  '@nuxt/icon@1.5.1(magicast@0.3.5)(rollup@4.18.0)(vite@5.4.3(@types/node@20.5.1)(terser@5.19.2))(vue@3.5.4(typescript@5.5.4))(webpack-sources@3.2.3)':
+    dependencies:
+      '@iconify/collections': 1.0.459
+      '@iconify/types': 2.0.0
+      '@iconify/utils': 2.1.32
+      '@iconify/vue': 4.1.3-beta.1(vue@3.5.4(typescript@5.5.4))
+      '@nuxt/devtools-kit': 1.4.2(magicast@0.3.5)(rollup@4.18.0)(vite@5.4.3(@types/node@20.5.1)(terser@5.19.2))(webpack-sources@3.2.3)
+      '@nuxt/kit': 3.13.1(magicast@0.3.5)(rollup@4.18.0)(webpack-sources@3.2.3)
+      consola: 3.2.3
+      fast-glob: 3.3.2
+      local-pkg: 0.5.0
+      mlly: 1.7.1
+      pathe: 1.1.2
+      std-env: 3.7.0
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - vite
+      - vue
+      - webpack-sources
 
   '@nuxt/kit@3.12.4(magicast@0.3.5)(rollup@3.29.4)':
     dependencies:
@@ -9775,7 +9846,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
 
@@ -11638,7 +11709,7 @@ snapshots:
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
 
@@ -12048,7 +12119,7 @@ snapshots:
   local-pkg@0.5.0:
     dependencies:
       mlly: 1.7.1
-      pkg-types: 1.1.3
+      pkg-types: 1.2.0
 
   locate-path@2.0.0:
     dependencies:
@@ -12654,7 +12725,7 @@ snapshots:
   micromark@3.2.0:
     dependencies:
       '@types/debug': 4.1.8
-      debug: 4.3.5
+      debug: 4.3.7
       decode-named-character-reference: 1.0.2
       micromark-core-commonmark: 1.1.0
       micromark-factory-space: 1.1.0
@@ -13371,6 +13442,8 @@ snapshots:
   p-try@2.2.0: {}
 
   package-json-from-dist@1.0.0: {}
+
+  package-manager-detector@0.2.0: {}
 
   paneer@0.1.0:
     dependencies:
@@ -14162,7 +14235,7 @@ snapshots:
 
   require-in-the-middle@7.3.0:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.7
       module-details-from-path: 1.0.3
       resolve: 1.22.4
     transitivePeerDependencies:
