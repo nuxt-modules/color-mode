@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   modules: [
     '../src/module',
     '@nuxt/icon',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
+  colorMode: {
+    // storage: 'cookie',
+  },
 })
