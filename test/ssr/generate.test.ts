@@ -25,7 +25,7 @@ describe('ssr: true, target: static, generated files', () => {
     const files = ['index.html', '200.html']
     for (const file of files) {
       const contents = await readFile(join(generateDir, file), 'utf-8')
-      expect(contents).toMatch('getItem(\'nuxt-color-mode\')')
+      expect(contents).toContain('getStorageValue(\'localStorage\', \'nuxt-color-mode\')')
     }
   })
 })

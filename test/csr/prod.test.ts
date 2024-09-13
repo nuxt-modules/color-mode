@@ -14,6 +14,6 @@ describe('ssr: false, target: server, prod mode', async () => {
 
   it('render', async () => {
     const html = await $fetch('/')
-    expect(html).toContain('getItem(\'nuxt-color-mode\')')
+    expect(html).toContain('getStorageValue(\'localStorage\', \'nuxt-color-mode\')')
   })
 })
