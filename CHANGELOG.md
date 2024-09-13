@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/nuxt-modules/color-mode/compare/v3.4.4...v3.5.0) (2024-09-13)
+
+
+### Features
+
+* `placeholder` slot for component ([#282](https://github.com/nuxt-modules/color-mode/issues/282)) ([2094c6b](https://github.com/nuxt-modules/color-mode/commit/2094c6bfee9555f7b4cca8ab082fbe0aa3330166))
+* cookie storage ([#221](https://github.com/nuxt-modules/color-mode/issues/221)) ([c4df5d9](https://github.com/nuxt-modules/color-mode/commit/c4df5d974892d1e27e3eae33d44240b98dc0cb88))
+
 ### [3.4.4](https://github.com/nuxt-modules/color-mode/compare/v3.4.3...v3.4.4) (2024-08-16)
 
 ### [3.4.3](https://github.com/nuxt-modules/color-mode/compare/v3.4.2...v3.4.3) (2024-08-16)
