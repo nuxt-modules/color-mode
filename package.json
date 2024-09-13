@@ -32,6 +32,8 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "docs": "nuxi dev docs",
+    "docs:build": "nuxi generate docs",
     "lint": "eslint .",
     "prepublishOnly": "pnpm run prepack",
     "release": "pnpm lint && pnpm test && changelogen --release && npm publish && git push --follow-tags",

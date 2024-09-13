@@ -1,7 +1,7 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@nuxt-themes/docus'],
-  modules: ['@nuxtjs/plausible'],
-  imports: {
-    autoImport: true,
-  },
+  devtools: { enabled: true },
+  extends: '@nuxt/ui-pro',
+  modules: ['@nuxt/ui', '@nuxt/content'],
+  compatibilityDate: '2024-09-13',
 })

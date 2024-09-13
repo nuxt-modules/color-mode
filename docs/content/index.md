@@ -1,13 +1,7 @@
 ---
-title: 'Documentation'
-description: 'Dark and Light mode with auto detection made easy with Nuxt 🌗'
-aside: false
-navigation: false
+title: Nuxt Color Mode
+description: Dark and Light mode with auto detection made easy with Nuxt 🌗
 ---
-
-# Nuxt Color Mode
-
-Dark and Light mode with auto detection made easy with Nuxt 🌗
 
 ## Features
 
@@ -27,7 +21,7 @@ Checkout the [online demo](https://color-mode.nuxtjs.app) and [source code](http
 
 ## Setup
 
-::alert{type="info"}
+::callout
 The current version of `@nuxtjs/color-mode` is compatible with [Nuxt 3 and Nuxt Bridge](https://nuxt.com). :br If you're looking for the previous version of this module, check out [v2.color-mode.nuxtjs.org](https://v2.color-mode.nuxtjs.org/), or [read more about the differences](#migrating-to-v3).
 ::
 
@@ -116,7 +110,7 @@ definePageMeta({
 
 This feature is perfect for implementing dark mode to a website incrementally by setting the not-ready pages to `colorMode: 'light'`.
 
-::alert{type="info"}
+::callout
 We recommend to hide or disable the color mode picker on the page since it won't be able to change the current page color mode, using `$colorMode.forced` value.
 ::
 
@@ -201,12 +195,6 @@ v3 of `@nuxtjs/color-mode` requires either Nuxt Bridge or Nuxt 3. (If you are us
 
 ## Contributing
 
-You can contribute to this module online with CodeSandBox:
-
-[![Edit @nuxtjs/color-mode](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/nuxt-modules/color-mode/tree/main/?fontsize=14&hidenavigation=1&theme=dark)
-
-Or locally:
-
 1. Clone this repository
 2. Install dependencies using `pnpm install`
 3. Start development server using `pnpm dev`
@@ -215,4 +203,3 @@ Or locally:
 
 [MIT License](https://github.com/nuxt-modules/color-mode/blob/main/LICENSE)
 
-Copyright (c) Nuxt Team
