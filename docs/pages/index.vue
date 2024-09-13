@@ -33,8 +33,14 @@ const communityLinks = computed(() => [
     target: '_blank',
   },
   {
+    icon: 'i-ph-rocket-duotone',
+    label: 'NuxtHub',
+    to: 'https://hub.nuxt.com/?utm_source=nuxt-color-mode',
+    target: '_blank',
+  },
+  {
     icon: 'i-simple-icons-nuxtdotjs',
-    label: 'Nuxt docs',
+    label: 'Nuxt',
     to: 'https://nuxt.com',
     target: '_blank',
   },
