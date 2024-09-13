@@ -1,4 +1,4 @@
-[![@nuxtjs/color-mode](https://color-mode.nuxtjs.org/cover.jpg)](https://color-mode.nuxtjs.org)
+[![@nuxtjs/color-mode](https://color-mode.nuxtjs.org/social-card.jpg)](https://color-mode.nuxtjs.org)
 
 # Nuxt Color Mode
 
