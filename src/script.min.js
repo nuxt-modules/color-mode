@@ -1,1 +1,1 @@
-script.js
+./script.js
