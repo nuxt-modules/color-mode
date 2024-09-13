@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/ui": "^2.18.4",
+    "@nuxtjs/plausible": "^1.0.2",
     "nuxt": "^3.13.1"
   },
   "dependencies": {
