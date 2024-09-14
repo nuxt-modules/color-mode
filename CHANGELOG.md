@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v3.5.1
+
+[compare changes](https://github.com/nuxt-modules/color-mode/compare/v3.5.0...v3.5.1)
+
+### 🩹 Fixes
+
+- Synchronize Vue 2 & 3 component behaviour ([#285](https://github.com/nuxt-modules/color-mode/pull/285))
+
+### 📖 Documentation
+
+- Update ([b3789de](https://github.com/nuxt-modules/color-mode/commit/b3789de))
+- Move to Nuxt UI ([#283](https://github.com/nuxt-modules/color-mode/pull/283))
+- Update readme ([4608865](https://github.com/nuxt-modules/color-mode/commit/4608865))
+- Add back plausible ([fbde0a1](https://github.com/nuxt-modules/color-mode/commit/fbde0a1))
+- Update links ([ab361e9](https://github.com/nuxt-modules/color-mode/commit/ab361e9))
+- Simplify ([3c1c680](https://github.com/nuxt-modules/color-mode/commit/3c1c680))
+
+### 🏡 Chore
+
+- Update release script ([135a90e](https://github.com/nuxt-modules/color-mode/commit/135a90e))
+- Update deps ([0d5f77b](https://github.com/nuxt-modules/color-mode/commit/0d5f77b))
+
+### ❤️ Contributors
+
+- Horu ([@HigherOrderLogic](http://github.com/HigherOrderLogic))
+- Sébastien Chopin ([@atinux](http://github.com/atinux))
+
 ## [3.5.0](https://github.com/nuxt-modules/color-mode/compare/v3.4.4...v3.5.0) (2024-09-13)
 
 
