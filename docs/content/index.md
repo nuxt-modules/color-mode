@@ -28,7 +28,7 @@ The current version of `@nuxtjs/color-mode` is compatible with [Nuxt 3 and Nuxt 
 Add `@nuxtjs/color-mode` dependency to your project:
 
 ```bash
-npx nuximodule add color-mode
+npx nuxi module add color-mode
 ```
 
 Then, add `@nuxtjs/color-mode` to the `modules` section of your `nuxt.config.ts`
