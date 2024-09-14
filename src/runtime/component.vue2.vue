@@ -13,7 +13,7 @@ export default {
   },
   render(createElement, { data, props, children, slots }) {
     // transform props for <client-only>
-    if (slots.placeholder) {
+    if (!props.placeholder && slots.placeholder) {
       props = {
         placeholderTag: props.placeholderTag,
       }
