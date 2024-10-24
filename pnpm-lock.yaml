@@ -11,9 +11,6 @@ importers:
       '@nuxt/kit':
         specifier: ^3.13.2
         version: 3.13.2(magicast@0.3.5)(rollup@3.29.4)
-      changelogen:
-        specifier: ^0.5.7
-        version: 0.5.7(magicast@0.3.5)
       pathe:
         specifier: ^1.1.2
         version: 1.1.2
@@ -54,6 +51,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^2.1.3
         version: 2.1.3(vitest@2.1.3(@types/node@22.5.4)(terser@5.32.0))
+      changelogen:
+        specifier: ^0.5.7
+        version: 0.5.7(magicast@0.3.5)
       eslint:
         specifier: ^9.13.0
         version: 9.13.0(jiti@2.3.3)
@@ -1786,7 +1786,7 @@ packages:
   '@vue/devtools-core@7.4.4':
     resolution: {integrity: sha512-DLxgA3DfeADkRzhAfm3G2Rw/cWxub64SdP5b+s5dwL30+whOGj+QNhmyFpwZ8ZTrHDFRIPj0RqNzJ8IRR1pz7w==}
     peerDependencies:
-      vue: ^3.5.4
+      vue: ^3.0.0
 
   '@vue/devtools-kit@7.4.4':
     resolution: {integrity: sha512-awK/4NfsUG0nQ7qnTM37m7ZkEUMREyPh8taFCX+uQYps/MTFEum0AD05VeGDRMXwWvMmGIcWX9xp8ZiBddY0jw==}
