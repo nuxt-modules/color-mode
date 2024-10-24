@@ -89,7 +89,7 @@ importers:
         version: 1.4.4(magicast@0.3.5)(rollup@4.21.3)(vite@5.4.5(@types/node@22.5.4)(terser@5.32.0))(vue@3.5.12(typescript@5.6.3))
     devDependencies:
       '@nuxt/devtools':
-        specifier: latest
+        specifier: ^1.6.0
         version: 1.6.0(rollup@4.21.3)(vite@5.4.5(@types/node@22.5.4)(terser@5.32.0))(vue@3.5.12(typescript@5.6.3))
       '@nuxt/ui':
         specifier: ^2.18.7
@@ -107,8 +107,8 @@ importers:
         specifier: ^1.5.6
         version: 1.5.6(magicast@0.3.5)(rollup@4.21.3)(vite@5.4.5(@types/node@22.5.4)(terser@5.32.0))(vue@3.5.12(typescript@5.6.3))
       '@nuxtjs/color-mode':
-        specifier: latest
-        version: 3.5.1(magicast@0.3.5)(rollup@4.21.3)
+        specifier: ^3.5.2
+        version: 3.5.2(magicast@0.3.5)(rollup@4.21.3)
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.2
         version: 6.12.2(magicast@0.3.5)(rollup@4.21.3)
@@ -1211,8 +1211,8 @@ packages:
     peerDependencies:
       vue: ^3.3.4
 
-  '@nuxtjs/color-mode@3.5.1':
-    resolution: {integrity: sha512-GRHF3WUwX6fXIiRVlngNq1nVDwrVuP6dWX1DRmox3QolzX0eH1oJEcFr/lAm1nkT71JVGb8mszho9w+yHJbePw==}
+  '@nuxtjs/color-mode@3.5.2':
+    resolution: {integrity: sha512-cC6RfgZh3guHBMLLjrBB2Uti5eUoGM9KyauOaYS9ETmxNWBMTvpgjvSiSJp1OFljIXPIqVTJ3xtJpSNZiO3ZaA==}
 
   '@nuxtjs/mdc@0.9.2':
     resolution: {integrity: sha512-dozIPTPjEYu8jChHNCICZP3mN0sFC6l3aLxTkgv/DAr1EI8jqqqoSZKevzuiHUWGNTguS70+fLcztCwrzWdoYA==}
@@ -1786,7 +1786,7 @@ packages:
   '@vue/devtools-core@7.4.4':
     resolution: {integrity: sha512-DLxgA3DfeADkRzhAfm3G2Rw/cWxub64SdP5b+s5dwL30+whOGj+QNhmyFpwZ8ZTrHDFRIPj0RqNzJ8IRR1pz7w==}
     peerDependencies:
-      vue: ^3.0.0
+      vue: ^3.5.4
 
   '@vue/devtools-kit@7.4.4':
     resolution: {integrity: sha512-awK/4NfsUG0nQ7qnTM37m7ZkEUMREyPh8taFCX+uQYps/MTFEum0AD05VeGDRMXwWvMmGIcWX9xp8ZiBddY0jw==}
@@ -6996,7 +6996,7 @@ snapshots:
       '@iconify-json/heroicons': 1.2.1
       '@nuxt/icon': 1.5.6(magicast@0.3.5)(rollup@4.21.3)(vite@5.4.5(@types/node@22.5.4)(terser@5.32.0))(vue@3.5.12(typescript@5.6.3))
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.21.3)
-      '@nuxtjs/color-mode': 3.5.1(magicast@0.3.5)(rollup@4.21.3)
+      '@nuxtjs/color-mode': 3.5.2(magicast@0.3.5)(rollup@4.21.3)
       '@nuxtjs/tailwindcss': 6.12.2(magicast@0.3.5)(rollup@4.21.3)
       '@popperjs/core': 2.11.8
       '@tailwindcss/aspect-ratio': 0.4.2(tailwindcss@3.4.14)
@@ -7155,10 +7155,9 @@ snapshots:
       - vue-tsc
       - webpack-sources
 
-  '@nuxtjs/color-mode@3.5.1(magicast@0.3.5)(rollup@4.21.3)':
+  '@nuxtjs/color-mode@3.5.2(magicast@0.3.5)(rollup@4.21.3)':
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.21.3)
-      changelogen: 0.5.7(magicast@0.3.5)
       pathe: 1.1.2
       pkg-types: 1.2.1
       semver: 7.6.3
