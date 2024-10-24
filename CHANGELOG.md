@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v3.5.2
+
+[compare changes](https://github.com/nuxt-modules/color-mode/compare/v3.5.1...v3.5.2)
+
+### 📖 Documentation
+
+- Add space in installation bash script ([#297](https://github.com/nuxt-modules/color-mode/pull/297))
+- Typo ([#293](https://github.com/nuxt-modules/color-mode/pull/293))
+- Typo ([#290](https://github.com/nuxt-modules/color-mode/pull/290))
+- Typo ([#287](https://github.com/nuxt-modules/color-mode/pull/287))
+
+### 🏡 Chore
+
+- **release:** V3.5.1 ([1f70605](https://github.com/nuxt-modules/color-mode/commit/1f70605))
+- Move `changelogen` to dev deps ([c98eb9b](https://github.com/nuxt-modules/color-mode/commit/c98eb9b))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+- DesertCookie <prog.desco@gmail.com>
+- Jennifer Bland <ratracegrad@gmail.com>
+- Pazaz ([@pazazdigital](http://github.com/pazazdigital))
+- Sam Norris-Rogers <samnrogers@gmail.com>
+- Sébastien Chopin ([@atinux](http://github.com/atinux))
+
 ## v3.5.1
 
 [compare changes](https://github.com/nuxt-modules/color-mode/compare/v3.5.0...v3.5.1)
