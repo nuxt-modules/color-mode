@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue, disableTransition, storage, cookieAttribs } from '#color-mode-options'
+import { globalName, storageKey, dataValue, disableTransition, storage, cookieAttrs } from '#color-mode-options'
 
 // Initialise to empty object to avoid hard error when hydrating app in test mode
 const helper = (window[globalName] || {}) as unknown as {
@@ -80,10 +80,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     switch (storageType) {
       case 'cookie':
 
-        if (Object.keys(cookieAttribs).length) {
+        if (Object.keys(ibs).length) {
           let cookieString = storageKey + '=' + preference
-          for (const key in cookieAttribs) {
-            cookieString += `; ${key}=${cookieAttribs[key]}`
+          for (const key in ibs) {
+            cookieString += `; ${key}=${ibs[key]}`
           }
           window.document.cookie = cookieString
         }
