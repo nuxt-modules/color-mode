@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   ],
   colorMode: {
     // storage: 'cookie',
-    // cookieAttribs: {
+    // cookieAttrs: {
     //   path: '/',
     //   domain: 'localhost',
     //   secure: true,
