@@ -80,10 +80,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     switch (storageType) {
       case 'cookie':
 
-        if (Object.keys(ibs).length) {
+        if (Object.keys(cookieAttrs).length) {
           let cookieString = storageKey + '=' + preference
-          for (const key in ibs) {
-            cookieString += `; ${key}=${ibs[key]}`
+          for (const key in cookieAttrs) {
+            cookieString += `; ${key}=${cookieAttrs[key]}`
           }
           window.document.cookie = cookieString
         }
