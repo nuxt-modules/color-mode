@@ -15,9 +15,9 @@ description: Dark and Light mode with auto detection made easy with Nuxt 🌗
 
 ## Live demo
 
-[![Nuxt color mode demo](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif){.border-b .border-r}](https://color-mode.nuxtjs.app)
+[![Nuxt color mode demo](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif){.border-b .border-r}](https://color-mode.nuxt.dev/)
 
-Checkout the [online demo](https://color-mode.nuxtjs.app) and [source code](https://github.com/nuxt-modules/color-mode/tree/main/playground).
+Checkout the [online demo](https://color-mode.nuxt.dev/) and [source code](https://github.com/nuxt-modules/color-mode/tree/main/playground).
 
 ## Setup
 

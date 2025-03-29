@@ -10,10 +10,10 @@
 
 🌑 Dark and 🌕 Light mode with auto detection made easy with Nuxt.
 
-[![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://color-mode.nuxtjs.app/)
+[![nuxt-color-mode](https://user-images.githubusercontent.com/904724/79349768-f09cf080-7f36-11ea-93bb-20fae8c94811.gif)](https://color-mode.nuxt.dev//)
 
 <p align="center">
-  <a href="https://color-mode.nuxtjs.app">Live demo</a>
+  <a href="https://color-mode.nuxt.dev/">Live demo</a>
 </p>
 
 - [✨ &nbsp;Release Notes](https://github.com/nuxt-modules/color-mode/releases)
