@@ -1,9 +1,9 @@
-name: Deploy Playground to NuxtHub
+name: Deploy Playground
 on: push
 
 jobs:
   deploy:
-    name: "Deploy to NuxtHub"
+    name: "Deploy Playground"
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
@@ -11,6 +11,9 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    defaults:
+       run:
+         working-directory: playground
     steps:
       - uses: actions/checkout@v4
 
@@ -30,7 +33,7 @@ jobs:
         run: pnpx nuxthub@latest ensure
 
       - name: Build playground
-        run: pnpm dev:prepare && pnpm dev:build
+        run: pnpm build
 
       - name: Deploy to NuxtHub
         uses: nuxt-hub/action@v1
