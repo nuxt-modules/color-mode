@@ -11,10 +11,6 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    defaults:
-      run:
-        working-directory: playground
-
     steps:
       - uses: actions/checkout@v4
 
