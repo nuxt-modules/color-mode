@@ -1,4 +1,4 @@
-name: Deploy to NuxtHub
+name: Deploy Playground to NuxtHub
 on: push
 
 jobs:
@@ -20,8 +20,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - name: Install Node.js
         uses: actions/setup-node@v4
