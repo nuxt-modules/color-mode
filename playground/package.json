@@ -8,6 +8,7 @@
     "nuxt": "^3.13.2"
   },
   "scripts": {
+    "postinstall": "pnpm -C .. run dev:prepare",
     "dev": "nuxi dev",
     "build": "nuxi build"
   }
