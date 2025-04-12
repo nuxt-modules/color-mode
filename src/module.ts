@@ -14,7 +14,7 @@ const DEFAULTS: ModuleOptions = {
   globalName: '__NUXT_COLOR_MODE__',
   componentName: 'ColorScheme',
   classPrefix: '',
-  classSuffix: '-mode',
+  classSuffix: '',
   dataValue: '',
   storageKey: 'nuxt-color-mode',
   storage: 'localStorage',
@@ -160,7 +160,7 @@ export interface ModuleOptions {
    */
   classPrefix: string
   /**
-   * @default '-mode'
+   * @default ''
    */
   classSuffix: string
   /**
