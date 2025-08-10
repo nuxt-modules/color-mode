@@ -79,8 +79,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   function setPreferenceToStorage(storageType: typeof storage, preference: string) {
     switch (storageType) {
       case 'cookie':
-        const oneYear = 60 * 60 * 24 * 365 
-        window.document.cookie = `${storageKey}=${preference}; max-age=${oneYear}; path=/`;
+        window.document.cookie = `${storageKey}=${preference}; max-age=${60 * 60 * 24 * 365}; path=/`
         break
       case 'sessionStorage':
         window.sessionStorage?.setItem(storageKey, preference)
