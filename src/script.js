@@ -10,11 +10,11 @@
 
   const storedPreference = getStorageValue('<%= options.storage %>', '<%= options.storageKey %>')
   const configPreference = '<%= options.preference %>'
-  
+
   // Use config preference if it's not 'system', otherwise use stored preference or fallback to config
   const preference = configPreference !== 'system' ? configPreference : (storedPreference || configPreference)
   let value = preference === 'system' ? getColorScheme() : preference
-  
+
   // Applied forced color mode
   const forcedColorMode = de.getAttribute('data-color-mode-forced')
   if (forcedColorMode) {
