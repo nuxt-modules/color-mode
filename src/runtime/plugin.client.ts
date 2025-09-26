@@ -12,7 +12,7 @@ type Helper = {
   removeColorScheme: (className: string) => void
 }
 
-// Initialise to empty object to avoid hard error when hydrating app in test mode
+// Initialise to object with defaults and no-ops to avoid hard error when hydrating app in test mode
 const helper: Helper = (window[globalName] as unknown as Helper || {
   preference: 'light',
   value: 'light',
