@@ -4,8 +4,7 @@ import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
 import { globalName, storageKey, dataValue, disableTransition, storage } from '#color-mode-options'
 
-// Initialise to empty object to avoid hard error when hydrating app in test mode
-const helper = (window[globalName] || {}) as unknown as {
+type Helper = {
   preference: string
   value: string
   getColorScheme: () => string
@@ -13,11 +12,20 @@ const helper = (window[globalName] || {}) as unknown as {
   removeColorScheme: (className: string) => void
 }
 
+// Initialise to empty object to avoid hard error when hydrating app in test mode
+const helper: Helper = (window[globalName] as unknown as Helper || {
+  preference: 'light',
+  value: 'light',
+  getColorScheme: () => 'light',
+  addColorScheme: () => {},
+  removeColorScheme: () => {},
+})
+
 export default defineNuxtPlugin((nuxtApp) => {
   const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
     // For SPA mode or fallback
-    preference: helper.preference,
-    value: helper.value,
+    preference: helper?.preference,
+    value: helper?.value,
     unknown: false,
     forced: false,
   })).value
@@ -56,7 +64,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
       colorMode.forced = false
       colorMode.value = colorMode.preference === 'system'
-        ? helper.getColorScheme()
+        ? helper?.getColorScheme()
         : colorMode.preference
     }
   })
@@ -71,7 +79,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
     darkWatcher.addEventListener('change', () => {
       if (!colorMode.forced && colorMode.preference === 'system') {
-        colorMode.value = helper.getColorScheme()
+        colorMode.value = helper?.getColorScheme()
       }
     })
   }
@@ -95,7 +103,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       return
     }
     if (preference === 'system') {
-      colorMode.value = helper.getColorScheme()
+      colorMode.value = helper?.getColorScheme()
       watchMedia()
     }
     else {
@@ -114,8 +122,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       style.appendChild(document.createTextNode('*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'))
       window!.document.head.appendChild(style)
     }
-    helper.removeColorScheme(oldValue)
-    helper.addColorScheme(newValue)
+    helper?.removeColorScheme(oldValue)
+    helper?.addColorScheme(newValue)
     if (disableTransition) {
       // Calling getComputedStyle forces the browser to redraw
 
@@ -130,8 +138,8 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.hook('app:mounted', () => {
     if (colorMode.unknown) {
-      colorMode.preference = helper.preference
-      colorMode.value = helper.value
+      colorMode.preference = helper?.preference
+      colorMode.value = helper?.value
       colorMode.unknown = false
     }
   })
