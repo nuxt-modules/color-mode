@@ -22,12 +22,10 @@
 
 ## Features
 
-- Nuxt 3 and Nuxt Bridge support
 - Add `.${color}-mode` class to `<html>` for easy CSS theming
 - Force a page to a specific color mode (perfect for incremental development)
 - Works with client-side and universal rendering
 - Auto detect system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
-- Supports IE9+ 👴
 
 [📖 &nbsp;Read more](https://color-mode.nuxtjs.org)
 
