@@ -22,14 +22,14 @@
 
 ## Features
 
-- Add `.${color}-mode` class to `<html>` for easy CSS theming
+- Add `.${color}` class to `<html>` for easy CSS theming
 - Force a page to a specific color mode (perfect for incremental development)
 - Works with client-side and universal rendering
 - Auto detect system [color-mode](https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-mode)
 
 [📖 &nbsp;Read more](https://color-mode.nuxtjs.org)
 
-**Note**: v3 of `@nuxtjs/color-mode` is compatible with [Nuxt 3+ and Nuxt Bridge](https://nuxt.com). If you're looking for the previous version of this module, check out [the previous docs](https://v2.color-mode.nuxtjs.org/), or [read more about the differences](https://color-mode.nuxtjs.org/#migrating-to-v3).
+**Note**: v4 of `@nuxtjs/color-mode` is compatible with [Nuxt 3+](https://nuxt.com). If you're looking for the previous version of this module, check out [the previous docs](https://v2.color-mode.nuxtjs.org/), or [read more about the differences](https://color-mode.nuxtjs.org/#migrating-to-v3).
 
 ## Contributing
 
