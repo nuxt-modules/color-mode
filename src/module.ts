@@ -38,14 +38,20 @@ export default defineNuxtModule({
     options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option]).trim()
 
     // Inject options via virtual template
-    nuxt.options.alias['#color-mode-options'] = addTemplate({
+    const storageTypes: Record<ColorModeStorage, `"${ColorModeStorage}"`> = {
+      cookie: '"cookie"',
+      localStorage: '"localStorage"',
+      sessionStorage: '"sessionStorage"',
+    }
+    addTemplate({
       filename: 'color-mode-options.mjs',
       getContents: () => Object.entries(options).map(([key, value]) =>
-        `export const ${key} = ${JSON.stringify(value, null, 2)}
+        (key === 'storage' ? `/** @type {${Object.values(storageTypes).join(' | ')}} */\n` : '')
+        + `export const ${key} = ${JSON.stringify(value, null, 2)}
       `).join('\n'),
-    }).dst
+    })
 
-    const runtimeDir = await resolver.resolve('./runtime')
+    const runtimeDir = resolver.resolve('./runtime')
     nuxt.options.build.transpile.push(runtimeDir)
 
     // Add plugins

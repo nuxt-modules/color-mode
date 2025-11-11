@@ -2,7 +2,7 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue, disableTransition, storage } from '#color-mode-options'
+import { globalName, storageKey, dataValue, disableTransition, storage } from '#build/color-mode-options.mjs'
 
 type Helper = {
   preference: string
@@ -12,7 +12,8 @@ type Helper = {
   removeColorScheme: (className: string) => void
 }
 
-let helper = window[globalName] as unknown as Helper
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let helper = window[globalName as any] as unknown as Helper
 
 // Initialise to object with defaults and no-ops to avoid hard error when hydrating app in test mode
 if (import.meta.test && !helper) {
