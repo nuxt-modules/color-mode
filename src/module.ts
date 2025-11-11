@@ -1,7 +1,8 @@
 import { promises as fsp } from 'node:fs'
 import { resolve } from 'pathe'
-import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, createResolver, tryResolveModule } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, createResolver } from '@nuxt/kit'
 import { readPackageJSON } from 'pkg-types'
+import { resolveModulePath } from 'exsolve'
 import { gte } from 'semver'
 
 import { name, version } from '../package.json'
@@ -75,7 +76,7 @@ export default defineNuxtModule({
 
     // @ts-expect-error module may not be installed
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
-      const tailwind = await tryResolveModule('tailwindcss', nuxt.options.modulesDir) || 'tailwindcss'
+      const tailwind = resolveModulePath('tailwindcss', { from: nuxt.options.modulesDir, try: true }) || 'tailwindcss'
       const isAfter341 = await readPackageJSON(tailwind).then(twPkg => gte(twPkg.version || '3.0.0', '3.4.1'))
       tailwindConfig.darkMode = tailwindConfig.darkMode ?? [isAfter341 ? 'selector' : 'class', `[class~="${options.classPrefix}dark${options.classSuffix}"]`]
     })
