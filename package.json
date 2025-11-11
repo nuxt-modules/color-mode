@@ -46,8 +46,8 @@
     "semver": "^7.6.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@nuxt/eslint-config": "^1.10.0",
     "@nuxt/module-builder": "^0.8.4",
     "@nuxt/schema": "^3.20.1",
