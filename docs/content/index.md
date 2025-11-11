@@ -17,7 +17,7 @@ orientation: horizontal
 Dark and light mode with [auto detection]{.text-primary}
 
 #description
-Plug-and-play color mode module for Nuxt with auto detection made easy. Add `.dark-mode` and `.light-mode` classes to your CSS for easy theming.
+Plug-and-play color mode module for Nuxt with auto detection made easy. Easily theme your app with `.dark` and `.light` classes.
 
 #links
   :::u-button
@@ -59,7 +59,7 @@ Get the most of your app with :br [powerful features]{.text-primary}
   Easy CSS Theming
   
   #description
-  Add `.dark-mode` and `.light-mode` classes to your CSS for effortless theming.
+  Add `.dark` and `.light` classes to your CSS for effortless theming.
   :::
 
   :::u-page-card
