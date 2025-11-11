@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@iconify-json/ph": "^1.2.2",
+    "@nuxtjs/mdc": "^0.18.2",
     "@nuxtjs/plausible": "^2.0.1",
     "better-sqlite3": "^12.4.1",
     "docus": "^5.2.1",
-    "nuxt": "^4.2.1"
+    "nuxt": "^4.2.1",
+    "unist-util-visit": "^5.0.0"
   }
 }
