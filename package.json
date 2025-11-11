@@ -41,7 +41,7 @@
     "docs:build": "nuxt generate docs",
     "lint": "eslint .",
     "prepublishOnly": "pnpm run prepack",
-    "release": "pnpm lint && pnpm test && changelogen --release && npm publish && git push --follow-tags",
+    "release": "pnpm lint && pnpm test && bumpp",
     "test": "vitest run --coverage && vue-tsc --noEmit"
   },
   "dependencies": {
@@ -62,7 +62,8 @@
     "@types/semver": "^7.7.1",
     "@typescript-eslint/parser": "^8.46.4",
     "@vitest/coverage-v8": "^4.0.8",
-    "changelogen": "^0.6.2",
+    "bumpp": "^10.3.1",
+    "changelogithub": "^13.16.1",
     "esbuild": "^0.27.0",
     "eslint": "^9.39.1",
     "husky": "9.1.7",
