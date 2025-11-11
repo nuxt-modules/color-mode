@@ -26,7 +26,7 @@ useSeoMeta({
   --border-color: #ddd;
 }
 
-.dark-mode {
+.dark {
   --color: #ebf4f1;
   --color-primary: #41b38a;
   --color-secondary: #fdf9f3;
@@ -34,7 +34,7 @@ useSeoMeta({
   --bg-secondary: #071521;
   --border-color: #0d2538;
 }
-.sepia-mode {
+.sepia {
   --color: #433422;
   --color-secondary: #504231;
   --bg: #f1e7d0;

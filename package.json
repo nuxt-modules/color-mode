@@ -1,13 +1,13 @@
 {
   "name": "@nuxtjs/color-mode",
   "version": "3.5.2",
-  "description": "Dark and Light mode for Nuxt with auto detection",
+  "description": "Dark and light mode for Nuxt with auto detection",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nuxt-modules/color-mode.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@10.21.0",
   "contributors": [
     {
       "name": "Nuxt Team"
@@ -16,52 +16,58 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
     }
   },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "prepack": "nuxt-module-build build && esbuild --minify src/script.js --outfile=dist/script.min.js",
     "build": "pnpm run prepack",
-    "dev": "nuxi dev playground",
-    "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "docs": "nuxi dev docs",
-    "docs:build": "nuxi generate docs",
+    "dev": "nuxt dev playground",
+    "dev:build": "nuxt build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
+    "docs": "nuxt dev docs",
+    "docs:build": "nuxt generate docs",
     "lint": "eslint .",
     "prepublishOnly": "pnpm run prepack",
     "release": "pnpm lint && pnpm test && changelogen --release && npm publish && git push --follow-tags",
     "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.13.2",
-    "pathe": "^1.1.2",
-    "pkg-types": "^1.2.1",
-    "semver": "^7.6.3"
+    "@nuxt/kit": "^4.2.1",
+    "pathe": "^2.0.3",
+    "pkg-types": "^2.3.0",
+    "semver": "^7.7.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@nuxt/eslint-config": "^0.6.0",
-    "@nuxt/module-builder": "^0.8.4",
-    "@nuxt/schema": "^3.13.2",
-    "@nuxt/test-utils": "^3.14.4",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@nuxt/eslint-config": "^1.10.0",
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/schema": "^4.2.1",
+    "@nuxt/test-utils": "^3.20.1",
     "@types/lodash.template": "^4.5.3",
-    "@types/semver": "^7.5.8",
-    "@typescript-eslint/parser": "^8.11.0",
-    "@vitest/coverage-v8": "^2.1.3",
-    "changelogen": "^0.5.7",
-    "eslint": "^9.13.0",
-    "husky": "9.1.6",
-    "nuxt": "^3.13.2",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.3",
-    "vue-tsc": "^2.1.6"
+    "@types/semver": "^7.7.1",
+    "@typescript-eslint/parser": "^8.46.4",
+    "@vitest/coverage-v8": "^4.0.8",
+    "changelogen": "^0.6.2",
+    "esbuild": "^0.27.0",
+    "eslint": "^9.39.1",
+    "husky": "9.1.7",
+    "nuxt": "^4.2.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.8",
+    "vue-tsc": "^3.1.3"
   }
 }
