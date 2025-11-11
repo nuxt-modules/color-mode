@@ -13,7 +13,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/ui": "^2.18.7",
     "@nuxtjs/plausible": "^1.0.3",
-    "nuxt": "^3.20.1"
+    "nuxt": "^4.2.1"
   },
   "dependencies": {
     "@iconify-json/ph": "^1.2.1",

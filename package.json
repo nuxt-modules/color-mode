@@ -40,7 +40,7 @@
     "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.20.1",
+    "@nuxt/kit": "^4.2.1",
     "pathe": "^2.0.3",
     "pkg-types": "^2.3.0",
     "semver": "^7.6.3"
@@ -50,7 +50,7 @@
     "@commitlint/config-conventional": "^20.0.0",
     "@nuxt/eslint-config": "^1.10.0",
     "@nuxt/module-builder": "^0.8.4",
-    "@nuxt/schema": "^3.20.1",
+    "@nuxt/schema": "^4.2.1",
     "@nuxt/test-utils": "^3.14.4",
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.5.8",
@@ -59,7 +59,7 @@
     "changelogen": "^0.5.7",
     "eslint": "^9.13.0",
     "husky": "9.1.6",
-    "nuxt": "^3.20.1",
+    "nuxt": "^4.2.1",
     "typescript": "^5.6.3",
     "vitest": "^4.0.8",
     "vue-tsc": "^2.1.6"
