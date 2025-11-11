@@ -29,7 +29,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     const forcedColorMode = to.meta.colorMode
 
     if (forcedColorMode && forcedColorMode !== 'system') {
-      colorMode.value = htmlAttrs['data-color-mode-forced'] = forcedColorMode
+      htmlAttrs['data-color-mode-forced'] = forcedColorMode
+      // @ts-expect-error readonly property
+      colorMode.value = forcedColorMode
       if (dataValue) {
         htmlAttrs[`data-${dataValue}`] = colorMode.value
       }

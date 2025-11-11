@@ -1,6 +1,6 @@
 export interface ColorModeInstance {
   preference: string
-  value: string
+  readonly value: string
   unknown: boolean
   forced: boolean
 }

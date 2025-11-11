@@ -42,7 +42,7 @@
     "lint": "eslint .",
     "prepublishOnly": "pnpm run prepack",
     "release": "pnpm lint && pnpm test && changelogen --release && npm publish && git push --follow-tags",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage && vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "^4.2.1",
@@ -68,6 +68,7 @@
     "husky": "9.1.7",
     "nuxt": "^4.2.1",
     "typescript": "^5.9.3",
+    "unbuild": "^3.6.1",
     "vitest": "^4.0.8",
     "vue-tsc": "^3.1.3"
   }

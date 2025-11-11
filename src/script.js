@@ -18,6 +18,7 @@
 
   addColorScheme(value)
 
+  // @ts-expect-error global name is not of correct type
   w['<%= options.globalName %>'] = {
     preference,
     value,

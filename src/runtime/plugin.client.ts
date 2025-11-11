@@ -45,7 +45,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const forcedColorMode = to.meta.colorMode
 
     if (forcedColorMode && forcedColorMode !== 'system') {
-      colorMode.value = forcedColorMode
+      setColorModeValue(colorMode, forcedColorMode)
       colorMode.forced = true
     }
     else {
@@ -53,9 +53,10 @@ export default defineNuxtPlugin((nuxtApp) => {
         console.warn('You cannot force the colorMode to system at the page level.')
       }
       colorMode.forced = false
-      colorMode.value = colorMode.preference === 'system'
+      const newValue = colorMode.preference === 'system'
         ? helper.getColorScheme()
         : colorMode.preference
+      setColorModeValue(colorMode, newValue)
     }
   })
 
@@ -69,7 +70,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
     darkWatcher.addEventListener('change', () => {
       if (!colorMode.forced && colorMode.preference === 'system') {
-        colorMode.value = helper.getColorScheme()
+        setColorModeValue(colorMode, helper.getColorScheme())
       }
     })
   }
@@ -93,11 +94,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       return
     }
     if (preference === 'system') {
-      colorMode.value = helper.getColorScheme()
+      setColorModeValue(colorMode, helper.getColorScheme())
       watchMedia()
     }
     else {
-      colorMode.value = preference
+      setColorModeValue(colorMode, preference)
     }
 
     setPreferenceToStorage(storage, preference)
@@ -129,10 +130,15 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:mounted', () => {
     if (colorMode.unknown) {
       colorMode.preference = helper.preference
-      colorMode.value = helper.value
+      setColorModeValue(colorMode, helper.value)
       colorMode.unknown = false
     }
   })
 
   nuxtApp.provide('colorMode', colorMode)
 })
+
+function setColorModeValue(colorMode: ColorModeInstance, value: string) {
+  // @ts-expect-error readonly property
+  colorMode.value = value
+}
