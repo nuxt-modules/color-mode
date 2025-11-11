@@ -4,13 +4,25 @@ import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
 import { globalName, storageKey, dataValue, disableTransition, storage } from '#color-mode-options'
 
-// Initialise to empty object to avoid hard error when hydrating app in test mode
-const helper = (window[globalName] || {}) as unknown as {
+type Helper = {
   preference: string
   value: string
   getColorScheme: () => string
   addColorScheme: (className: string) => void
   removeColorScheme: (className: string) => void
+}
+
+let helper = window[globalName] as unknown as Helper
+
+// Initialise to object with defaults and no-ops to avoid hard error when hydrating app in test mode
+if (import.meta.test && !helper) {
+  helper = {
+    preference: 'light',
+    value: 'light',
+    getColorScheme: () => 'light',
+    addColorScheme: () => {},
+    removeColorScheme: () => {},
+  }
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
