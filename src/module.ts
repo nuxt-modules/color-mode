@@ -11,7 +11,6 @@ import type { ColorModeStorage } from './runtime/types'
 const DEFAULTS: ModuleOptions = {
   preference: 'system',
   fallback: 'light',
-  hid: 'nuxt-color-mode-script',
   globalName: '__NUXT_COLOR_MODE__',
   componentName: 'ColorScheme',
   classPrefix: '',
@@ -94,10 +93,6 @@ export interface ModuleOptions {
    * @default `light`
    */
   fallback: string
-  /**
-   * @default `nuxt-color-mode-script`
-   */
-  hid: string
   /**
    * @default `__NUXT_COLOR_MODE__`
    */
