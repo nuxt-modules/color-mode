@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.20.1",
-    "pathe": "^1.1.2",
+    "pathe": "^2.0.3",
     "pkg-types": "^2.3.0",
     "semver": "^7.6.3"
   },
