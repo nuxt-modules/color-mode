@@ -1,7 +1,7 @@
 import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
-import { defineNuxtPlugin, isVue2, isVue3, useRouter, useHead, useState } from '#imports'
+import { defineNuxtPlugin, useRouter, useHead, useState } from '#imports'
 import { globalName, storageKey, dataValue, disableTransition, storage } from '#color-mode-options'
 
 type Helper = {
@@ -35,28 +35,13 @@ export default defineNuxtPlugin((nuxtApp) => {
   })).value
 
   if (dataValue) {
-    if (isVue3) {
-      useHead({
-        htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) },
-      })
-    }
-    else {
-      const app = nuxtApp.nuxt2Context.app
-      const originalHead = app.head
-      app.head = function () {
-        const head = (typeof originalHead === 'function' ? originalHead.call(this) : originalHead) || {}
-        head.htmlAttrs = head.htmlAttrs || {}
-        head.htmlAttrs[`data-${dataValue}`] = colorMode.value
-        return head
-      }
-    }
+    useHead({
+      htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) },
+    })
   }
 
   useRouter().afterEach((to) => {
-    const forcedColorMode = isVue2
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ? (to.matched[0]?.components.default as any)?.options.colorMode
-      : to.meta.colorMode
+    const forcedColorMode = to.meta.colorMode
 
     if (forcedColorMode && forcedColorMode !== 'system') {
       colorMode.value = forcedColorMode
