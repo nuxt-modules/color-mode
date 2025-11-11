@@ -5,7 +5,7 @@
     "@nuxt/icon": "^1.5.6",
     "@nuxtjs/color-mode": "latest",
     "@nuxtjs/tailwindcss": "^6.12.2",
-    "nuxt": "^3.13.2"
+    "nuxt": "^3.20.1"
   },
   "scripts": {
     "postinstall": "pnpm -C .. run dev:prepare",
