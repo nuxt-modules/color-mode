@@ -26,9 +26,6 @@ export default defineNuxtModule({
     name,
     version,
     configKey: 'colorMode',
-    compatibility: {
-      bridge: true,
-    },
   },
   defaults: DEFAULTS,
   async setup(options, nuxt) {
