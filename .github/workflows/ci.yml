@@ -29,6 +29,9 @@ jobs:
         run: pnpm run test
       - name: Build project
         run: pnpm run prepack
+      - name: Publish
+        if: github.event_name == 'pull_request'
+        run: pnpx pkg-pr-new publish --compact --no-template --pnpm
       - name: Coverage
         uses: codecov/codecov-action@v5
         env:
