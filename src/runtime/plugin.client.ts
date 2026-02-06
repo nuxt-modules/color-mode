@@ -13,13 +13,16 @@ type Helper = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const helper: Helper = (window[globalName as any] as unknown as Helper) ?? {
-  // Fallback with defaults and no-ops to avoid hard errors in test environments (e.g., Vitest with Nuxt)
-  preference: 'light',
-  value: 'light',
-  getColorScheme: () => 'light',
-  addColorScheme: () => {},
-  removeColorScheme: () => {},
+let helper = window[globalName as any] as unknown as Helper
+
+if (import.meta.test && !helper) {
+  helper = {
+    preference: 'light',
+    value: 'light',
+    getColorScheme: () => 'light',
+    addColorScheme: () => {},
+    removeColorScheme: () => {},
+  }
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
