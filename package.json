@@ -68,6 +68,7 @@
     "eslint": "^9.39.1",
     "husky": "9.1.7",
     "nuxt": "^4.2.1",
+    "pkg-pr-new": "^0.0.63",
     "typescript": "^5.9.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.0.8",
