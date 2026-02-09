@@ -3,7 +3,7 @@ on: push
 
 jobs:
   deploy:
-    name: "Deploy Playground"
+    name: 'Deploy Playground'
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
@@ -12,8 +12,8 @@ jobs:
       contents: read
       id-token: write
     defaults:
-       run:
-         working-directory: playground
+      run:
+        working-directory: playground
     steps:
       - uses: actions/checkout@v5
 
@@ -29,15 +29,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Ensure NuxtHub module is installed
-        run: pnpx nuxthub@latest ensure
-
       - name: Build playground
         run: pnpm build
-
-      - name: Deploy to NuxtHub
-        uses: nuxt-hub/action@v1
-        id: deploy
-        with:
-          project-key: color-mode-o0yc
-          directory: playground/dist
