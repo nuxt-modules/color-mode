@@ -15,6 +15,7 @@ type Helper = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let helper = window[globalName as any] as unknown as Helper
 
+// Initialise to object with defaults and no-ops to avoid hard error when hydrating app in test mode
 if (import.meta.test && !helper) {
   helper = {
     preference: 'light',
