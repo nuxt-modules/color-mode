@@ -13,9 +13,9 @@ function iconName(theme) {
       <button
         v-for="theme of ['system', 'light', 'dark', 'sepia']"
         :key="theme"
-        class="relative top-0 cursor-pointer p-2 bg-white dark:bg-gray-800 sepia:bg-[#eae0c9] border-2 border-gray-200 dark:border-gray-700 sepia:border-[#ded0bf] rounded-md transition-all duration-100 ease-in-out hover:-top-1"
+        class="relative top-0 cursor-pointer p-2 bg-white dark:bg-gray-800 sepia:bg-[#eae0c9] border-2 border-gray-200 dark:border-gray-700 sepia:border-[#ded0bf] rounded-md transition-all duration-100 ease-in-out hover:-top-1 flex"
         :class="{
-          '!border-emerald-600 dark:!border-emerald-400 sepia:!border-[#6b4c2a] !-top-1': !$colorMode.unknown && theme === $colorMode.preference,
+          'border-emerald-600! dark:border-emerald-400! sepia:border-[#6b4c2a]! -top-1!': !$colorMode.unknown && theme === $colorMode.preference,
           'text-emerald-600 dark:text-emerald-400 sepia:text-[#6b4c2a]': !$colorMode.unknown && theme === $colorMode.value,
         }"
         @click="$colorMode.preference = theme"
