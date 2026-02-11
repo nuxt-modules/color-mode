@@ -52,6 +52,7 @@ export default defineNuxtModule({
       filename: 'color-mode-options.mjs',
       getContents: () => Object.entries(options).map(([key, value]) =>
         (key === 'storage' ? `/** @type {${Object.values(storageTypes).join(' | ')}} */\n` : '')
+        + (key === 'cookieAttrs' ? `/** @type {Record<string, unknown> | undefined} */\n` : '')
         + `export const ${key} = ${JSON.stringify(value, null, 2)}
       `).join('\n'),
     })
