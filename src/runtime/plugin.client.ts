@@ -75,33 +75,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  function setPreferenceToStorage(storageType: typeof storage, preference: string) {
-    switch (storageType) {
-      case 'cookie':
-        if (cookieAttrs && Object.keys(cookieAttrs).length) {
-          let cookieString = storageKey + '=' + preference
-          for (const key in cookieAttrs) {
-            cookieString += `; ${key}=${cookieAttrs[key as keyof typeof cookieAttrs]}`
-          }
-          window.document.cookie = cookieString
-        }
-        else {
-          window.document.cookie = storageKey + '=' + preference
-        }
-        break
-      case 'sessionStorage':
-        window.sessionStorage?.setItem(storageKey, preference)
-        break
-      case 'localStorage':
-      default:
-        window.localStorage?.setItem(storageKey, preference)
-    }
-  }
-
   watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
       return
     }
+
     if (preference === 'system') {
       setColorModeValue(colorMode, helper.getColorScheme())
       watchMedia()
@@ -110,7 +88,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       setColorModeValue(colorMode, preference)
     }
 
-    setPreferenceToStorage(storage, preference)
+    setPreferenceToStorage(preference)
     // Local storage to sync with other tabs
     // window.localStorage?.setItem(storageKey, preference)
   }, { immediate: true })
@@ -150,4 +128,27 @@ export default defineNuxtPlugin((nuxtApp) => {
 function setColorModeValue(colorMode: ColorModeInstance, value: string) {
   // @ts-expect-error readonly property
   colorMode.value = value
+}
+
+function setPreferenceToStorage(preference: string) {
+  if (storage === 'cookie') {
+    if (cookieAttrs && Object.keys(cookieAttrs).length) {
+      let cookieString = storageKey + '=' + preference
+      for (const key in cookieAttrs) {
+        cookieString += `; ${key}=${cookieAttrs[key as keyof typeof cookieAttrs]}`
+      }
+      window.document.cookie = cookieString
+    }
+    else {
+      window.document.cookie = storageKey + '=' + preference
+    }
+    return
+  }
+
+  if (storage === 'sessionStorage') {
+    window.sessionStorage?.setItem(storageKey, preference)
+    return
+  }
+
+  window.localStorage?.setItem(storageKey, preference)
 }
