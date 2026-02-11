@@ -45,7 +45,7 @@
     "test": "vitest run --coverage && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.2.1",
+    "@nuxt/kit": "^4.3.1",
     "exsolve": "^1.0.8",
     "pathe": "^2.0.3",
     "pkg-types": "^2.3.0",
@@ -56,7 +56,7 @@
     "@commitlint/config-conventional": "^20.0.0",
     "@nuxt/eslint-config": "^1.10.0",
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.2.1",
+    "@nuxt/schema": "^4.3.1",
     "@nuxt/test-utils": "^4.0.0",
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
@@ -67,7 +67,7 @@
     "esbuild": "^0.27.0",
     "eslint": "^9.39.1",
     "husky": "9.1.7",
-    "nuxt": "^4.2.1",
+    "nuxt": "^4.3.1",
     "pkg-pr-new": "^0.0.63",
     "typescript": "^5.9.3",
     "unbuild": "^3.6.1",
