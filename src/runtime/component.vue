@@ -1,5 +1,5 @@
 <script lang="ts">
-import { componentName } from '#color-mode-options'
+import { componentName } from '#build/color-mode-options.mjs'
 
 export default {
   name: componentName,

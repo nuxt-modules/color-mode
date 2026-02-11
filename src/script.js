@@ -18,6 +18,7 @@
 
   addColorScheme(value)
 
+  // @ts-expect-error global name is not of correct type
   w['<%= options.globalName %>'] = {
     preference,
     value,
@@ -96,6 +97,10 @@ function getCookie(name) {
   const value = '; ' + window.document.cookie
   const parts = value.split('; ' + name + '=')
   if (parts.length === 2) {
-    return parts.pop()?.split(';').shift()
+    const part = parts.pop()
+    if (!part) {
+      return null
+    }
+    return part.split(';').shift()
   }
 }

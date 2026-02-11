@@ -1,23 +1,12 @@
 import { reactive, ref } from 'vue'
 
 import type { ColorModeInstance } from './types'
-import { defineNuxtPlugin, isVue2, isVue3, useHead, useState, useRouter, useRequestHeaders } from '#imports'
-import { preference, hid, script, dataValue, storage, storageKey } from '#color-mode-options'
-
-const addScript = (head) => {
-  head.script = head.script || []
-  head.script.push({
-    hid,
-    innerHTML: script,
-  })
-  const serializeProp = '__dangerouslyDisableSanitizersByTagID'
-  head[serializeProp] = head[serializeProp] || {}
-  head[serializeProp][hid] = ['innerHTML']
-}
+import { defineNuxtPlugin, useHead, useState, useRouter, useRequestHeaders } from '#imports'
+import { preference, dataValue, storage, storageKey } from '#build/color-mode-options.mjs'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const colorMode = nuxtApp.ssrContext?.islandContext
-    ? ref({})
+    ? ref<Partial<ColorModeInstance>>({}).value
     : useState<ColorModeInstance>('color-mode', () => reactive({
       preference,
       value: preference,
@@ -27,43 +16,22 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const htmlAttrs: Record<string, string> = {}
 
-  if (isVue2) {
-    const app = nuxtApp.nuxt2Context.app
-
-    if (typeof app.head === 'function') {
-      const originalHead = app.head
-      app.head = function () {
-        const head = originalHead.call(this) || {}
-        addScript(head)
-        head.htmlAttrs = htmlAttrs
-        return head
-      }
-    }
-    else {
-      addScript(app.head)
-      app.head.htmlAttrs = htmlAttrs
+  if (storage === 'cookie') {
+    const { cookie } = useRequestHeaders(['cookie'])
+    const [, value] = cookie?.split('; ').map(s => s.split('=')).find(([k]) => k === storageKey) ?? []
+    if (value) {
+      colorMode.preference = value
     }
   }
-
-  if (isVue3) {
-    if (storage === 'cookie') {
-      const { cookie } = useRequestHeaders(['cookie'])
-      const [, value] = cookie?.split('; ').map(s => s.split('=')).find(([k]) => k === storageKey) ?? []
-      if (value) {
-        colorMode.preference = value
-      }
-    }
-    useHead({ htmlAttrs })
-  }
+  useHead({ htmlAttrs })
 
   useRouter().afterEach((to) => {
-    const forcedColorMode = isVue2
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ? (to.matched[0]?.components.default as any)?.options?.colorMode
-      : to.meta.colorMode
+    const forcedColorMode = to.meta.colorMode
 
     if (forcedColorMode && forcedColorMode !== 'system') {
-      colorMode.value = htmlAttrs['data-color-mode-forced'] = forcedColorMode
+      htmlAttrs['data-color-mode-forced'] = forcedColorMode
+      // @ts-expect-error readonly property
+      colorMode.value = forcedColorMode
       if (dataValue) {
         htmlAttrs[`data-${dataValue}`] = colorMode.value
       }

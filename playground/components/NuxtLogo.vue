@@ -34,7 +34,7 @@
 .gray {
   fill: #0C0C0D;
 }
-.dark-mode .gray {
+.dark .gray {
   fill: #eee;
 }
 </style>
