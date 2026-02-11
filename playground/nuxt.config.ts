@@ -1,9 +1,11 @@
+import tailwindcss from '@tailwindcss/vite'
+
 export default defineNuxtConfig({
   modules: [
     '../src/module',
     '@nuxt/icon',
-    '@nuxtjs/tailwindcss',
   ],
+  css: ['~/assets/css/tailwind.css'],
   colorMode: {
     // storage: 'cookie',
     // cookieAttrs: {
@@ -14,4 +16,9 @@ export default defineNuxtConfig({
     // },
   },
   compatibilityDate: '2024-09-11',
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
 })

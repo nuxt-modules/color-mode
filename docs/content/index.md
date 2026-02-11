@@ -107,7 +107,7 @@ Get the most of your app with :br [powerful features]{.text-primary}
   Framework Support
   
   #description
-  Works out of the box with Tailwind CSS and other popular CSS frameworks.
+  Works with any CSS framework by adding configurable classes to `<html>`.
   :::
 ::
 

@@ -6,53 +6,27 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="container mx-auto text-center p-14">
-    <NuxtLogo class="inline-block pb-5" />
-    <ColorModePicker />
-    <NuxtPage />
-    <p class="p-4 rounded-lg bg-[--bg-secondary] text-[--color-secondary] inline-block">
-      Demo based on <a href="https://color-mode.nuxtjs.org">@nuxtjs/color-mode</a> module.
-    </p>
+  <div class="min-h-screen bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100 sepia:bg-[#f1e7d0] sepia:text-[#433422] transition-colors duration-300">
+    <div class="container mx-auto text-center p-14">
+      <NuxtLogo class="inline-block pb-5" />
+      <ColorModePicker />
+      <NuxtPage />
+      <p class="p-4 rounded-lg bg-white dark:bg-gray-800 sepia:bg-[#eae0c9] text-gray-600 dark:text-gray-300 sepia:text-[#504231] inline-block">
+        Demo using <a
+          href="https://color-mode.nuxtjs.org"
+          class="text-emerald-600 dark:text-emerald-400 sepia:text-[#6b4c2a] underline"
+        >@nuxtjs/color-mode</a> with <a
+          href="https://tailwindcss.com"
+          class="text-emerald-600 dark:text-emerald-400 sepia:text-[#6b4c2a] underline"
+        >Tailwind CSS</a>.
+      </p>
+    </div>
   </div>
 </template>
 
-<style lang="postcss">
-:root {
-  --color: #243746;
-  --color-primary: #158876;
-  --color-secondary: #0e2233;
-  --bg: #f3f5f4;
-  --bg-secondary: #fff;
-  --border-color: #ddd;
-}
-
-.dark {
-  --color: #ebf4f1;
-  --color-primary: #41b38a;
-  --color-secondary: #fdf9f3;
-  --bg: #091a28;
-  --bg-secondary: #071521;
-  --border-color: #0d2538;
-}
-.sepia {
-  --color: #433422;
-  --color-secondary: #504231;
-  --bg: #f1e7d0;
-  --bg-secondary: #eae0c9;
-  --border-color: #ded0bf;
-}
-
+<style>
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: var(--bg);
-  color: var(--color);
-  transition: background-color .3s;
-}
-a {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-p {
-  @apply p-5;
+  margin: 0;
 }
 </style>
