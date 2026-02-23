@@ -7,7 +7,7 @@
     "url": "git+https://github.com/nuxt-modules/color-mode.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@10.30.1",
   "contributors": [
     {
       "name": "Nuxt Team"
@@ -52,8 +52,8 @@
     "semver": "^7.7.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.4.1",
-    "@commitlint/config-conventional": "^20.4.1",
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
     "@nuxt/eslint-config": "^1.15.1",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.3.1",
@@ -65,13 +65,13 @@
     "bumpp": "^10.4.1",
     "changelogithub": "^14.0.0",
     "esbuild": "^0.27.3",
-    "eslint": "^10.0.0",
+    "eslint": "^10.0.1",
     "husky": "9.1.7",
     "nuxt": "^4.3.1",
     "pkg-pr-new": "^0.0.63",
     "typescript": "^5.9.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.0.18",
-    "vue-tsc": "^3.2.4"
+    "vue-tsc": "^3.2.5"
   }
 }
