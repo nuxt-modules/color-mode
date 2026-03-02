@@ -31,7 +31,7 @@ importers:
         specifier: ^20.4.2
         version: 20.4.2
       '@nuxt/eslint-config':
-        specifier: ^1.15.1
+        specifier: ^1.15.2
         version: 1.15.2(@typescript-eslint/utils@8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.28)(eslint-import-resolver-node@0.3.9)(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3)
       '@nuxt/module-builder':
         specifier: ^1.0.2
@@ -73,8 +73,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1(@parcel/watcher@2.4.1)(@types/node@22.5.4)(@vue/compiler-sfc@3.5.28)(better-sqlite3@12.6.2)(cac@6.7.14)(db0@0.3.4(better-sqlite3@12.6.2))(eslint@10.0.2(jiti@2.6.1))(ioredis@5.9.2)(lightningcss@1.31.1)(magicast@0.5.1)(meow@13.2.0)(optionator@0.9.4)(rollup@4.57.1)(terser@5.32.0)(typescript@5.9.3)(vite@7.3.1(@types/node@22.5.4)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.32.0)(yaml@2.8.2))(vue-tsc@3.2.5(typescript@5.9.3))(yaml@2.8.2)
       pkg-pr-new:
-        specifier: ^0.0.63
-        version: 0.0.63
+        specifier: ^0.0.65
+        version: 0.0.65
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -97,13 +97,13 @@ importers:
         specifier: ^0.20.1
         version: 0.20.1(magicast@0.5.1)
       '@nuxtjs/plausible':
-        specifier: ^3.0.1
+        specifier: ^3.0.2
         version: 3.0.2(magicast@0.5.1)
       better-sqlite3:
         specifier: ^12.6.2
         version: 12.6.2
       docus:
-        specifier: ^5.6.1
+        specifier: ^5.7.0
         version: 5.7.0(e04e28b2f9d3ba564d0dbbf377b4369f)
       nuxt:
         specifier: ^4.3.1
@@ -6115,8 +6115,8 @@ packages:
     resolution: {integrity: sha512-wQ0b/W4Fr01qtpHlqSqspcj3EhBvimsdh0KlHhH8HRZnMsEa0ea2fTULOXOS9ccQr3om+GcGRk4e+isrZWV8qQ==}
     engines: {node: '>=16.20.0'}
 
-  pkg-pr-new@0.0.63:
-    resolution: {integrity: sha512-N4qfhiahmWVmUTKo//Bvb1FAKV7DwFcOjh8GT/aTh0YFSWRZwZp02afpNSohSs1z1jj0YOjU6Ff62iJ0AuHCfg==}
+  pkg-pr-new@0.0.65:
+    resolution: {integrity: sha512-yZGN17qf6SX/go2rlLL3OWtwO0ppKZBxAfG5M3a9N44WMDrhqkuyfQOpKdvRE9plFsCzF7L/Xtp/1hQQHqhhCQ==}
     hasBin: true
 
   pkg-types@1.3.1:
@@ -14790,7 +14790,7 @@ snapshots:
 
   pkce-challenge@5.0.1: {}
 
-  pkg-pr-new@0.0.63:
+  pkg-pr-new@0.0.65:
     dependencies:
       '@actions/core': 3.0.0
       '@jsdevtools/ez-spawn': 3.0.4
