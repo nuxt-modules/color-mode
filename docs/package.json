@@ -13,8 +13,8 @@
     "@iconify-json/ph": "^1.2.2",
     "@nuxtjs/mdc": "^0.20.2",
     "@nuxtjs/plausible": "^3.0.2",
-    "better-sqlite3": "^12.6.2",
-    "docus": "^5.7.0",
+    "better-sqlite3": "^12.8.0",
+    "docus": "^5.8.1",
     "nuxt": "^4.4.2",
     "unist-util-visit": "^5.1.0"
   }
