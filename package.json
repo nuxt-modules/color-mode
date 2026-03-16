@@ -7,7 +7,7 @@
     "url": "git+https://github.com/nuxt-modules/color-mode.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@10.32.0",
+  "packageManager": "pnpm@10.32.1",
   "contributors": [
     {
       "name": "Nuxt Team"
@@ -52,8 +52,8 @@
     "semver": "^7.7.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.4.3",
-    "@commitlint/config-conventional": "^20.4.3",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@nuxt/eslint-config": "^1.15.2",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.2",
@@ -61,17 +61,17 @@
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
     "@typescript-eslint/parser": "^8.57.0",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/coverage-v8": "^4.1.0",
     "bumpp": "^10.4.1",
     "changelogithub": "^14.0.0",
-    "esbuild": "^0.27.3",
+    "esbuild": "^0.27.4",
     "eslint": "^10.0.3",
     "husky": "9.1.7",
     "nuxt": "^4.4.2",
-    "pkg-pr-new": "^0.0.65",
+    "pkg-pr-new": "^0.0.66",
     "typescript": "^5.9.3",
     "unbuild": "^3.6.1",
-    "vitest": "^4.0.18",
+    "vitest": "^4.1.0",
     "vue-tsc": "^3.2.5"
   }
 }
