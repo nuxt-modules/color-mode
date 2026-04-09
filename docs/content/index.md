@@ -10,7 +10,7 @@ seo:
 
 ::u-page-hero
 ---
-orientation: horizontal
+orientation: vertical
 ---
 
 #title
