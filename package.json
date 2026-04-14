@@ -57,11 +57,11 @@
     "@nuxt/eslint-config": "^1.15.2",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.2",
-    "@nuxt/test-utils": "^4.0.0",
+    "@nuxt/test-utils": "^4.0.2",
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
-    "@typescript-eslint/parser": "^8.58.1",
-    "@vitest/coverage-v8": "^4.1.3",
+    "@typescript-eslint/parser": "^8.58.2",
+    "@vitest/coverage-v8": "^4.1.4",
     "bumpp": "^11.0.1",
     "changelogithub": "^14.0.0",
     "esbuild": "^0.28.0",
@@ -71,7 +71,7 @@
     "pkg-pr-new": "^0.0.66",
     "typescript": "^6.0.2",
     "unbuild": "^3.6.1",
-    "vitest": "^4.1.3",
+    "vitest": "^4.1.4",
     "vue-tsc": "^3.2.6"
   }
 }
