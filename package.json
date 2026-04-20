@@ -65,13 +65,13 @@
     "bumpp": "^11.0.1",
     "changelogithub": "^14.0.0",
     "esbuild": "^0.28.0",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "husky": "9.1.7",
     "nuxt": "^4.4.2",
     "pkg-pr-new": "^0.0.66",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.4",
-    "vue-tsc": "^3.2.6"
+    "vue-tsc": "^3.2.7"
   }
 }
