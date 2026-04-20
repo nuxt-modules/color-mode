@@ -60,7 +60,7 @@
     "@nuxt/test-utils": "^4.0.2",
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
-    "@typescript-eslint/parser": "^8.58.2",
+    "@typescript-eslint/parser": "^8.59.0",
     "@vitest/coverage-v8": "^4.1.4",
     "bumpp": "^11.0.1",
     "changelogithub": "^14.0.0",
