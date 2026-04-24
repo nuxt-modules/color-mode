@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  h3: 1.15.11
+
 importers:
 
   .:
@@ -101,7 +104,7 @@ importers:
         version: 12.9.0
       docus:
         specifier: ^5.10.0
-        version: 5.10.0(e1cd410d7442bb0c79110abd77c44c08)
+        version: 5.10.0(308a7871c2b2f95058a6b53a9bd37814)
       nuxt:
         specifier: ^4.4.2
         version: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.27.1(@babel/core@7.29.0))(@parcel/watcher@2.4.1)(@types/node@22.5.4)(@vue/compiler-sfc@3.5.32)(better-sqlite3@12.9.0)(cac@6.7.14)(db0@0.3.4(better-sqlite3@12.9.0))(eslint@10.2.1(jiti@2.6.1))(ioredis@5.9.2)(lightningcss@1.32.0)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(rollup-plugin-visualizer@6.0.5(rollup@4.57.1))(rollup@4.57.1)(terser@5.32.0)(typescript@6.0.3)(vite@7.3.1(@types/node@22.5.4)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.32.0)(yaml@2.8.2))(vue-tsc@3.2.7(typescript@6.0.3))(yaml@2.8.2)
@@ -1592,11 +1595,11 @@ packages:
     resolution: {integrity: sha512-T5nN7hT/tbExant+CeXtKXs9GbjWsEWnymCHJyU3Ujxfcw1WQsZZP6tyEtFRhkwjBwy8m4mj7GtU2qUCggUkkg==}
     engines: {node: '>=20.11.1'}
 
-  '@nuxtjs/mcp-toolkit@0.13.3':
-    resolution: {integrity: sha512-qCU9T1HsTsneLLaZM9BWdEiktAdUT35+klAH+1mhUgQgzmBDmvNv+e3qwFwyanegE+vThICXwM+up12xG5zzTw==}
+  '@nuxtjs/mcp-toolkit@0.13.4':
+    resolution: {integrity: sha512-cjV0uCEsFXK8hmqx7TSvhq3oQQ77ECwN07Prun6TSQhEB0ZbkSTvsNwPLuw4+cI13Cbm/G3k9jfKsXhmU65p3Q==}
     peerDependencies:
-      agents: '>=0.8.7'
-      h3: '>=1.15.10'
+      agents: '>=0.9.0'
+      h3: 1.15.11
       secure-exec: '>=0.2.1'
       zod: ^4.1.13
     peerDependenciesMeta:
@@ -10309,11 +10312,11 @@ snapshots:
       - uploadthing
       - vue
 
-  '@nuxtjs/mcp-toolkit@0.13.3(h3@2.0.1-rc.20)(magicast@0.5.2)(zod@4.3.6)':
+  '@nuxtjs/mcp-toolkit@0.13.4(h3@1.15.11)(magicast@0.5.2)(zod@4.3.6)':
     dependencies:
       '@modelcontextprotocol/sdk': 1.29.0(zod@4.3.6)
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
-      h3: 2.0.1-rc.20
+      h3: 1.15.11
       tinyglobby: 0.2.15
       zod: 4.3.6
     transitivePeerDependencies:
@@ -13102,7 +13105,7 @@ snapshots:
 
   diff@8.0.3: {}
 
-  docus@5.10.0(e1cd410d7442bb0c79110abd77c44c08):
+  docus@5.10.0(308a7871c2b2f95058a6b53a9bd37814):
     dependencies:
       '@ai-sdk/gateway': 3.0.88(zod@4.3.6)
       '@ai-sdk/mcp': 1.0.32(zod@4.3.6)
@@ -13115,7 +13118,7 @@ snapshots:
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       '@nuxt/ui': 4.6.1(@nuxt/content@3.12.0(better-sqlite3@12.9.0)(magicast@0.5.2))(@tiptap/extensions@3.22.2(@tiptap/core@3.22.2(@tiptap/pm@3.22.2))(@tiptap/pm@3.22.2))(@tiptap/y-tiptap@3.0.2(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-view@1.41.6)(y-protocols@1.0.7(yjs@13.6.29))(yjs@13.6.29))(change-case@5.4.4)(db0@0.3.4(better-sqlite3@12.9.0))(embla-carousel@8.6.0)(ioredis@5.9.2)(magicast@0.5.2)(tailwindcss@4.2.3)(typescript@6.0.3)(vite@7.3.1(@types/node@22.5.4)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.32.0)(yaml@2.8.2))(vue-router@5.0.4(@vue/compiler-sfc@3.5.32)(vue@3.5.32(typescript@6.0.3)))(vue@3.5.32(typescript@6.0.3))(yjs@13.6.29)(zod@4.3.6)
       '@nuxtjs/i18n': 10.2.4(@vue/compiler-dom@3.5.32)(db0@0.3.4(better-sqlite3@12.9.0))(eslint@10.2.1(jiti@2.6.1))(ioredis@5.9.2)(magicast@0.5.2)(rollup@4.57.1)(typescript@6.0.3)(vue@3.5.32(typescript@6.0.3))
-      '@nuxtjs/mcp-toolkit': 0.13.3(h3@2.0.1-rc.20)(magicast@0.5.2)(zod@4.3.6)
+      '@nuxtjs/mcp-toolkit': 0.13.4(h3@1.15.11)(magicast@0.5.2)(zod@4.3.6)
       '@nuxtjs/mdc': 0.21.1(magicast@0.5.2)
       '@nuxtjs/robots': 6.0.6(39c5e0bfaa974884337f283a5baae62c)
       '@shikijs/core': 4.0.2

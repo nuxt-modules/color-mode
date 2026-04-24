@@ -16,8 +16,5 @@
     "docus": "^5.10.0",
     "nuxt": "^4.4.2",
     "unist-util-visit": "^5.1.0"
-  },
-  "resolutions": {
-    "h3": "^1.15.11"
   }
 }
