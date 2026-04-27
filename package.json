@@ -48,7 +48,7 @@
     "@nuxt/kit": "^4.4.2",
     "exsolve": "^1.0.8",
     "pathe": "^2.0.3",
-    "pkg-types": "^2.3.0",
+    "pkg-types": "^2.3.1",
     "semver": "^7.7.4"
   },
   "devDependencies": {
@@ -57,7 +57,7 @@
     "@nuxt/eslint-config": "^1.15.2",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.2",
-    "@nuxt/test-utils": "^4.0.2",
+    "@nuxt/test-utils": "^4.0.3",
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
     "@typescript-eslint/parser": "^8.59.0",
