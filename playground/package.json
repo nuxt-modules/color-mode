@@ -3,12 +3,12 @@
   "private": true,
   "dependencies": {
     "@iconify-json/ph": "^1.2.2",
-    "@iconify/utils": "^3.1.0",
+    "@iconify/utils": "^3.1.1",
     "@nuxt/icon": "^2.2.1",
     "@nuxtjs/color-mode": "latest",
-    "@tailwindcss/vite": "^4.2.3",
+    "@tailwindcss/vite": "^4.2.4",
     "nuxt": "^4.4.2",
-    "tailwindcss": "^4.2.3"
+    "tailwindcss": "^4.2.4"
   },
   "scripts": {
     "postinstall": "pnpm -C .. run dev:prepare",
