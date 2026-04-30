@@ -7,7 +7,7 @@
     "@nuxt/icon": "^2.2.1",
     "@nuxtjs/color-mode": "latest",
     "@tailwindcss/vite": "^4.2.4",
-    "nuxt": "^4.4.2",
+    "nuxt": "^4.4.4",
     "tailwindcss": "^4.2.4"
   },
   "scripts": {
