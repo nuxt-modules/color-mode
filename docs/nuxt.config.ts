@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   extends: ['docus'],
-  modules: ['@nuxtjs/plausible'],
   devtools: { enabled: true },
   site: {
     name: 'Nuxt Color Mode',

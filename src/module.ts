@@ -18,6 +18,7 @@ const DEFAULTS: ModuleOptions = {
   dataValue: '',
   storageKey: 'nuxt-color-mode',
   storage: 'localStorage',
+  cookieAttrs: undefined,
   disableTransition: false,
 }
 
@@ -37,6 +38,10 @@ export default defineNuxtModule({
     type ScriptOption = 'storageKey' | 'preference' | 'globalName' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'fallback'
     options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option]).trim()
 
+    if (options.storage === 'cookie') {
+      options.cookieAttrs ??= { 'max-age': '31536000', 'path': '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
+    }
+
     // Inject options via virtual template
     const storageTypes: Record<ColorModeStorage, `"${ColorModeStorage}"`> = {
       cookie: '"cookie"',
@@ -47,6 +52,7 @@ export default defineNuxtModule({
       filename: 'color-mode-options.mjs',
       getContents: () => Object.entries(options).map(([key, value]) =>
         (key === 'storage' ? `/** @type {${Object.values(storageTypes).join(' | ')}} */\n` : '')
+        + (key === 'cookieAttrs' ? `/** @type {Record<string, unknown> | undefined} */\n` : '')
         + `export const ${key} = ${JSON.stringify(value, null, 2)}
       `).join('\n'),
     })
@@ -124,6 +130,10 @@ export interface ModuleOptions {
    * @default `localStorage`
    */
   storage?: ColorModeStorage
+  /**
+   * Storage cookie's attributes
+   */
+  cookieAttrs?: Record<string, unknown>
   /**
    * The script that will be injected into the head of the page
    */

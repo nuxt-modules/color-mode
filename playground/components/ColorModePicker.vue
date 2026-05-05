@@ -9,23 +9,24 @@ function iconName(theme) {
 
 <template>
   <div>
-    <ul>
-      <li
+    <div class="flex justify-center gap-2.5">
+      <button
         v-for="theme of ['system', 'light', 'dark', 'sepia']"
         :key="theme"
+        class="relative top-0 cursor-pointer p-2 bg-white dark:bg-gray-800 sepia:bg-[#eae0c9] border-2 border-gray-200 dark:border-gray-700 sepia:border-[#ded0bf] rounded-md transition-all duration-100 ease-in-out hover:-top-1 flex"
         :class="{
-          preferred: !$colorMode.unknown && theme === $colorMode.preference,
-          selected: !$colorMode.unknown && theme === $colorMode.value,
+          'border-emerald-600! dark:border-emerald-400! sepia:border-[#6b4c2a]! -top-1!': !$colorMode.unknown && theme === $colorMode.preference,
+          'text-emerald-600 dark:text-emerald-400 sepia:text-[#6b4c2a]': !$colorMode.unknown && theme === $colorMode.value,
         }"
+        @click="$colorMode.preference = theme"
       >
         <Icon
           :name="iconName(theme)"
           class="size-6"
-          @click="$colorMode.preference = theme"
         />
-      </li>
-    </ul>
-    <p>
+      </button>
+    </div>
+    <p class="m-0 pt-1 pb-5">
       <ColorScheme
         placeholder="..."
         tag="span"
@@ -37,43 +38,3 @@ function iconName(theme) {
     </p>
   </div>
 </template>
-
-<style scoped>
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-ul li {
-  display: inline-block;
-  padding: 5px;
-  margin-right: 10px;
-  line-height: 0;
-}
-p {
-  margin: 0;
-  padding-top: 5px;
-  padding-bottom: 20px;
-}
-li {
-  position: relative;
-  top: 0px;
-  cursor: pointer;
-  padding: 7px;
-  background-color: var(--bg-secondary);
-  border: 2px solid var(--border-color);
-  margin: 0;
-  border-radius: 5px;
-  transition: all 0.1s ease;
-}
-li:hover {
-  top: -3px;
-}
-li.preferred {
-  border-color: var(--color-primary);
-  top: -3px;
-}
-li.selected {
-  color: var(--color-primary);
-}
-</style>
