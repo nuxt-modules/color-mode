@@ -7,7 +7,7 @@
     "url": "git+https://github.com/nuxt-modules/color-mode.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@10.33.2",
+  "packageManager": "pnpm@10.33.3",
   "contributors": [
     {
       "name": "Nuxt Team"
@@ -60,7 +60,7 @@
     "@nuxt/test-utils": "^4.0.3",
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
-    "@typescript-eslint/parser": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.2",
     "@vitest/coverage-v8": "^4.1.5",
     "bumpp": "^11.0.1",
     "changelogithub": "^14.0.0",
@@ -72,7 +72,7 @@
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.5",
-    "vue-tsc": "^3.2.7"
+    "vue-tsc": "^3.2.8"
   },
   "resolutions": {
     "h3": "1.15.11"
