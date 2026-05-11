@@ -61,7 +61,7 @@
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
     "@typescript-eslint/parser": "^8.59.2",
-    "@vitest/coverage-v8": "^4.1.5",
+    "@vitest/coverage-v8": "^4.1.6",
     "bumpp": "^11.1.0",
     "changelogithub": "^14.0.0",
     "esbuild": "^0.28.0",
@@ -71,7 +71,7 @@
     "pkg-pr-new": "^0.0.71",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
-    "vitest": "^4.1.5",
+    "vitest": "^4.1.6",
     "vue-tsc": "^3.2.8"
   },
   "resolutions": {
