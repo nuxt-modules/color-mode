@@ -52,8 +52,8 @@
     "semver": "^7.8.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.0",
-    "@commitlint/config-conventional": "^21.0.0",
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
     "@nuxt/eslint-config": "^1.15.2",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.4",
@@ -65,14 +65,14 @@
     "bumpp": "^11.1.0",
     "changelogithub": "^14.0.0",
     "esbuild": "^0.28.0",
-    "eslint": "^10.3.0",
+    "eslint": "^10.4.0",
     "husky": "9.1.7",
     "nuxt": "^4.4.4",
-    "pkg-pr-new": "^0.0.71",
+    "pkg-pr-new": "^0.0.73",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.6",
-    "vue-tsc": "^3.2.8"
+    "vue-tsc": "^3.2.9"
   },
   "resolutions": {
     "h3": "1.15.11"
