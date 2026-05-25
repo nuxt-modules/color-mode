@@ -49,7 +49,7 @@
     "exsolve": "^1.0.8",
     "pathe": "^2.0.3",
     "pkg-types": "^2.3.1",
-    "semver": "^7.8.0"
+    "semver": "^7.8.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.1",
@@ -61,18 +61,18 @@
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.7.1",
     "@typescript-eslint/parser": "^8.59.4",
-    "@vitest/coverage-v8": "^4.1.6",
+    "@vitest/coverage-v8": "^4.1.7",
     "bumpp": "^11.1.0",
     "changelogithub": "^14.0.0",
     "esbuild": "^0.28.0",
     "eslint": "^10.4.0",
     "husky": "9.1.7",
     "nuxt": "^4.4.6",
-    "pkg-pr-new": "^0.0.74",
+    "pkg-pr-new": "^0.0.75",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
-    "vitest": "^4.1.6",
-    "vue-tsc": "^3.3.0"
+    "vitest": "^4.1.7",
+    "vue-tsc": "^3.3.1"
   },
   "resolutions": {
     "h3": "1.15.11"
