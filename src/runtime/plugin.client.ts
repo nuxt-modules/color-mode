@@ -139,8 +139,9 @@ function setPreferenceToStorage(preference: string) {
       }
       try {
         window.document.cookie = cookieString
-      } catch (e: unknown) {
-        // console.log(`Problem setting cookie. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`, e)
+      }
+      catch {
+        // Ignore cookie write errors; storage may be blocked.
       }
     }
     else {
@@ -152,15 +153,17 @@ function setPreferenceToStorage(preference: string) {
   if (storage === 'sessionStorage') {
     try {
       window.sessionStorage?.setItem(storageKey, preference)
-    } catch (e: unknown) {
-      // console.log(`Problem setting localStorage. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`, e)
+    }
+    catch {
+      // Ignore sessionStorage write errors; storage may be blocked.
     }
     return
   }
 
   try {
     window.localStorage?.setItem(storageKey, preference)
-  } catch (e: unknown) {
-    // console.log(`Problem setting localStorage. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`, e)
+  }
+  catch {
+    // Ignore localStorage write errors; storage may be blocked.
   }
 }

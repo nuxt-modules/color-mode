@@ -84,20 +84,23 @@ function getStorageValue(storageType, storageKey) {
     case 'localStorage':
       try {
         return window.localStorage.getItem(storageKey)
-      } catch (e) {
-        // console.log('Problem accessing localStorage. Browser may have disabled it.', e)
+      }
+      catch {
+        return null
       }
     case 'sessionStorage':
       try {
         return window.sessionStorage.getItem(storageKey)
-      } catch (e) {
-        // console.log('Problem accessing sessionStorage. Browser may have disabled it.', e)
+      }
+      catch {
+        return null
       }
     case 'cookie':
       try {
         return getCookie(storageKey)
-      } catch (e) {
-        // console.log('Problem accessing cookie storage. Browser may have disabled it.', e)
+      }
+      catch {
+        return null
       }
     default:
       return null
