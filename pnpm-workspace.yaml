@@ -8,4 +8,4 @@ allowBuilds:
   esbuild: false
   unrs-resolver: false
   vue-demi: false
-  '@parcel/watcher': set this to true or false
+  '@parcel/watcher': false
