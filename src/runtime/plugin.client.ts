@@ -137,7 +137,12 @@ function setPreferenceToStorage(preference: string) {
       for (const key in cookieAttrs) {
         cookieString += `; ${key}=${cookieAttrs[key as keyof typeof cookieAttrs]}`
       }
-      window.document.cookie = cookieString
+      try {
+        window.document.cookie = cookieString
+      }
+      catch {
+        // Ignore cookie write errors; storage may be blocked.
+      }
     }
     else {
       window.document.cookie = storageKey + '=' + preference
@@ -146,9 +151,19 @@ function setPreferenceToStorage(preference: string) {
   }
 
   if (storage === 'sessionStorage') {
-    window.sessionStorage?.setItem(storageKey, preference)
+    try {
+      window.sessionStorage?.setItem(storageKey, preference)
+    }
+    catch {
+      // Ignore sessionStorage write errors; storage may be blocked.
+    }
     return
   }
 
-  window.localStorage?.setItem(storageKey, preference)
+  try {
+    window.localStorage?.setItem(storageKey, preference)
+  }
+  catch {
+    // Ignore localStorage write errors; storage may be blocked.
+  }
 }

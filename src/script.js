@@ -82,11 +82,26 @@
 function getStorageValue(storageType, storageKey) {
   switch (storageType) {
     case 'localStorage':
-      return window.localStorage.getItem(storageKey)
+      try {
+        return window.localStorage.getItem(storageKey)
+      }
+      catch {
+        return null
+      }
     case 'sessionStorage':
-      return window.sessionStorage.getItem(storageKey)
+      try {
+        return window.sessionStorage.getItem(storageKey)
+      }
+      catch {
+        return null
+      }
     case 'cookie':
-      return getCookie(storageKey)
+      try {
+        return getCookie(storageKey)
+      }
+      catch {
+        return null
+      }
     default:
       return null
   }
