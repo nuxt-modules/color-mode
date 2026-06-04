@@ -12,19 +12,21 @@ type Helper = {
   removeColorScheme: (className: string) => void
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-let helper = window[globalName as any] as unknown as Helper
-
 // Initialise to object with defaults and no-ops to avoid hard error when hydrating app in test mode
-if (import.meta.test && !helper) {
-  helper = {
+if (import.meta.test) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  window[globalName as any] ||= {
     preference: 'light',
     value: 'light',
     getColorScheme: () => 'light',
     addColorScheme: () => {},
     removeColorScheme: () => {},
-  }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } satisfies Helper as any
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const helper = window[globalName as any] as unknown as Helper
 
 export default defineNuxtPlugin((nuxtApp) => {
   const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
