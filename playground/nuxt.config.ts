@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.css'],
   colorMode: {
     // storage: 'cookie',
+    classSuffix: '-mode',
     // cookieAttrs: {
     //   path: '/',
     //   domain: 'localhost',
