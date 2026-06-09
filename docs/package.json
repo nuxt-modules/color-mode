@@ -14,7 +14,7 @@
     "@nuxtjs/mdc": "^0.22.0",
     "better-sqlite3": "^12.10.0",
     "docus": "^5.11.0",
-    "nuxt": "^4.4.6",
+    "nuxt": "^4.4.7",
     "unist-util-visit": "^5.1.0"
   }
 }
