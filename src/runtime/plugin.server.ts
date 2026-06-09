@@ -1,8 +1,7 @@
 import { reactive, ref } from 'vue'
-import { parse as cookieParse } from 'cookie'
 
 import type { ColorModeInstance } from './types'
-import { defineNuxtPlugin, useHead, useState, useRouter, useRequestHeaders } from '#imports'
+import { defineNuxtPlugin, useHead, useState, useRouter, useCookie } from '#imports'
 import { preference, dataValue, storage, storageKey } from '#build/color-mode-options.mjs'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -18,17 +17,9 @@ export default defineNuxtPlugin((nuxtApp) => {
   const htmlAttrs: Record<string, string> = {}
 
   if (storage === 'cookie') {
-    const { cookie } = useRequestHeaders(['cookie'])
-    // Previously parsed with s.split('='), which breaks for cookie values that contain
-    // '=' (e.g. base64 padding): "key=abc==" would yield ["key","abc","",""] and only
-    // "abc" would be captured. We now use the `cookie` npm package which splits on the
-    // first '=' only and is RFC 6265 compliant.
-    // cookie.parse() drops bare tokens (no '='), so normalise them to "key=" first
-    // to preserve the same behaviour as a naive split-on-first-'=' parser would give.
-    const normalized = cookie?.split('; ').map(s => s.includes('=') ? s : `${s}=`).join('; ')
-    const value = normalized ? cookieParse(normalized)[storageKey] : undefined
-    if (value) {
-      colorMode.preference = value
+    const cookie = useCookie(storageKey)
+    if (cookie.value) {
+      colorMode.preference = cookie.value
     }
   }
   useHead({ htmlAttrs })

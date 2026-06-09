@@ -1,4 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant sepia (&:where(.sepia, .sepia *));
+@custom-variant light (&:where(.light-mode, .light-mode *));
+@custom-variant dark (&:where(.dark-mode, .dark-mode *));
+@custom-variant sepia (&:where(.sepia-mode, .sepia-mode *));
