@@ -6,9 +6,9 @@
     "@iconify/utils": "^3.1.3",
     "@nuxt/icon": "^2.2.3",
     "@nuxtjs/color-mode": "latest",
-    "@tailwindcss/vite": "^4.3.0",
+    "@tailwindcss/vite": "^4.3.1",
     "nuxt": "^4.4.8",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.1"
   },
   "scripts": {
     "postinstall": "pnpm -C .. run dev:prepare",
