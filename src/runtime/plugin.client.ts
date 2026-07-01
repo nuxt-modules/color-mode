@@ -1,8 +1,8 @@
 import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
-import { defineNuxtPlugin, useRouter, useHead, useState, useCookie } from '#imports'
-import { globalName, storageKey, dataValue, disableTransition, storage, cookieAttrs } from '#build/color-mode-options.mjs'
+import { defineNuxtPlugin, useRouter, useHead, useState, useCookie, useRuntimeConfig } from '#imports'
+import { globalName, storageKey, dataValue, disableTransition, storage } from '#build/color-mode-options.mjs'
 
 type Helper = {
   preference: string
@@ -133,6 +133,7 @@ function setColorModeValue(colorMode: ColorModeInstance, value: string) {
 function setPreferenceToStorage(preference: string) {
   if (storage === 'cookie') {
     try {
+      const { cookieAttrs } = useRuntimeConfig().public.colorMode as { cookieAttrs?: Record<string, unknown> }
       const cookie = useCookie(storageKey, cookieAttrs)
       cookie.value = preference
     }
