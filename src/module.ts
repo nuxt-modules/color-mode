@@ -42,6 +42,16 @@ export default defineNuxtModule({
       options.cookieAttrs ??= { 'max-age': '31536000', 'path': '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
     }
 
+    // Expose cookie attributes via public runtime config so they (e.g. the
+    // `domain`) can be overridden per-deployment at runtime — for example
+    // `NUXT_PUBLIC_COLOR_MODE_COOKIE_ATTRS_DOMAIN=example.com` — without a rebuild.
+    // Any user-provided runtimeConfig value wins; the module only fills the default.
+    const existing = nuxt.options.runtimeConfig.public.colorMode as Record<string, unknown> | undefined
+    nuxt.options.runtimeConfig.public.colorMode = {
+      ...existing,
+      cookieAttrs: existing?.cookieAttrs ?? options.cookieAttrs,
+    }
+
     // Inject options via virtual template
     const storageTypes: Record<ColorModeStorage, `"${ColorModeStorage}"`> = {
       cookie: '"cookie"',
