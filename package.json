@@ -77,5 +77,9 @@
   },
   "resolutions": {
     "h3": "1.15.11"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/nuxt-modules/color-mode/issues"
+  },
+  "homepage": "https://color-mode.nuxtjs.org"
 }
