@@ -39,7 +39,7 @@ export default defineNuxtModule({
     options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option]).trim()
 
     if (options.storage === 'cookie') {
-      options.cookieAttrs ??= { 'max-age': '31536000', 'path': '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
+      options.cookieAttrs ??= { maxAge: 31536000, path: '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
     }
 
     // Inject options via virtual template
