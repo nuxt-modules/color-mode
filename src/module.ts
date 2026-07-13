@@ -4,6 +4,7 @@ import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, cre
 import { readPackageJSON } from 'pkg-types'
 import { resolveModulePath } from 'exsolve'
 import { gte } from 'semver'
+import { defu } from 'defu'
 
 import { name, version } from '../package.json'
 import type { ColorModeStorage } from './runtime/types'
@@ -39,8 +40,19 @@ export default defineNuxtModule({
     options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option]).trim()
 
     if (options.storage === 'cookie') {
-      options.cookieAttrs ??= { 'max-age': '31536000', 'path': '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
+      options.cookieAttrs = defu(options.cookieAttrs, { maxAge: 31536000, path: '/' })
     }
+
+    // Expose cookie attributes via public runtime config so they (e.g. the
+    // `domain`) can be overridden per-deployment at runtime — for example
+    // `NUXT_PUBLIC_COLOR_MODE_COOKIE_ATTRS_DOMAIN=example.com` — without a rebuild.
+    // Any user-provided `runtimeConfig.public.colorMode` value is deep-merged on
+    // top of the module default, so overriding a single attribute (e.g. `domain`)
+    // doesn't require repeating the rest (`maxAge`, `path`, ...).
+    nuxt.options.runtimeConfig.public.colorMode = defu(
+      nuxt.options.runtimeConfig.public.colorMode as Record<string, unknown> | undefined,
+      { cookieAttrs: options.cookieAttrs },
+    )
 
     // Inject options via virtual template
     const storageTypes: Record<ColorModeStorage, `"${ColorModeStorage}"`> = {
