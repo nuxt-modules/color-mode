@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "bugs": { "url": "https://github.com/nuxt-modules/color-mode/issues" },
-  "packageManager": "pnpm@11.13.0",
+  "packageManager": "pnpm@11.15.0",
   "contributors": [
     {
       "name": "Nuxt Team"
