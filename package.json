@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "bugs": { "url": "https://github.com/nuxt-modules/color-mode/issues" },
-  "packageManager": "pnpm@11.17.0",
+  "packageManager": "pnpm@11.18.0",
   "contributors": [
     {
       "name": "Nuxt Team"
@@ -64,17 +64,17 @@
     "@types/semver": "^7.7.1",
     "@typescript-eslint/parser": "^8.65.0",
     "@vitest/coverage-v8": "^4.1.10",
-    "bumpp": "^12.0.0",
+    "bumpp": "^12.1.1",
     "changelogithub": "^14.0.0",
     "esbuild": "^0.28.1",
     "eslint": "^10.8.0",
     "husky": "9.1.7",
     "nuxt": "^4.4.8",
-    "pkg-pr-new": "^0.0.80",
+    "pkg-pr-new": "^0.0.86",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.10",
-    "vue-tsc": "^3.3.8"
+    "vue-tsc": "^3.3.9"
   },
   "resolutions": {
     "h3": "1.15.11"
