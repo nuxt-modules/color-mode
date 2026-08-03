@@ -12,7 +12,7 @@
   "dependencies": {
     "@iconify-json/ph": "^1.2.2",
     "@nuxtjs/mdc": "^0.22.2",
-    "better-sqlite3": "^13.0.1",
+    "better-sqlite3": "^13.0.2",
     "docus": "^5.12.3",
     "nuxt": "^4.4.8",
     "unist-util-visit": "^5.1.0"
