@@ -65,7 +65,7 @@
     "@typescript-eslint/parser": "^8.65.0",
     "@vitest/coverage-v8": "^4.1.10",
     "bumpp": "^12.1.1",
-    "changelogithub": "^14.0.0",
+    "changelogithub": "^15.0.4",
     "esbuild": "^0.28.1",
     "eslint": "^10.8.0",
     "husky": "9.1.7",
