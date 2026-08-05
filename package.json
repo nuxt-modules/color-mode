@@ -71,7 +71,7 @@
     "husky": "9.1.7",
     "nuxt": "^4.4.8",
     "pkg-pr-new": "^0.0.86",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.10",
     "vue-tsc": "^3.3.9"
