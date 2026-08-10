@@ -4,7 +4,7 @@
   "dependencies": {
     "@iconify-json/ph": "^1.2.2",
     "@iconify/utils": "^3.1.4",
-    "@nuxt/icon": "^2.4.1",
+    "@nuxt/icon": "^2.5.0",
     "@nuxtjs/color-mode": "latest",
     "@tailwindcss/vite": "^4.3.3",
     "nuxt": "^4.4.8",
