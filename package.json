@@ -63,18 +63,18 @@
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.8.0",
     "@typescript-eslint/parser": "^8.67.0",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.11",
     "bumpp": "^12.2.1",
     "changelogithub": "^15.0.4",
     "esbuild": "^0.28.2",
-    "eslint": "^10.8.1",
+    "eslint": "^10.9.0",
     "husky": "9.1.7",
     "nuxt": "^4.4.8",
     "pkg-pr-new": "^0.0.88",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
-    "vitest": "^4.1.10",
-    "vue-tsc": "^3.3.10"
+    "vitest": "^4.1.11",
+    "vue-tsc": "^3.3.11"
   },
   "resolutions": {
     "h3": "1.15.11"
