@@ -219,8 +219,8 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2
       '@iconify/utils':
-        specifier: ^3.1.5
-        version: 3.1.5
+        specifier: ^3.1.6
+        version: 3.1.6
       '@nuxt/icon':
         specifier: ^2.5.1
         version: 2.5.1(magic-string@1.2.3)(magicast@0.5.4)(oxc-parser@0.133.0)(unplugin@3.3.0(esbuild@0.28.2)(rollup@4.60.2)(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0)))(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
@@ -1166,8 +1166,8 @@ packages:
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
-  '@iconify/utils@3.1.5':
-    resolution: {integrity: sha512-nT+AWyh5caHY6xa0PdLXpUooIz6l7qsT+adqsCTYBfbdn5Q18VrWs2fvuTa7KEoJnPBfEPqWkmAIht0EHtCi2A==}
+  '@iconify/utils@3.1.6':
+    resolution: {integrity: sha512-9n9RQsMcfgXa8aXrHIMGAFwlm+YpY/HxRqBgCQzeMMimdOBA7hvfqDdWE/Zg5sr5SinaY78zYTPkSfG7Sy+moA==}
 
   '@iconify/vue@5.0.1':
     resolution: {integrity: sha512-aumwwooJlFJ5H5qYWB6ZTAyM0C8hpfcSVLB9/a3qnH1GGvIJ+FEbpEs4s/HfErYe/M5qZeLjwmESR5fFm3lXEw==}
@@ -9857,7 +9857,7 @@ snapshots:
 
   '@iconify/types@2.0.0': {}
 
-  '@iconify/utils@3.1.5':
+  '@iconify/utils@3.1.6':
     dependencies:
       '@antfu/install-pkg': 2.0.1
       '@iconify/types': 2.0.0
@@ -10649,7 +10649,7 @@ snapshots:
     dependencies:
       '@iconify/collections': 1.0.730
       '@iconify/types': 2.0.0
-      '@iconify/utils': 3.1.5
+      '@iconify/utils': 3.1.6
       '@iconify/vue': 5.0.1(vue@3.5.42(typescript@6.0.3))
       '@nuxt/devtools-kit': 3.4.2(magic-string@1.2.3)(magicast@0.5.4)(oxc-parser@0.133.0)(unplugin@3.3.0(esbuild@0.28.2)(rollup@4.60.2)(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0)))(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0))
       '@nuxt/kit': 4.5.2(magic-string@1.2.3)(magicast@0.5.4)(oxc-parser@0.133.0)(unplugin@3.3.0(esbuild@0.28.2)(rollup@4.60.2)(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0)))
@@ -10674,7 +10674,7 @@ snapshots:
     dependencies:
       '@iconify/collections': 1.0.730
       '@iconify/types': 2.0.0
-      '@iconify/utils': 3.1.5
+      '@iconify/utils': 3.1.6
       '@iconify/vue': 5.0.1(vue@3.5.42(typescript@6.0.3))
       '@nuxt/devtools-kit': 3.4.2(magic-string@1.2.3)(magicast@0.5.4)(oxc-parser@0.143.0)(unplugin@3.3.0(esbuild@0.28.2)(rollup@4.60.2)(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0)))(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0))
       '@nuxt/kit': 4.5.2(magic-string@1.2.3)(magicast@0.5.4)(oxc-parser@0.143.0)(unplugin@3.3.0(esbuild@0.28.2)(rollup@4.60.2)(vite@7.3.3(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.32.0)(yaml@2.9.0)))
