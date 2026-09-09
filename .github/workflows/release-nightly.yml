@@ -18,10 +18,6 @@ jobs:
       - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2
         with:
           cache: true
-          install: false
-
-      - name: Install dependencies
-        run: pnpm install
 
       - name: Prepare build environment
         run: pnpm dev:prepare
@@ -29,4 +25,4 @@ jobs:
       - run: pnpm build
 
       - name: publish nightly release
-        run: pnpm pkg-pr-new publish --compact
+        run: pnpm pkg-pr-new publish --compact --pnpm

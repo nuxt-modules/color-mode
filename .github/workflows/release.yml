@@ -23,12 +23,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2
-        with:
-          runtime: node@latest
-          install: false
-
-      - name: 📦 Install dependencies
-        run: pnpm install
 
       - name: Build (stub)
         run: pnpm dev:prepare
