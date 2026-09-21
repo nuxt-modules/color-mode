@@ -65,8 +65,8 @@
     "semver": "^7.8.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.2.2",
-    "@commitlint/config-conventional": "^21.2.2",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
     "@nuxt/eslint-config": "^1.17.0",
     "@nuxt/module-builder": "^1.0.3",
     "@nuxt/schema": "^4.4.8",
@@ -74,17 +74,17 @@
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.8.0",
     "@typescript-eslint/parser": "^8.70.0",
-    "@vitest/coverage-v8": "^5.0.0",
+    "@vitest/coverage-v8": "^5.0.1",
     "bumpp": "^12.3.0",
     "changelogithub": "^15.0.5",
     "esbuild": "^0.28.2",
-    "eslint": "^10.10.0",
+    "eslint": "^10.11.0",
     "husky": "9.1.7",
     "nuxt": "^4.4.8",
     "pkg-pr-new": "^0.0.88",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
-    "vitest": "^5.0.0",
+    "vitest": "^5.0.1",
     "vue-tsc": "^3.3.11"
   },
   "resolutions": {
