@@ -3,7 +3,7 @@ import { resolve } from 'pathe'
 import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, createResolver } from '@nuxt/kit'
 import { readPackageJSON } from 'pkg-types'
 import { resolveModulePath } from 'exsolve'
-import { gte } from 'semver'
+import { isGreaterThanOrEqual } from 'verkit'
 import { defu } from 'defu'
 
 import { name, version } from '../package.json'
@@ -94,7 +94,7 @@ export default defineNuxtModule({
     // @ts-expect-error module may not be installed
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
       const tailwind = resolveModulePath('tailwindcss', { from: nuxt.options.modulesDir, try: true }) || 'tailwindcss'
-      const isAfter341 = await readPackageJSON(tailwind).then(twPkg => gte(twPkg.version || '3.0.0', '3.4.1'))
+      const isAfter341 = await readPackageJSON(tailwind).then(twPkg => isGreaterThanOrEqual(twPkg.version || '3.0.0', '3.4.1'))
       tailwindConfig.darkMode = tailwindConfig.darkMode ?? [isAfter341 ? 'selector' : 'class', `[class~="${options.classPrefix}dark${options.classSuffix}"]`]
     })
   },

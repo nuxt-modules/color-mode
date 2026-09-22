@@ -124,9 +124,9 @@ importers:
       pkg-types:
         specifier: ^2.3.3
         version: 2.3.3
-      semver:
-        specifier: ^7.8.5
-        version: 7.8.5
+      verkit:
+        specifier: ^0.5.0
+        version: 0.5.0
     devDependencies:
       '@commitlint/cli':
         specifier: ^21.2.3
@@ -149,9 +149,6 @@ importers:
       '@types/lodash.template':
         specifier: ^4.5.3
         version: 4.5.3
-      '@types/semver':
-        specifier: ^7.8.0
-        version: 7.8.0
       '@typescript-eslint/parser':
         specifier: ^8.70.0
         version: 8.70.0(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3882,9 +3879,6 @@ packages:
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
-
-  '@types/semver@7.8.0':
-    resolution: {integrity: sha512-1mAINjtQCXXeLkJ9ehXkwOcBpqtLxiVtKhpUf83DdRNdQKV0iXZpaHYqRr7nj+wvxuJzoAmAwXI+sCNMv1CzLQ==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -8730,6 +8724,10 @@ packages:
     resolution: {integrity: sha512-sXMwN6DMHeouPfCxkxWkKAmxphWKEenHYY5H1nIBzU3PmDsmJp6kBXJdshjVdpMZuWCmL9SH7KFRx29AylpP6g==}
     engines: {node: '>=18.12.0'}
 
+  verkit@0.5.0:
+    resolution: {integrity: sha512-u4J1hr6Y+C/hit34GwL3eIcUf3wngT8TlYUjK7tk0jxydKLAq3sYvifjdTDA6U3KCKRcQCQDGf/srjxfZF3l7g==}
+    engines: {node: '>=18.12.0'}
+
   vfile-location@5.0.3:
     resolution: {integrity: sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==}
 
@@ -13055,8 +13053,6 @@ snapshots:
       parse-path: 7.0.0
 
   '@types/resolve@1.20.2': {}
-
-  '@types/semver@7.8.0': {}
 
   '@types/unist@2.0.11': {}
 
@@ -19285,6 +19281,8 @@ snapshots:
   verkit@0.3.2: {}
 
   verkit@0.4.0: {}
+
+  verkit@0.5.0: {}
 
   vfile-location@5.0.3:
     dependencies:
