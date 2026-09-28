@@ -72,8 +72,8 @@
     "@nuxt/schema": "^4.4.8",
     "@nuxt/test-utils": "^4.3.2",
     "@types/lodash.template": "^4.5.3",
-    "@typescript-eslint/parser": "^8.70.0",
-    "@vitest/coverage-v8": "^5.0.1",
+    "@typescript-eslint/parser": "^8.70.1",
+    "@vitest/coverage-v8": "^5.0.2",
     "bumpp": "^12.3.0",
     "changelogithub": "^15.0.5",
     "esbuild": "^0.28.2",
@@ -83,7 +83,7 @@
     "pkg-pr-new": "^0.0.88",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
-    "vitest": "^5.0.1",
+    "vitest": "^5.0.2",
     "vue-tsc": "^3.3.11"
   },
   "resolutions": {
