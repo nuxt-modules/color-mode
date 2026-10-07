@@ -80,6 +80,15 @@ export default defineNuxtModule({
     addComponent({ name: options.componentName, filePath: resolve(runtimeDir, 'component.vue') })
     addImports({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
+    // The Vite server builder does not run Nitro's render:html hook.
+    if (nuxt.options.server?.builder === 'vite' || nuxt.options.server?.builder === '@nuxt/vite-server') {
+      nuxt.options.app.head.script ||= []
+      nuxt.options.app.head.script.push({
+        innerHTML: options.script,
+        tagPriority: 'critical',
+      })
+    }
+
     // inject script
     nuxt.hook('nitro:config', (config) => {
       config.externals = config.externals || {}
