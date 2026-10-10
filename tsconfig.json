@@ -3,6 +3,7 @@
   "exclude": [
     "dist",
     "docs",
-    "playground"
+    "playground",
+    "playground-v5"
   ]
 }

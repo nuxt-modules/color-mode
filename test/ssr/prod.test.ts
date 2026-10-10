@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, it, expect } from 'vitest'
 
-const fixture = fileURLToPath(new URL('../../playground', import.meta.url))
+const fixture = fileURLToPath(new URL(`../../${process.env.TEST_PLAYGROUND || 'playground'}`, import.meta.url))
 
 describe('ssr: true, target: server, prod mode', async () => {
   await setup({
