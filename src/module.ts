@@ -1,6 +1,6 @@
 import { promises as fsp } from 'node:fs'
 import { resolve } from 'pathe'
-import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, createResolver } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, addNitroPlugin, createResolver } from '@nuxt/kit'
 import { readPackageJSON } from 'pkg-types'
 import { resolveModulePath } from 'exsolve'
 import { isGreaterThanOrEqual } from 'verkit'
@@ -96,9 +96,9 @@ export default defineNuxtModule({
       config.externals.inline.push(runtimeDir)
       config.virtual = config.virtual || {}
       config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
-      config.plugins = config.plugins || []
-      config.plugins.push(resolve(runtimeDir, 'nitro-plugin'))
     })
+    const nitroPlugin = resolve(runtimeDir, 'nitro-plugin')
+    addNitroPlugin({ nitro2: nitroPlugin, nitro3: nitroPlugin })
 
     // @ts-expect-error module may not be installed
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {

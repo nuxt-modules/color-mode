@@ -1,6 +1,7 @@
 packages:
   - docs
   - playground
+  - playground-v5
   - ./
 allowBuilds:
   better-sqlite3: true
