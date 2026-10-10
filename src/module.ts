@@ -1,6 +1,6 @@
 import { promises as fsp } from 'node:fs'
 import { resolve } from 'pathe'
-import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, addNitroPlugin, createResolver } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, addNitroPlugin, addVitePlugin, createResolver } from '@nuxt/kit'
 import { readPackageJSON } from 'pkg-types'
 import { resolveModulePath } from 'exsolve'
 import { isGreaterThanOrEqual } from 'verkit'
@@ -80,25 +80,26 @@ export default defineNuxtModule({
     addComponent({ name: options.componentName, filePath: resolve(runtimeDir, 'component.vue') })
     addImports({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
-    // The Vite server builder does not run Nitro's render:html hook.
-    if (nuxt.options.server?.builder === 'vite' || nuxt.options.server?.builder === '@nuxt/vite-server') {
-      nuxt.options.app.head.script ||= []
-      nuxt.options.app.head.script.push({
-        innerHTML: options.script,
-        tagPriority: 'critical',
+    // inject script
+    const builder = nuxt.options.server?.builder
+    if (builder && builder !== '@nuxt/nitro-server') {
+      addPlugin(resolve(runtimeDir, 'script.server'))
+      addVitePlugin({
+        name: 'nuxt-color-mode:script',
+        transformIndexHtml: () => [{ tag: 'script', children: options.script, injectTo: 'head' }],
       })
     }
-
-    // inject script
-    nuxt.hook('nitro:config', (config) => {
-      config.externals = config.externals || {}
-      config.externals.inline = config.externals.inline || []
-      config.externals.inline.push(runtimeDir)
-      config.virtual = config.virtual || {}
-      config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
-    })
-    const nitroPlugin = resolve(runtimeDir, 'nitro-plugin')
-    addNitroPlugin({ nitro2: nitroPlugin, nitro3: nitroPlugin })
+    else {
+      nuxt.hook('nitro:config', (config) => {
+        config.externals = config.externals || {}
+        config.externals.inline = config.externals.inline || []
+        config.externals.inline.push(runtimeDir)
+        config.virtual = config.virtual || {}
+        config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
+      })
+      const nitroPlugin = resolve(runtimeDir, 'nitro-plugin')
+      addNitroPlugin({ nitro2: nitroPlugin, nitro3: nitroPlugin })
+    }
 
     // @ts-expect-error module may not be installed
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
