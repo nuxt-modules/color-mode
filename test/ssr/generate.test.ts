@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises'
 import { setup, useTestContext } from '@nuxt/test-utils'
 import { describe, it, expect } from 'vitest'
 
-const fixture = fileURLToPath(new URL('../../playground', import.meta.url))
+const fixture = fileURLToPath(new URL(`../../${process.env.TEST_PLAYGROUND || 'playground'}`, import.meta.url))
 
 await setup({
   server: false,
