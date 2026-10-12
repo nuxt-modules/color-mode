@@ -11,12 +11,12 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "^24.0.0",
+      "version": "^24.21.0",
       "onFail": "download"
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "12.3.4",
+      "version": "12.11.2",
       "onFail": "download"
     }
   },
@@ -73,7 +73,7 @@
     "@nuxt/schema": "^4.6.1",
     "@nuxt/test-utils": "^4.3.3",
     "@types/lodash.template": "^4.5.3",
-    "@typescript-eslint/parser": "^8.71.0",
+    "@typescript-eslint/parser": "^8.71.1",
     "@vitest/coverage-v8": "^5.0.3",
     "bumpp": "^12.3.0",
     "changelogithub": "^15.0.5",
@@ -81,13 +81,13 @@
     "eslint": "^10.12.0",
     "husky": "9.1.7",
     "nuxt": "^4.6.1",
-    "pkg-pr-new": "^0.0.88",
+    "pkg-pr-new": "^0.0.91",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
     "vitest": "^5.0.3",
-    "vue-tsc": "^3.3.12"
+    "vue-tsc": "^3.3.13"
   },
   "resolutions": {
-    "h3": "2.0.1"
+    "h3": "2.0.2"
   }
 }
