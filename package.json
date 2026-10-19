@@ -11,12 +11,12 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "^24.21.0",
+      "version": "^24.22.0",
       "onFail": "download"
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "12.11.2",
+      "version": "12.14.0",
       "onFail": "download"
     }
   },
@@ -71,23 +71,23 @@
     "@nuxt/eslint-config": "^1.17.0",
     "@nuxt/module-builder": "^1.0.3",
     "@nuxt/schema": "^4.6.2",
-    "@nuxt/test-utils": "^4.3.3",
+    "@nuxt/test-utils": "^4.3.4",
     "@types/lodash.template": "^4.5.3",
-    "@typescript-eslint/parser": "^8.71.1",
-    "@vitest/coverage-v8": "^5.0.3",
+    "@typescript-eslint/parser": "^8.71.2",
+    "@vitest/coverage-v8": "^5.0.5",
     "bumpp": "^12.3.0",
     "changelogithub": "^15.0.5",
     "esbuild": "^0.28.2",
-    "eslint": "^10.12.0",
+    "eslint": "^10.13.0",
     "husky": "9.1.7",
     "nuxt": "^4.6.2",
     "pkg-pr-new": "^0.0.91",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
-    "vitest": "^5.0.3",
+    "vitest": "^5.0.5",
     "vue-tsc": "^3.3.13"
   },
   "resolutions": {
-    "h3": "2.0.2"
+    "h3": "2.0.5"
   }
 }
