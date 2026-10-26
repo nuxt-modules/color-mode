@@ -63,17 +63,19 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   let darkWatcher: MediaQueryList
 
+  function syncSystemColorScheme() {
+    if (!colorMode.forced && colorMode.preference === 'system') {
+      setColorModeValue(colorMode, helper.getColorScheme())
+    }
+  }
+
   function watchMedia() {
     if (darkWatcher || !window.matchMedia) {
       return
     }
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
-    darkWatcher.addEventListener('change', () => {
-      if (!colorMode.forced && colorMode.preference === 'system') {
-        setColorModeValue(colorMode, helper.getColorScheme())
-      }
-    })
+    darkWatcher.addEventListener('change', syncSystemColorScheme)
   }
 
   let isReady = false
@@ -86,7 +88,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     if (preference === 'system') {
       setColorModeValue(colorMode, helper.getColorScheme())
-      watchMedia()
+      if (isReady) {
+        watchMedia()
+      }
     }
     else {
       setColorModeValue(colorMode, preference)
@@ -119,12 +123,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   })
 
-  if (colorMode.preference === 'system') {
-    watchMedia()
-  }
-
   onIdleAfterHydration(nuxtApp, () => {
     isReady = true
+    if (colorMode.preference === 'system') {
+      watchMedia()
+      syncSystemColorScheme()
+    }
     const preference = pendingPreference
     if (preference) {
       nuxtApp.runWithContext(() => setPreferenceToStorage(preference))

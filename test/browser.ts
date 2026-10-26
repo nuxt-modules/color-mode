@@ -96,6 +96,14 @@ export function defineBrowserTests() {
     await page.close()
   })
 
+  it('listens for system color scheme changes once hydrated', async () => {
+    const page = await createPage(undefined, { colorScheme: 'dark' })
+    await instrument(page)
+    await page.goto(url('/'), { waitUntil: 'hydration' })
+    await expect.poll(() => getCalls(page, 'addEventListener')).toEqual([{ method: 'addEventListener', arg: '(prefers-color-scheme: dark)', phase: 'hydrated' }])
+    await page.close()
+  })
+
   it('picks up a system color scheme change during hydration', async () => {
     const page = await createPage(undefined, { colorScheme: 'dark' })
     await gotoWithHeldHydration(page, '/')
