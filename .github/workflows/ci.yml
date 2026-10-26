@@ -22,6 +22,8 @@ jobs:
           cache: true
       - name: Prepare TypeScript environment
         run: pnpm run dev:prepare
+      - name: Install browser
+        run: pnpm playwright-core install chromium
       - name: Lint
         run: pnpm run lint
       - name: Test
