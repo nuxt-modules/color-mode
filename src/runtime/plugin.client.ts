@@ -36,6 +36,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     forced: false,
   })).value
 
+  let initialColorScheme = helper.preference === 'system' && !document.documentElement.hasAttribute('data-color-mode-forced')
+    ? helper.value
+    : undefined
+
+  function getColorScheme() {
+    return initialColorScheme || helper.getColorScheme()
+  }
+
   if (dataValue) {
     useHead({
       htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) },
@@ -55,7 +63,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
       colorMode.forced = false
       const newValue = colorMode.preference === 'system'
-        ? helper.getColorScheme()
+        ? getColorScheme()
         : colorMode.preference
       setColorModeValue(colorMode, newValue)
     }
@@ -87,7 +95,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     if (preference === 'system') {
-      setColorModeValue(colorMode, helper.getColorScheme())
+      setColorModeValue(colorMode, getColorScheme())
       if (isReady) {
         watchMedia()
       }
@@ -125,6 +133,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   onIdleAfterHydration(nuxtApp, () => {
     isReady = true
+    initialColorScheme = undefined
     if (colorMode.preference === 'system') {
       watchMedia()
       syncSystemColorScheme()

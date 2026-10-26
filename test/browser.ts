@@ -78,7 +78,7 @@ function instrument(page: Page) {
   })
 }
 
-function getCalls(page: Page, method: Call['method']) {
+function getCalls(page: Page, method: Call['method']): Promise<Call[]> {
   return page.evaluate(method => (window as any).__calls.filter((call: Call) => call.method === method), method)
 }
 
@@ -101,6 +101,30 @@ export function defineBrowserTests() {
     await instrument(page)
     await page.goto(url('/'), { waitUntil: 'hydration' })
     await expect.poll(() => getCalls(page, 'addEventListener')).toEqual([{ method: 'addEventListener', arg: '(prefers-color-scheme: dark)', phase: 'hydrated' }])
+    await page.close()
+  })
+
+  it('reuses the color scheme resolved by the inline script until hydrated', async () => {
+    const page = await createPage(undefined, { colorScheme: 'dark' })
+    await instrument(page)
+    await page.goto(url('/'), { waitUntil: 'hydration' })
+    await expect.poll(() => getCalls(page, 'addEventListener')).toHaveLength(1)
+    const calls = await getCalls(page, 'matchMedia')
+    expect(calls.filter(call => call.phase === 'hydrating')).toEqual([])
+    await page.close()
+  })
+
+  it('picks up a system color scheme change before the app starts', async () => {
+    const page = await createPage(undefined, { colorScheme: 'dark' })
+    let release!: () => void
+    const released = new Promise<void>(resolve => release = resolve)
+    await page.route('**/_nuxt/**/*.js', route => released.then(() => route.continue()))
+    await page.goto(url('/'), { waitUntil: 'commit' })
+    await page.waitForFunction(() => '__NUXT_COLOR_MODE__' in window)
+    await page.emulateMedia({ colorScheme: 'light' })
+    release()
+    await page.waitForFunction(() => window.useNuxtApp?.().isHydrating === false)
+    await expect.poll(() => getColorMode(page)).toMatchObject({ value: 'light', className: 'light-mode' })
     await page.close()
   })
 
