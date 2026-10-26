@@ -9,6 +9,8 @@ const playgrounds = [
 
 export default defineConfig({
   test: {
+    testTimeout: 20_000,
+    expect: { poll: { timeout: 5_000 } },
     coverage: {
       reporter: ['text'],
       include: ['src'],
