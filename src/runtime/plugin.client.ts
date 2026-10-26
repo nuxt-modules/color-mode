@@ -1,6 +1,7 @@
 import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
+import type { NuxtApp } from '#app'
 import { defineNuxtPlugin, useRouter, useHead, useState, useCookie, useRuntimeConfig } from '#imports'
 import { globalName, storageKey, dataValue, disableTransition, storage } from '#build/color-mode-options.mjs'
 
@@ -75,6 +76,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
+  let isReady = false
+  let pendingPreference: string | undefined
+
   watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
       return
@@ -88,7 +92,12 @@ export default defineNuxtPlugin((nuxtApp) => {
       setColorModeValue(colorMode, preference)
     }
 
-    setPreferenceToStorage(preference)
+    if (isReady) {
+      setPreferenceToStorage(preference)
+    }
+    else {
+      pendingPreference = preference
+    }
     // Local storage to sync with other tabs
     // window.localStorage?.setItem(storageKey, preference)
   }, { immediate: true })
@@ -114,6 +123,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     watchMedia()
   }
 
+  onIdleAfterHydration(nuxtApp, () => {
+    isReady = true
+    const preference = pendingPreference
+    if (preference) {
+      nuxtApp.runWithContext(() => setPreferenceToStorage(preference))
+    }
+  })
+
   nuxtApp.hook('app:mounted', () => {
     if (colorMode.unknown) {
       colorMode.preference = helper.preference
@@ -124,6 +141,23 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.provide('colorMode', colorMode)
 })
+
+function onIdleAfterHydration(nuxtApp: NuxtApp, callback: () => void) {
+  const schedule = () => {
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(callback, { timeout: 1000 })
+    }
+    else {
+      setTimeout(callback, 1)
+    }
+  }
+  if (nuxtApp.isHydrating) {
+    nuxtApp.hooks.hookOnce('app:suspense:resolve', schedule)
+  }
+  else {
+    schedule()
+  }
+}
 
 function setColorModeValue(colorMode: ColorModeInstance, value: string) {
   // @ts-expect-error readonly property
