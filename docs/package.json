@@ -15,6 +15,6 @@
     "better-sqlite3": "^13.0.3",
     "docus": "^5.15.0",
     "nuxt": "^4.6.2",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.2.0"
   }
 }
