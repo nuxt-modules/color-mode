@@ -1,13 +1,15 @@
 {
   "name": "@nuxtjs/color-mode",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Dark and light mode for Nuxt with auto detection",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nuxt-modules/color-mode.git"
   },
   "license": "MIT",
-  "bugs": { "url": "https://github.com/nuxt-modules/color-mode/issues" },
+  "bugs": {
+    "url": "https://github.com/nuxt-modules/color-mode/issues"
+  },
   "devEngines": {
     "runtime": {
       "name": "node",
