@@ -44,7 +44,7 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build build && esbuild --minify src/script.js --outfile=dist/script.min.js",
+    "prepack": "nuxt-module-build prepare && nuxt-module-build build && esbuild --minify src/script.js --outfile=dist/script.min.js",
     "build": "pnpm run prepack",
     "dev": "nuxt dev playground",
     "dev:v5": "pnpm -C playground-v5 dev",
@@ -53,8 +53,6 @@
     "docs": "nuxt dev docs",
     "docs:build": "nuxt generate docs",
     "lint": "eslint .",
-    "prepublishOnly": "pnpm run prepack",
-    "release": "pnpm lint && pnpm test && bumpp",
     "test": "vitest run --coverage && vue-tsc --noEmit"
   },
   "dependencies": {
@@ -75,8 +73,6 @@
     "@types/lodash.template": "^4.5.3",
     "@typescript-eslint/parser": "^8.72.0",
     "@vitest/coverage-v8": "^5.0.5",
-    "bumpp": "^12.3.0",
-    "changelogithub": "^15.0.5",
     "esbuild": "^0.28.2",
     "eslint": "^10.13.0",
     "husky": "9.1.7",

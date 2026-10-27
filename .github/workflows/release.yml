@@ -2,38 +2,117 @@ name: release
 
 on:
   push:
-    tags:
-      - "v*"
+    # release/v* picks up hand edits to an open release PR
+    branches: [main, 'release/v*']
+  pull_request:
+    types: [closed]
+    branches: [main]
+  # merged release PRs, publish reruns, and prereleases all arrive here
+  workflow_dispatch:
+    inputs:
+      prerelease:
+        description: 'Cut a prerelease instead of a normal release, e.g. `beta`, `rc`, or `0`'
+        required: false
+        default: ''
+      npm-tag:
+        description: 'npm dist-tag to publish to. Set by uppt/release for maintenance lines; leave blank otherwise'
+        required: false
+        default: ''
 
 # Remove default permissions of GITHUB_TOKEN for security
 # https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
 permissions: {}
 
 jobs:
-  release:
-    concurrency:
-      group: release
+  # open or update a draft release PR from conventional commits
+  pr:
+    if: |
+      !github.event.repository.fork
+      && (
+        (
+          github.event_name == 'push'
+          && (
+            github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+            || startsWith(github.ref, 'refs/heads/release/v')
+          )
+        ) || (
+          github.event_name == 'workflow_dispatch'
+          && !startsWith(github.ref, 'refs/tags/')
+        )
+      )
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
+      pull-requests: write
+    steps:
+      - uses: danielroe/uppt/pr@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: ${{ inputs.prerelease }}
+          title: 'chore: release v{version}'
+
+  # release PR merged: tag it, cut a GitHub release, dispatch the publish run
+  release:
+    if: |
+      github.event_name == 'pull_request'
+      && github.event.pull_request.merged == true
+      && startsWith(github.event.pull_request.head.ref, 'release/v')
+      && github.event.pull_request.head.repo.full_name == github.repository
+      && !github.event.repository.fork
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    concurrency:
+      group: release-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: danielroe/uppt/release@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  # the chained dispatch lands here on the vX.Y.Z tag; build the tarball
+  pack:
+    if: github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pack-${{ github.ref }}
+      cancel-in-progress: false
+    permissions: {}
+    outputs:
+      files: ${{ steps.pack.outputs.files }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0
+          persist-credentials: false
+      # install pnpm and Node from devEngines (corepack would pick its own pnpm)
       - uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
+        with:
+          install: false
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - id: pack
+        uses: danielroe/uppt/pack@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+        with:
+          checkout: false
+          install: false
 
-      - name: Build (stub)
-        run: pnpm dev:prepare
-
-      - name: 🛠 Build project
-        run: pnpm build
-
-      - name: 📦 Release
-        run: pnpm publish --no-git-checks
-
-      - name: 🪵 Publish release to GitHub
-        run: pnpm changelogithub
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # stage the prebuilt tarball to npm via OIDC
+  publish:
+    if: |
+      github.event_name == 'workflow_dispatch'
+      && startsWith(github.ref, 'refs/tags/v')
+      && needs.pack.outputs.files != '[]'
+    needs: pack
+    runs-on: ubuntu-latest
+    concurrency:
+      group: publish-${{ github.ref }}
+      cancel-in-progress: false
+    permissions:
+      id-token: write
+    environment: npm
+    steps:
+      - uses: danielroe/uppt/publish@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+        with:
+          files: ${{ needs.pack.outputs.files }}
+          npm-tag: ${{ inputs.npm-tag }}
