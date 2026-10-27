@@ -1,6 +1,7 @@
 import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
+import type { NuxtApp } from '#app'
 import { defineNuxtPlugin, useRouter, useHead, useState, useCookie, useRuntimeConfig } from '#imports'
 import { globalName, storageKey, dataValue, disableTransition, storage } from '#build/color-mode-options.mjs'
 
@@ -35,6 +36,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     forced: false,
   })).value
 
+  let initialColorScheme = helper.preference === 'system' && !document.documentElement.hasAttribute('data-color-mode-forced')
+    ? helper.value
+    : undefined
+
+  function getColorScheme() {
+    return initialColorScheme || helper.getColorScheme()
+  }
+
   if (dataValue) {
     useHead({
       htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) },
@@ -54,7 +63,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
       colorMode.forced = false
       const newValue = colorMode.preference === 'system'
-        ? helper.getColorScheme()
+        ? getColorScheme()
         : colorMode.preference
       setColorModeValue(colorMode, newValue)
     }
@@ -62,18 +71,23 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   let darkWatcher: MediaQueryList
 
+  function syncSystemColorScheme() {
+    if (!colorMode.forced && colorMode.preference === 'system') {
+      setColorModeValue(colorMode, helper.getColorScheme())
+    }
+  }
+
   function watchMedia() {
     if (darkWatcher || !window.matchMedia) {
       return
     }
 
     darkWatcher = window.matchMedia('(prefers-color-scheme: dark)')
-    darkWatcher.addEventListener('change', () => {
-      if (!colorMode.forced && colorMode.preference === 'system') {
-        setColorModeValue(colorMode, helper.getColorScheme())
-      }
-    })
+    darkWatcher.addEventListener('change', syncSystemColorScheme)
   }
+
+  let isReady = false
+  let pendingPreference: string | undefined
 
   watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
@@ -81,14 +95,21 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     if (preference === 'system') {
-      setColorModeValue(colorMode, helper.getColorScheme())
-      watchMedia()
+      setColorModeValue(colorMode, getColorScheme())
+      if (isReady) {
+        watchMedia()
+      }
     }
     else {
       setColorModeValue(colorMode, preference)
     }
 
-    setPreferenceToStorage(preference)
+    if (isReady) {
+      setPreferenceToStorage(preference)
+    }
+    else {
+      pendingPreference = preference
+    }
     // Local storage to sync with other tabs
     // window.localStorage?.setItem(storageKey, preference)
   }, { immediate: true })
@@ -110,9 +131,18 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   })
 
-  if (colorMode.preference === 'system') {
-    watchMedia()
-  }
+  onIdleAfterHydration(nuxtApp, () => {
+    isReady = true
+    initialColorScheme = undefined
+    if (colorMode.preference === 'system') {
+      watchMedia()
+      syncSystemColorScheme()
+    }
+    const preference = pendingPreference
+    if (preference) {
+      nuxtApp.runWithContext(() => setPreferenceToStorage(preference))
+    }
+  })
 
   nuxtApp.hook('app:mounted', () => {
     if (colorMode.unknown) {
@@ -124,6 +154,23 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.provide('colorMode', colorMode)
 })
+
+function onIdleAfterHydration(nuxtApp: NuxtApp, callback: () => void) {
+  const schedule = () => {
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(callback, { timeout: 1000 })
+    }
+    else {
+      setTimeout(callback, 1)
+    }
+  }
+  if (nuxtApp.isHydrating) {
+    nuxtApp.hooks.hookOnce('app:suspense:resolve', schedule)
+  }
+  else {
+    schedule()
+  }
+}
 
 function setColorModeValue(colorMode: ColorModeInstance, value: string) {
   // @ts-expect-error readonly property

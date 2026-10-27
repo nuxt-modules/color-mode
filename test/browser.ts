@@ -39,6 +39,49 @@ function resumeHydration(page: Page) {
   return page.evaluate(() => (window as any).__resumeHydration())
 }
 
+interface Call {
+  method: 'matchMedia' | 'addEventListener' | 'setItem'
+  arg: string
+  phase: 'script' | 'hydrating' | 'hydrated'
+}
+
+function instrument(page: Page) {
+  return page.addInitScript(() => {
+    const calls: Call[] = []
+    Object.assign(window, { __calls: calls })
+    const phase = (): Call['phase'] => {
+      if (!('__NUXT_COLOR_MODE__' in window)) {
+        return 'script'
+      }
+      try {
+        return window.useNuxtApp!().isHydrating ? 'hydrating' : 'hydrated'
+      }
+      catch {
+        return 'hydrating'
+      }
+    }
+    const matchMedia = window.matchMedia
+    window.matchMedia = (query) => {
+      calls.push({ method: 'matchMedia', arg: query, phase: phase() })
+      return matchMedia.call(window, query)
+    }
+    const addEventListener = MediaQueryList.prototype.addEventListener
+    MediaQueryList.prototype.addEventListener = function (this: MediaQueryList, ...args: Parameters<typeof addEventListener>) {
+      calls.push({ method: 'addEventListener', arg: this.media, phase: phase() })
+      return addEventListener.apply(this, args)
+    }
+    const setItem = Storage.prototype.setItem
+    Storage.prototype.setItem = function (this: Storage, key, value) {
+      calls.push({ method: 'setItem', arg: `${key}=${value}`, phase: phase() })
+      return setItem.call(this, key, value)
+    }
+  })
+}
+
+function getCalls(page: Page, method: Call['method']): Promise<Call[]> {
+  return page.evaluate(method => (window as any).__calls.filter((call: Call) => call.method === method), method)
+}
+
 export function defineBrowserTests() {
   it('resolves the system color scheme', async () => {
     const page = await createPage('/', { colorScheme: 'dark' })
@@ -49,6 +92,38 @@ export function defineBrowserTests() {
   it('follows system color scheme changes', async () => {
     const page = await createPage('/', { colorScheme: 'dark' })
     await page.emulateMedia({ colorScheme: 'light' })
+    await expect.poll(() => getColorMode(page)).toMatchObject({ value: 'light', className: 'light-mode' })
+    await page.close()
+  })
+
+  it('listens for system color scheme changes once hydrated', async () => {
+    const page = await createPage(undefined, { colorScheme: 'dark' })
+    await instrument(page)
+    await page.goto(url('/'), { waitUntil: 'hydration' })
+    await expect.poll(() => getCalls(page, 'addEventListener')).toEqual([{ method: 'addEventListener', arg: '(prefers-color-scheme: dark)', phase: 'hydrated' }])
+    await page.close()
+  })
+
+  it('reuses the color scheme resolved by the inline script until hydrated', async () => {
+    const page = await createPage(undefined, { colorScheme: 'dark' })
+    await instrument(page)
+    await page.goto(url('/'), { waitUntil: 'hydration' })
+    await expect.poll(() => getCalls(page, 'addEventListener')).toHaveLength(1)
+    const calls = await getCalls(page, 'matchMedia')
+    expect(calls.filter(call => call.phase === 'hydrating')).toEqual([])
+    await page.close()
+  })
+
+  it('picks up a system color scheme change before the app starts', async () => {
+    const page = await createPage(undefined, { colorScheme: 'dark' })
+    let release!: () => void
+    const released = new Promise<void>(resolve => release = resolve)
+    await page.route('**/_nuxt/**/*.js', route => released.then(() => route.continue()))
+    await page.goto(url('/'), { waitUntil: 'commit' })
+    await page.waitForFunction(() => '__NUXT_COLOR_MODE__' in window)
+    await page.emulateMedia({ colorScheme: 'light' })
+    release()
+    await page.waitForFunction(() => window.useNuxtApp?.().isHydrating === false)
     await expect.poll(() => getColorMode(page)).toMatchObject({ value: 'light', className: 'light-mode' })
     await page.close()
   })
@@ -74,6 +149,15 @@ export function defineBrowserTests() {
     await page.goto(url('/'), { waitUntil: 'hydration' })
     await expect.poll(() => getColorMode(page)).toMatchObject({ preference: 'dark', value: 'dark', className: 'dark-mode' })
     expect(await page.evaluate(() => localStorage.getItem('nuxt-color-mode'))).toBe('dark')
+    await page.close()
+  })
+
+  it('writes to storage once hydrated', async () => {
+    const page = await createPage(undefined, { colorScheme: 'light' })
+    await page.addInitScript(() => localStorage.setItem('nuxt-color-mode', 'dark'))
+    await instrument(page)
+    await page.goto(url('/'), { waitUntil: 'hydration' })
+    await expect.poll(() => getCalls(page, 'setItem')).toEqual([{ method: 'setItem', arg: 'nuxt-color-mode=dark', phase: 'hydrated' }])
     await page.close()
   })
 
