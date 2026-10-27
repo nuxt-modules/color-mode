@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Prepares a fresh Amp orb: installs dependencies, stubs the module, and installs the test browser.
+# Must stay non-interactive and idempotent; it also runs on stale snapshots.
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+step() {
+  local name="$1"
+  shift
+  echo "==> $name"
+  local start=$SECONDS
+  "$@"
+  echo "<== $name ($((SECONDS - start))s)"
+}
+
+# pnpm resolves the Node.js runtime and pnpm version pinned in package.json devEngines.
+command -v pnpm >/dev/null || step "Enable corepack" corepack enable
+
+export CI=true
+# The playground postinstall runs `pnpm run dev:prepare`, which stubs the module and prepares the playground.
+step "Install dependencies" pnpm install --frozen-lockfile
+step "Install Playwright Chromium" pnpm exec playwright-core install chromium
