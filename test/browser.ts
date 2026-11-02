@@ -6,6 +6,7 @@ import { expect, it } from 'vitest'
 
 const fixture = fileURLToPath(new URL(`../${process.env.TEST_PLAYGROUND || 'playground'}`, import.meta.url))
 const holdHydration = fileURLToPath(new URL('./fixtures/hold-hydration.client.ts', import.meta.url))
+const forceColorMode = fileURLToPath(new URL('./fixtures/force-color-mode.client.ts', import.meta.url))
 
 export async function setupBrowser(nuxtConfig: NuxtConfig) {
   await setup({
@@ -13,7 +14,7 @@ export async function setupBrowser(nuxtConfig: NuxtConfig) {
     build: true,
     browser: true,
     fixture,
-    nuxtConfig: { ...nuxtConfig, plugins: [holdHydration] },
+    nuxtConfig: { ...nuxtConfig, plugins: [holdHydration, forceColorMode] },
   })
 }
 
@@ -178,6 +179,38 @@ export function defineBrowserTests() {
     expect(await getColorMode(page)).toMatchObject({ preference: 'system', value: 'light', forced: true, className: 'light-mode' })
     await page.evaluate(() => window.useNuxtApp!().$router.push('/'))
     await expect.poll(() => getColorMode(page)).toMatchObject({ value: 'dark', forced: false, className: 'dark-mode' })
+    await page.close()
+  })
+
+  it.each(['light', 'dark'] as const)('preserves middleware-forced %s mode on failed navigation', async (forcedMode) => {
+    const systemMode = forcedMode === 'light' ? 'dark' : 'light'
+    const page = await createPage('/', { colorScheme: systemMode })
+    await page.evaluate(mode => window.useNuxtApp!().$router.push(`/?testColorMode=${mode}`), forcedMode)
+    const expected = { preference: 'system', value: forcedMode, forced: true, className: `${forcedMode}-mode` }
+    await expect.poll(() => getColorMode(page)).toEqual(expected)
+
+    expect(await page.evaluate(async () => {
+      const router = window.useNuxtApp!().$router
+      return Boolean(await router.push(router.currentRoute.value.fullPath))
+    })).toBe(true)
+    expect(await getColorMode(page)).toEqual(expected)
+
+    expect(await page.evaluate(async () => {
+      const router = window.useNuxtApp!().$router
+      const removeGuard = router.beforeEach(() => false)
+      try {
+        return Boolean(await router.push('/'))
+      }
+      finally {
+        removeGuard()
+      }
+    })).toBe(true)
+    expect(await getColorMode(page)).toEqual(expected)
+
+    await page.evaluate(mode => window.useNuxtApp!().$router.push(`/?testColorMode=${mode}`), systemMode)
+    await expect.poll(() => getColorMode(page)).toEqual({ preference: 'system', value: systemMode, forced: true, className: `${systemMode}-mode` })
+    await page.evaluate(() => window.useNuxtApp!().$router.push('/'))
+    await expect.poll(() => getColorMode(page)).toEqual({ preference: 'system', value: systemMode, forced: false, className: `${systemMode}-mode` })
     await page.close()
   })
 

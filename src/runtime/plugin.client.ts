@@ -50,7 +50,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  useRouter().afterEach((to) => {
+  useRouter().afterEach((to, _from, failure) => {
+    if (failure) {
+      return
+    }
+
     const forcedColorMode = to.meta.colorMode
 
     if (forcedColorMode && forcedColorMode !== 'system') {
