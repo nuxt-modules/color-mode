@@ -21,6 +21,7 @@ const DEFAULTS: ModuleOptions = {
   storage: 'localStorage',
   cookieAttrs: undefined,
   disableTransition: false,
+  persistOnLoad: true,
 }
 
 export default defineNuxtModule({
@@ -167,4 +168,12 @@ export interface ModuleOptions {
    * @default false
    */
   disableTransition?: boolean
+  /**
+   * Save the preference to storage when the page loads, before any change.
+   * Set it to `false` to write only once the preference changes, so a visitor
+   * who never chose keeps following the configured `preference`.
+   *
+   * @default true
+   */
+  persistOnLoad?: boolean
 }

@@ -3,7 +3,7 @@ import { computed, reactive, watch } from 'vue'
 import type { ColorModeInstance } from './types'
 import type { NuxtApp } from '#app'
 import { defineNuxtPlugin, useRouter, useHead, useState, useCookie, useRuntimeConfig } from '#imports'
-import { globalName, storageKey, dataValue, disableTransition, storage } from '#build/color-mode-options.mjs'
+import { globalName, storageKey, dataValue, disableTransition, storage, persistOnLoad } from '#build/color-mode-options.mjs'
 
 type Helper = {
   preference: string
@@ -88,6 +88,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   let isReady = false
   let pendingPreference: string | undefined
+  // The preference the page loaded with (stored, or the configured default).
+  // With `persistOnLoad: false` it is only written once it has changed.
+  const initialPreference = helper.preference
+  let changedBeforeReady = false
 
   watch(() => colorMode.preference, (preference) => {
     if (colorMode.forced) {
@@ -107,7 +111,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (isReady) {
       setPreferenceToStorage(preference)
     }
-    else {
+    else if (persistOnLoad || changedBeforeReady || preference !== initialPreference) {
+      changedBeforeReady = true
       pendingPreference = preference
     }
     // Local storage to sync with other tabs

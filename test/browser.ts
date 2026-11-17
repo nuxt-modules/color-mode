@@ -29,13 +29,13 @@ export function getColorMode(page: Page) {
   })
 }
 
-async function gotoWithHeldHydration(page: Page, path: string) {
+export async function gotoWithHeldHydration(page: Page, path: string) {
   await page.addInitScript(() => Object.assign(window, { __holdHydration: true }))
   await page.goto(url(path), { waitUntil: 'commit' })
   await page.waitForFunction(() => '__resumeHydration' in window)
 }
 
-function resumeHydration(page: Page) {
+export function resumeHydration(page: Page) {
   return page.evaluate(() => (window as any).__resumeHydration())
 }
 
@@ -45,7 +45,7 @@ interface Call {
   phase: 'script' | 'hydrating' | 'hydrated'
 }
 
-function instrument(page: Page) {
+export function instrument(page: Page) {
   return page.addInitScript(() => {
     const calls: Call[] = []
     Object.assign(window, { __calls: calls })
@@ -78,7 +78,7 @@ function instrument(page: Page) {
   })
 }
 
-function getCalls(page: Page, method: Call['method']): Promise<Call[]> {
+export function getCalls(page: Page, method: Call['method']): Promise<Call[]> {
   return page.evaluate(method => (window as any).__calls.filter((call: Call) => call.method === method), method)
 }
 
