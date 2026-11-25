@@ -1,6 +1,6 @@
 import { promises as fsp } from 'node:fs'
 import { resolve } from 'pathe'
-import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, addNitroPlugin, addVitePlugin, createResolver } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, addComponent, addImports, addRendererPlugin, createResolver } from '@nuxt/kit'
 import { readPackageJSON } from 'pkg-types'
 import { resolveModulePath } from 'exsolve'
 import { isGreaterThanOrEqual } from 'verkit'
@@ -81,25 +81,27 @@ export default defineNuxtModule({
     addImports({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
     // inject script
-    const builder = nuxt.options.server?.builder
-    if (builder && builder !== '@nuxt/nitro-server') {
-      addPlugin(resolve(runtimeDir, 'script.server'))
-      addVitePlugin({
-        name: 'nuxt-color-mode:script',
-        transformIndexHtml: () => [{ tag: 'script', children: options.script, injectTo: 'head' }],
-      })
-    }
-    else {
-      nuxt.hook('nitro:config', (config) => {
-        config.externals = config.externals || {}
-        config.externals.inline = config.externals.inline || []
-        config.externals.inline.push(runtimeDir)
-        config.virtual = config.virtual || {}
-        config.virtual['#color-mode-options'] = `export const script = ${JSON.stringify(options.script, null, 2)}`
-      })
-      const nitroPlugin = resolve(runtimeDir, 'nitro-plugin')
-      addNitroPlugin({ nitro2: nitroPlugin, nitro3: nitroPlugin })
-    }
+    // TODO: register the script with `addServerTemplate` and have the renderer plugin
+    // import it, instead of writing the plugin to the buildDir, once server templates
+    // resolve with any server builder (https://github.com/nuxt/nuxt/pull/37264).
+    const rendererPlugin = addTemplate({
+      filename: 'color-mode-renderer.mjs',
+      write: true,
+      getContents: () => {
+        const script = JSON.stringify(`<script>${options.script}</script>`)
+        return `export default ({ hooks }) => {
+  hooks.hook('render:html', (html) => {
+    html.head.push(${script})
+  })
+}
+`
+      },
+    })
+    addRendererPlugin({
+      nuxt: rendererPlugin.dst,
+      nitro2: rendererPlugin.dst,
+      nitro3: rendererPlugin.dst,
+    })
 
     // @ts-expect-error module may not be installed
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
