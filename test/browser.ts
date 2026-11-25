@@ -13,7 +13,9 @@ export async function setupBrowser(nuxtConfig: NuxtConfig) {
     build: true,
     browser: true,
     fixture,
-    nuxtConfig: { ...nuxtConfig, plugins: [holdHydration] },
+    // Build like production: `import.meta.test` must be false so that the client plugin takes the
+    // same code paths as in a real app.
+    nuxtConfig: { ...nuxtConfig, test: false, plugins: [holdHydration] },
   })
 }
 
@@ -134,6 +136,19 @@ export function defineBrowserTests() {
     await page.emulateMedia({ colorScheme: 'light' })
     await resumeHydration(page)
     await expect.poll(() => getColorMode(page)).toMatchObject({ value: 'light', className: 'light-mode' })
+    await page.close()
+  })
+
+  it('starts with the configured defaults when the inline script is missing', async () => {
+    const page = await createPage(undefined, { colorScheme: 'dark' })
+    await page.route(url('/'), async (route) => {
+      const response = await route.fetch()
+      const html = (await response.text()).replace(/<script>(?:(?!<\/script>)[\s\S])*?getStorageValue\((?:(?!<\/script>)[\s\S])*?<\/script>/, '')
+      await route.fulfill({ response, body: html })
+    })
+    await page.goto(url('/'), { waitUntil: 'hydration' })
+    expect(await page.evaluate(() => '__NUXT_COLOR_MODE__' in window)).toBe(false)
+    expect(await getColorMode(page)).toMatchObject({ preference: 'system', value: 'light', forced: false, className: '' })
     await page.close()
   })
 

@@ -80,14 +80,17 @@ export default defineNuxtModule({
     addComponent({ name: options.componentName, filePath: resolve(runtimeDir, 'component.vue') })
     addImports({ name: 'useColorMode', as: 'useColorMode', from: resolve(runtimeDir, 'composables') })
 
-    // inject script
+    // Inject script
+    // HTML entries that raw Vite processes (e.g. Storybook's preview iframe)
+    // get the script from this hook. Nuxt's own client build has no HTML
+    // entry, so it is a no-op.
+    addVitePlugin({
+      name: 'nuxt-color-mode:script',
+      transformIndexHtml: () => [{ tag: 'script', children: options.script, injectTo: 'head' }],
+    })
     const builder = nuxt.options.server?.builder
     if (builder && builder !== '@nuxt/nitro-server') {
       addPlugin(resolve(runtimeDir, 'script.server'))
-      addVitePlugin({
-        name: 'nuxt-color-mode:script',
-        transformIndexHtml: () => [{ tag: 'script', children: options.script, injectTo: 'head' }],
-      })
     }
     else {
       nuxt.hook('nitro:config', (config) => {

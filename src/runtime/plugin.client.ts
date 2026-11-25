@@ -3,7 +3,7 @@ import { computed, reactive, watch } from 'vue'
 import type { ColorModeInstance } from './types'
 import type { NuxtApp } from '#app'
 import { defineNuxtPlugin, useRouter, useHead, useState, useCookie, useRuntimeConfig } from '#imports'
-import { globalName, storageKey, dataValue, disableTransition, storage } from '#build/color-mode-options.mjs'
+import { globalName, storageKey, dataValue, disableTransition, storage, preference, fallback } from '#build/color-mode-options.mjs'
 
 type Helper = {
   preference: string
@@ -13,15 +13,20 @@ type Helper = {
   removeColorScheme: (className: string) => void
 }
 
+// The helper is created by the inline script that is injected into the `<head>` before the app
+// loads. Fall back to the configured defaults with no-op class helpers when the HTML was rendered
+// without that script (e.g. by a test runner) to avoid hard errors when hydrating.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-let helper = window[globalName as any] as unknown as Helper
+const helper: Helper = (window[globalName as any] as unknown as Helper | undefined) || createFallbackHelper()
 
-// Initialise to object with defaults and no-ops to avoid hard error when hydrating app in test mode
-if (import.meta.test && !helper) {
-  helper = {
-    preference: 'light',
-    value: 'light',
-    getColorScheme: () => 'light',
+function createFallbackHelper(): Helper {
+  if (import.meta.dev && !import.meta.test) {
+    console.warn(`[@nuxtjs/color-mode] \`window.${globalName}\` is not defined because the inline script was not injected into the page. The color mode is neither detected nor applied to the document.`)
+  }
+  return {
+    preference,
+    value: preference === 'system' ? fallback : preference,
+    getColorScheme: () => fallback,
     addColorScheme: () => {},
     removeColorScheme: () => {},
   }
